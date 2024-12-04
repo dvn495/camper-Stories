@@ -1,85 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/camperSucces.css";
-
-// Importa las imágenes directamente
-import campersexitosos from "../assets/campersexitosos.png";
-import christopherImg from "../assets/Christopher.svg";
-import silviaImg from "../assets/Silvia.svg";
-import hernanImg from "../assets/Hernan.svg";
-import angieImg from "../assets/Angie.svg";
+import campersData from "../data/camperSucess";
+import ButonrightImg from "../assets/ButtonRight.png";
+import ButonleftImg from "../assets/Buttonleft.png";
 
 const CamperSuccess = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const slideLeft = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + campersData.length) % campersData.length);
+  };
+
+  const slideRight = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % campersData.length);
+  };
+
   return (
     <div className="container">
       <div className="title">
-        <img src={campersexitosos} alt="Campers Exitosos" />
+        <h2>CAMPERS</h2>
+        <h1>EXITOSOS</h1>
       </div>
-
       <div className="cards-container">
-        <a href="#" className="card">
-          <div className="perfil">
-            <img src={christopherImg} alt="Cristopher Buitrago" className="card-image" />
-          </div>
-          <div className="card-content">
-            <h3>Cristopher Buitrago</h3>
-            <h4>Fullstack Software Developer</h4>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Justo
-              suscipit pharetra semectus duis, modi himenaeos liquido dopibus
-              fermentum pellentesque vivamus vulputate mollis magnus sed.
-            </p>
-          </div>
-        </a>
+        {campersData.map((camper, index) => {
+          // Calculamos los índices que deberían agrandarse
+          const isLarge = 
+            index === (currentIndex % campersData.length) ||
+            index === ((currentIndex + 1) % campersData.length) ||
+            index === ((currentIndex + 2) % campersData.length) ||
+            index === ((currentIndex + 3) % campersData.length);
 
-        <a href="#" className="card">
-          <div className="perfil">
-            <img src={silviaImg} alt="Silvia Angarita" className="card-image" />
-          </div>
-          <div className="card-content">
-            <h3>Silvia Angarita</h3>
-            <h4>Fullstack Software Developer</h4>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Justo
-              suscipit pharetra semectus duis, modi himenaeos liquido dopibus
-              fermentum pellentesque vivamus vulputate mollis magnus sed.
-            </p>
-          </div>
-        </a>
-
-        <a href="#" className="card">
-          <div className="perfil">
-            <img src={hernanImg} alt="Hernan Mendez" className="card-image" />
-          </div>
-          <div className="card-content">
-            <h3>Hernan Mendez</h3>
-            <h4>Fullstack Software Developer</h4>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Justo
-              suscipit pharetra semectus duis, modi himenaeos liquido dopibus
-              fermentum pellentesque vivamus vulputate mollis magnus sed.
-            </p>
-          </div>
-        </a>
-
-        <a href="#" className="card">
-          <div className="perfil">
-            <img src={angieImg} alt="Angie Ardila" className="card-image" />
-          </div>
-          <div className="card-content">
-            <h3>Angie Ardila</h3>
-            <h4>Fullstack Software Developer</h4>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Justo
-              suscipit pharetra semectus duis, modi himenaeos liquido dopibus
-              fermentum pellentesque vivamus vulputate mollis magnus sed.
-            </p>
-          </div>
-        </a>
+          return (
+            <div
+              key={camper.id}
+              className={`card ${isLarge ? "card-large" : ""}`}
+            >
+              <div className="perfil">
+                <img src={camper.image} alt={camper.name} className="card-image" />
+              </div>
+              <div className="card-content">
+                <h3>{camper.name}</h3>
+                <h4>{camper.role}</h4>
+                <p>{camper.description}</p>
+              </div>
+            </div>
+          );
+        })}
       </div>
 
       <div className="navigation">
-        <button className="nav-button">←</button>
-        <button className="nav-button">→</button>
+        <button className="nav-button" onClick={slideLeft}>
+          <img src={ButonleftImg} alt="Left" />
+        </button>
+        <button className="nav-button" onClick={slideRight}>
+          <img src={ButonrightImg} alt="Right" />
+        </button>
       </div>
     </div>
   );
