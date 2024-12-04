@@ -7,7 +7,6 @@ import CamperSucces from '../components/CamperSucess';
 const AppRouter = () => (
   <Routes>
     {/* Rutas relacionadas con el login y registro */}
-    <Route path="/" element={<Login />} />
     
     {/* Rutas relacionadas con la tienda y categorías */}
     <Route path="/camperSucces" element={<CamperSucces />} />
