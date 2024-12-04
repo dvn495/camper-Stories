@@ -1,22 +1,24 @@
 import React from "react";
 import "../styles/camperSucces.css";
 
+// Importa las imágenes directamente
+import campersexitosos from "../assets/campersexitosos.png";
+import christopherImg from "../assets/Christopher.svg";
+import silviaImg from "../assets/Silvia.svg";
+import hernanImg from "../assets/Hernan.svg";
+import angieImg from "../assets/Angie.svg";
+
 const CamperSuccess = () => {
   return (
     <div className="container">
       <div className="title">
-        <img src="../assets/img/campersexitosos.png" alt="Campers Exitosos" />
+        <img src={campersexitosos} alt="Campers Exitosos" />
       </div>
 
       <div className="cards-container">
         <a href="#" className="card">
           <div className="perfil">
-            <img
-              src="../assets/img/Christopher Daniel Ramirez Buitrago 1.svg"
-              alt="Cristopher Buitrago"
-              className="card-image"
-            />
-            <div className="card-img"></div>
+            <img src={christopherImg} alt="Cristopher Buitrago" className="card-image" />
           </div>
           <div className="card-content">
             <h3>Cristopher Buitrago</h3>
@@ -31,12 +33,7 @@ const CamperSuccess = () => {
 
         <a href="#" className="card">
           <div className="perfil">
-            <img
-              src="../assets/img/Silvia Giovanna Angarita Castillo 1.svg"
-              alt="Silvia Angarita"
-              className="card-image"
-            />
-            <div className="card-img"></div>
+            <img src={silviaImg} alt="Silvia Angarita" className="card-image" />
           </div>
           <div className="card-content">
             <h3>Silvia Angarita</h3>
@@ -51,12 +48,7 @@ const CamperSuccess = () => {
 
         <a href="#" className="card">
           <div className="perfil">
-            <img
-              src="../assets/img/Hernan Mendez Guerrero 1.svg"
-              alt="Hernan Mendez"
-              className="card-image"
-            />
-            <div className="card-img"></div>
+            <img src={hernanImg} alt="Hernan Mendez" className="card-image" />
           </div>
           <div className="card-content">
             <h3>Hernan Mendez</h3>
@@ -71,12 +63,7 @@ const CamperSuccess = () => {
 
         <a href="#" className="card">
           <div className="perfil">
-            <img
-              src="../assets/img/Angie Katherine Ardila Parra 1.svg"
-              alt="Angie Ardila"
-              className="card-image"
-            />
-            <div className="card-img"></div>
+            <img src={angieImg} alt="Angie Ardila" className="card-image" />
           </div>
           <div className="card-content">
             <h3>Angie Ardila</h3>
