@@ -25,14 +25,14 @@ const campersData = [
       name: "Silvia Angarita",
       role: "Fullstack Software Developer",
       description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Justo suscipit pharetra semectus duis, modi himenaeos liquido dopibus fermentum pellentesque vivamus vulputate mollis magnus sed.",
-      image: silviaImg
+      image: silviaImg 
     },
     {
       id: 4,
       name: "Hernan Mendez",
       role: "Fullstack Software Developer",
       description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Justo suscipit pharetra semectus duis, modi himenaeos liquido dopibus fermentum pellentesque vivamus vulputate mollis magnus sed.",
-      image: hernanImg
+      image: hernanImg 
     },
     {
       id: 5,
@@ -54,7 +54,14 @@ const campersData = [
         role: "Fullstack Software Developer",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Justo suscipit pharetra semectus duis, modi himenaeos liquido dopibus fermentum pellentesque vivamus vulputate mollis magnus sed.",
         image: jhonImg
-      },
+    },
+    {
+      id: 8,
+      name: "David Lopez",
+      role: "Fullstack Software Developer",
+      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Justo suscipit pharetra semectus duis, modi himenaeos liquido dopibus fermentum pellentesque vivamus vulputate mollis magnus sed.",
+      image: jhonImg
+    },
 
   ];
   
