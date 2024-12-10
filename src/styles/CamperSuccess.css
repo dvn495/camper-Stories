@@ -88,7 +88,43 @@ body {
     overflow: hidden;
     position: relative;
     transition: margin-bottom 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
+    cursor: pointer;@import './base.css';
+
+    .camper-success-view {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 1rem;
+    }
+    
+    .logo {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    .title {
+        text-align: center;
+        height: 15vh;
+    }
+    
+    .title h2 {
+        color: var(--color1);
+        font-family: 'Title1';
+        font-size: 2.5rem;
+        font-weight: bold;
+        font-style: italic;
+    }
+    
+    .title h1 {
+        color: var(--color2);
+        font-family: 'Title2';
+        font-size: 3.5rem;
+        font-weight: 800;
+        font-style: oblique;
+    }
+    
     border: 2px solid var(--color2);
     padding: 10px;
   }
@@ -196,3 +232,17 @@ body {
   .card:not(.apply-margin-bottom) .card-overlay {
     opacity: 1;
   }
+
+.camper-success-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente */
+    justify-content: center; /* Centra verticalmente */
+    min-height: 100vh; /* Asegura que ocupe toda la altura de la ventana */
+    padding: 1rem; /* Espaciado en dispositivos móviles */
+}
+
+.logo {
+    max-width: 100%; /* Hace que la imagen sea responsiva */
+    height: auto; /* Mantiene la proporción de la imagen */
+}
