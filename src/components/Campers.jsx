@@ -39,7 +39,10 @@ const Campers = () => {
       const centerPosition = container.scrollLeft + containerWidth / 2;
 
       const cards = document.querySelectorAll(".card");
-      cards.forEach((card) => card.classList.remove("apply-margin-bottom"));
+      cards.forEach((card) => {
+        card.classList.remove("apply-margin-bottom", "corner");
+      });
+
       [...cards].forEach((card, index) => {
         const cardLeft = card.offsetLeft + cardWidth / 2;
         if (cardLeft >= centerPosition - (visibleCardsCount / 2) * cardWidth &&
@@ -50,6 +53,13 @@ const Campers = () => {
         }
       });
 
+      if (cards.length > 0) {
+        cards[0].classList.add("corner");
+        cards[cards.length - 1].classList.add("corner");
+        cards[1].classList.add("corner");
+        cards[cards.length - 2].classList.add("corner");
+      }
+
       if (container.scrollLeft + container.offsetWidth >= container.scrollWidth) {
         setData((prevData) => [...prevData, ...campersData]);
       }
@@ -57,7 +67,7 @@ const Campers = () => {
 
     container.addEventListener("scroll", handleScroll);
     return () => container.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [data]);
 
   const generateInfiniteCards = () =>
     data.map((camper, index) => (
@@ -70,7 +80,8 @@ const Campers = () => {
           <h4>{camper.role}</h4>
           <p>{camper.description}</p>
         </div>
-        <div className="card-overlay"></div>
+        {/* Eliminar la superposición si no la necesitas */}
+        {/* <div className="card-overlay"></div> */}
       </div>
     ));
 

@@ -4,7 +4,7 @@ import "../styles/Footer.css";
 const Footer = () => {
   return (
     <footer className="footer">
-      <p>© 2023 Campistas Exitosos. Todos los derechos reservados.</p>
+      <p>© 2024 Campuslands. Todos los derechos reservados.</p>
     </footer>
   );
 };

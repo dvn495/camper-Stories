@@ -66,12 +66,26 @@
     z-index: 2;
     background-color: #0D0B57;
     border-radius: 0 0 15px 15px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 .card:hover .card-content {
     background-color: var(--color2);
     transform: translateY(-10px);
+    color: #000000;
+}
+
+.card-content h3,
+.card-content h4,
+.card-content p {
+    color: var(--color1);
+    transition: color 0.3s ease;
+}
+
+.card:hover .card-content h3,
+.card:hover .card-content h4,
+.card:hover .card-content p {
+    color: #000000;
 }
 
 .card h3 {
