@@ -46,6 +46,7 @@
   
   .profile-card-content {
     flex: 1;
+    gap: 20px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -53,20 +54,22 @@
   }
   
   .profile-card-content h2 {
-    font-size: 4em;
+    font-size: 3em;
     color: #4ac1ff;
   }
   
   .profile-card-content h4 {
+    font-family: "P--Profile";
     font-size: 22px;
     color: #ddd;
     margin-bottom: 10px;
   }
   
   .profile-card-content p {
-    font-size: 16px;
+    font-size: 1rem;
     margin-bottom: 15px;
     font-family: P--Profile;
+    max-width: 400px;
   }
   
   .profile-card-signature p {
@@ -83,6 +86,8 @@
     color: #fff;
     cursor: pointer;
     border-radius: 5px;
+    width: 33%;
+    margin-left: 0;
   }
   
   .profile-card-nav {
@@ -92,11 +97,13 @@
   .profile-card-nav-button {
     background-color: #444;
     border: none;
-    padding: 5px 10px;
+    padding: 10px;
     color: #fff;
     cursor: pointer;
     margin: 0 5px;
-    border-radius: 3px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
   }
   
   .profile-card-nav-button:hover,
