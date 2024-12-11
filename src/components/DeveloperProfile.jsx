@@ -1,61 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/DeveloperProfiles.css'; // Asegúrate de que este archivo exista o corrige la ruta
-import camper from "../assets/camper.png";
+
+import profiles from '../data/camperProfile'; // Importar la constante profiles
 
 const DeveloperProfiles = ({ apiImage }) => {
-  // Datos quemados
-  const profiles = [
-    {
-      id: 1,
-      name: "Natalia Diaz Suarez",
-      title: "Fullstack Software Developer",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Natusque justo suscipit voluptatem accusamus.",
-      image: camper,
-      buttonText: "Más Información",
-    },
-    {
-      id: 2,
-      name: "John Doe",
-      title: "Frontend Developer",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Natusque justo suscipit voluptatem accusamus.",
-      image: "https://via.placeholder.com/150", // Cambia esto por una URL real
-      buttonText: "Más Información",
-    },
-    {
-      id: 3,
-      name: "Jane Smith",
-      title: "Backend Engineer",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Natusque justo suscipit voluptatem accusamus.",
-      image: "https://via.placeholder.com/150", // Cambia esto por una URL real
-      buttonText: "Más Información",
-    },
-  ];
+  // Estado para controlar el índice del perfil actual
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextProfile = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % profiles.length);
+  };
+
+  const prevProfile = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + profiles.length) % profiles.length);
+  };
 
   return (
     <div className="developer-profiles">
-      {profiles.map((profile) => (
-        <div className="profile-card" key={profile.id}>
-          <div className="profile-card-image">
-            <img src={profile.image} alt={`${profile.name}'s profile`} />
+      <div className="profile-card" key={profiles[currentIndex].id}>
+        <img className="camper" src={profiles[currentIndex].image} alt={`${profiles[currentIndex].name}'s profile`} />
+        <div className="profile-card-content">
+          <h2>{profiles[currentIndex].name}</h2>
+          <h4>{profiles[currentIndex].title}</h4>
+          <p>{profiles[currentIndex].description}</p>
+          <div className="profile-card-signature">
+            <p>{profiles[currentIndex].name}</p>
           </div>
-          <div className="profile-card-content">
-            <h2>{profile.name}</h2>
-            <h4>{profile.title}</h4>
-            <p>{profile.description}</p>
-            <div className="profile-card-signature">
-              <p>{profile.name}</p>
-            </div>
-            <button className="profile-card-button">{profile.buttonText}</button>
-            <div className="profile-card-nav">
-              <button className="profile-card-nav-button">←</button>
-              <button className="profile-card-nav-button">→</button>
-            </div>
+          <button className="profile-card-button">{profiles[currentIndex].buttonText}</button>
+          <div className="profile-card-nav">
+            <button className="profile-card-nav-button" onClick={prevProfile}>←</button>
+            <button className="profile-card-nav-button" onClick={nextProfile}>→</button>
           </div>
         </div>
-      ))}
+      </div>
     </div>
   );
 };

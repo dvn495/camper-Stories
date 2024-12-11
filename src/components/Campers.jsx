@@ -80,8 +80,6 @@ const Campers = () => {
           <h4>{camper.role}</h4>
           <p>{camper.description}</p>
         </div>
-        {/* Eliminar la superposición si no la necesitas */}
-        {/* <div className="card-overlay"></div> */}
       </div>
     ));
 
