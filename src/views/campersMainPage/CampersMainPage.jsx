@@ -1,8 +1,8 @@
 import React from 'react';
-import Campers from '../../components/campersMainPage/Campers';
-import Footer from '../../components/footer/Footer';
-
 import MainCampers from '../../components/campersMainPage/MainCampers';
+import Campers from '../../components/campersMainPage/Campers';
+import CampersGrid from '../../components/campersMainPage/CampersGrid';
+import Footer from '../../components/footer/Footer';
 import "./styles/CampersMainPage.css";
 
 const CampersMainPage = () => {
@@ -11,6 +11,7 @@ const CampersMainPage = () => {
       <main>
       <MainCampers />
       <Campers />
+      <CampersGrid />
       </main>
       <Footer />
     </div>
