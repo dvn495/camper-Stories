@@ -1,4 +1,4 @@
-@import './variables.css';
+@import '/src/styles/variables.css';
 
 .cards-container-wrapper {
     overflow: hidden;
@@ -125,9 +125,9 @@
     transform: scale(1);
 }
 
-.title {
-    text-align: center;
-    height: 15vh;
+.sec-title{
+    max-width: 600px; 
+    height: auto;
 }
 
 .title h2 {

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import '../styles/DeveloperProfiles.css'; // Asegúrate de que este archivo exista o corrige la ruta
+import Logo from '../../assets/Logo.png';
+import './styles/MainCampers.css';
 
-import profiles from '../data/camperProfile'; // Importar la constante profiles
+import profiles from '../../api/camperProfile'; // Importa la constante profiles
 
-const DeveloperProfiles = ({ apiImage }) => {
+const MainCampers = ({ apiImage }) => {
   // Estado para controlar el índice del perfil actual
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -17,8 +18,10 @@ const DeveloperProfiles = ({ apiImage }) => {
 
   return (
     <div className="developer-profiles">
+      <img src={Logo} alt="Logo" className="logo" />
       <div className="profile-card" key={profiles[currentIndex].id}>
         <img className="camper" src={profiles[currentIndex].image} alt={`${profiles[currentIndex].name}'s profile`} />
+        <img className="camper-frame" src="/src/assets/mainFrame.png" alt=""/>
         <div className="profile-card-content">
           <h2>{profiles[currentIndex].name}</h2>
           <h4>{profiles[currentIndex].title}</h4>
@@ -37,4 +40,4 @@ const DeveloperProfiles = ({ apiImage }) => {
   );
 };
 
-export default DeveloperProfiles;
+export default MainCampers;

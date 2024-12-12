@@ -7,11 +7,9 @@
 }
 
 body {
-    background-color: var(--color3);
-    font-family: 'Title1';
+    font-family: 'P--Profile';
     min-height: 100vh;
     width: 100%;
-    padding: 2rem;
 }
 
 img {

@@ -1,0 +1,133 @@
+@import '/src/styles/variables.css';
+
+.developer-profiles {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    padding-bottom: 10rem;
+    background: linear-gradient(
+    180deg,          
+    #0C0C74 0%,     
+    #03033D 70%,   
+    #030337 100% 
+);
+}
+
+.logo {
+    max-width: 100%;
+    height: auto;
+    margin-top: 15%;
+}
+
+.profile-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 40px 40px 40px;
+    width: 100%;
+    max-width: 1200px;
+    color: #fff;
+}
+
+.camper-frame {
+  position: absolute;
+  top: 45%;
+  left: 20%; /* Ajusta este valor para moverlo más a la izquierda */
+  transform: translate(-40%, -50%); /* Asegúrate de compensar el cambio en 'left' */
+  z-index: 1;
+  width: 563px;
+  height: 551px;
+}
+
+.camper {
+    position: relative;
+    width: 625px;
+    height: 721px;
+    border-radius: 15px;
+    transform: translate(-13%, -16.26%); 
+    z-index: 2;
+    filter: drop-shadow(0px 0px 5px rgb(14, 13, 13));
+}
+
+.profile-card-content {
+    margin-left: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    z-index: 3;
+}
+
+.profile-card-content h2 {
+    font-size: 3.5em;
+    font-weight: bold;
+    color: #4ac1ff;
+    margin: 0;
+}
+
+.profile-card-content h4 {
+    font-size: 1.5em;
+    font-weight: 400;
+    color: #ddd;
+    margin: 0;
+}
+
+.profile-card-content p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #aaa;
+    max-width: 400px;
+    margin: 10px 0 0;
+}
+
+.profile-card-signature p {
+    font-family: "firma";
+    font-size: 2rem;
+    color: #4ac1ff;
+    margin-top: 20px;
+}
+
+.profile-card-button {
+    background-color: #4ac1ff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    width: fit-content;
+    transition: background-color 0.3s;
+}
+
+.profile-card-button:hover {
+    background-color: #359ed8;
+}
+
+.profile-card-nav {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.profile-card-nav-button {
+    background-color: #444;
+    border: none;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: background-color 0.3s;
+}
+
+.profile-card-nav-button:hover {
+    background-color: #4ac1ff;
+}

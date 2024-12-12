@@ -28,9 +28,11 @@ body {
     font-family: 'Title1';
     min-height: 100vh;
     width: 100%;
-    padding: 2rem;
 }
 
+main {
+    width: 100%;
+}
 .container {
     display: flex;
     flex-direction: column;
@@ -68,18 +70,23 @@ body {
     /*background: red;*/
     gap: 2rem;
     padding: 10px 15px;
-    overflow-x: auto; /* Desplazamiento horizontal */
+    overflow-x: auto;
+    /* Desplazamiento horizontal */
     overflow-x: auto;
     scroll-behavior: smooth;
     transition: transform 0.3s ease;
-    scrollbar-width: none; /* Oculta la barra de desplazamiento en Firefox */
-    -ms-overflow-style: none; /* Oculta la barra de desplazamiento en Internet Explorer */
-  }
-  
-  .cards-container::-webkit-scrollbar {
-    display: none; /* Oculta la barra de desplazamiento en Chrome, Safari y Opera */
-  }
-  .card {
+    scrollbar-width: none;
+    /* Oculta la barra de desplazamiento en Firefox */
+    -ms-overflow-style: none;
+    /* Oculta la barra de desplazamiento en Internet Explorer */
+}
+
+.cards-container::-webkit-scrollbar {
+    display: none;
+    /* Oculta la barra de desplazamiento en Chrome, Safari y Opera */
+}
+
+.card {
     width: 20rem;
     min-width: 270px;
     height: 650px;
@@ -88,52 +95,46 @@ body {
     overflow: hidden;
     position: relative;
     transition: margin-bottom 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;@import './base.css';
+    cursor: pointer;
+    @import './base.css';
+}
 
-    .camper-success-view {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        padding: 1rem;
-    }
-    
-    .logo {
-        max-width: 100%;
-        height: auto;
-    }
-    
-    .title {
-        text-align: center;
-        height: 15vh;
-    }
-    
-    .title h2 {
-        color: var(--color1);
-        font-family: 'Title1';
-        font-size: 2.5rem;
-        font-weight: bold;
-        font-style: italic;
-    }
-    
-    .title h1 {
-        color: var(--color2);
-        font-family: 'Title2';
-        font-size: 3.5rem;
-        font-weight: 800;
-        font-style: oblique;
-    }
-    
-    border: 2px solid var(--color2);
-    padding: 10px;
-  }
-  
-  .card.apply-margin-bottom {
-    margin-bottom: 2rem; /* Ajusta el margen según lo que necesites */
-  }
-  
-  
+.camper-success-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+
+.title {
+    text-align: center;
+    height: 15vh;
+}
+
+.title h2 {
+    color: var(--color1);
+    font-family: 'Title1';
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.title h1 {
+    color: var(--color2);
+    font-family: 'Title2';
+    font-size: 3.5rem;
+    font-weight: 800;
+    font-style: oblique;
+}
+
+.card.apply-margin-bottom {
+    margin-bottom: 2rem;
+    /* Ajusta el margen según lo que necesites */
+}
+
+
 
 .card-image {
     width: 100%;
@@ -192,14 +193,16 @@ body {
 }
 
 .card.center-margin {
-  margin-top: 3rem;
+    margin-top: 3rem;
 }
 
 
 .perfil {
     position: relative;
-    display: inline-block; /* Para que el ancho se ajuste al contenido */
-    width: 100%; /* Asegura que el contenedor de la imagen tenga el mismo ancho */
+    display: inline-block;
+    /* Para que el ancho se ajuste al contenido */
+    width: 100%;
+    /* Asegura que el contenedor de la imagen tenga el mismo ancho */
 }
 
 /* Efecto triangular del mismo ancho que la imagen */
@@ -208,15 +211,17 @@ body {
     position: absolute;
     bottom: 18px;
     left: 0;
-    width: 100%; /* Igual ancho que la imagen */
+    width: 100%;
+    /* Igual ancho que la imagen */
     height: 40px;
     background: #0D0B57;
     clip-path: polygon(0 100%, 100% 100%, 50% 0);
     z-index: 1;
-    border-radius: 0 0 10px 10px; /* Coincide con el radio de la imagen si es necesario */
+    border-radius: 0 0 10px 10px;
+    /* Coincide con el radio de la imagen si es necesario */
 }
 
-  .card-overlay {
+.card-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -227,22 +232,16 @@ body {
     z-index: 5;
     opacity: 0;
     transition: opacity 0.3s ease;
-  }
-  
-  .card:not(.apply-margin-bottom) .card-overlay {
-    opacity: 1;
-  }
-
-.camper-success-view {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centra horizontalmente */
-    justify-content: center; /* Centra verticalmente */
-    min-height: 100vh; /* Asegura que ocupe toda la altura de la ventana */
-    padding: 1rem; /* Espaciado en dispositivos móviles */
 }
 
+.card:not(.apply-margin-bottom) .card-overlay {
+    opacity: 1;
+}
+
+
 .logo {
-    max-width: 100%; /* Hace que la imagen sea responsiva */
-    height: auto; /* Mantiene la proporción de la imagen */
+    max-width: 100%;
+    /* Hace que la imagen sea responsiva */
+    height: auto;
+    /* Mantiene la proporción de la imagen */
 }

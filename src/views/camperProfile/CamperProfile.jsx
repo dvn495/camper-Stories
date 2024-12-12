@@ -1,9 +1,8 @@
 import React from 'react';
-import { HandCoins } from 'lucide-react';
-import ProfileHeader from '../components/camperProfile/ProfileHeader';
-import VideoPlayer from '../components/camperProfile/VIdeoPlayer';
-import ProjectCard from '../components/camperProfile/ProjectCard';
-import '../styles/CamperProfile.css';
+import ProfileHeader from '../../components/camperProfile/ProfileHeader';
+import VideoPlayer from '../../components/camperProfile/VIdeoPlayer';
+import ProjectCard from '../../components/camperProfile/ProjectCard';
+import './styles/CamperProfile.css';
 
 const CamperProfile = () => {
     const camper = {

@@ -1,8 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
-import ButonrightImg from "../assets/ButtonRight.png";
-import ButonleftImg from "../assets/Buttonleft.png";
-import campersData from "../data/camperSucess";
-import "../styles/Campers.css";
+import ButonrightImg from "../../assets/ButtonRight.png";
+import ButonleftImg from "../../assets/Buttonleft.png";
+import campersData from "../../api/camperSucess";
+import "./styles/Campers.css";
 
 const Campers = () => {
   const containerRef = useRef(null);
@@ -85,10 +85,7 @@ const Campers = () => {
 
   return (
     <div className="container">
-      <div className="title">
-        <h2>CAMPERS</h2>
-        <h1>EXITOSOS</h1>
-      </div>
+        <img className="sec-title" src="/src/assets/campersexitosos.png" alt=""/>
       <div className="cards-container-wrapper">
         <div className="cards-container" ref={containerRef}>
           {generateInfiniteCards()}
