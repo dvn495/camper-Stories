@@ -126,6 +126,51 @@ const campersData = [
       { name: "HTML/CSS", level: "Experto" },
     ]
   },
+  {
+    id: 9,
+    name: "Cristopher Buitrago",
+    role: "Fullstack Software Developer",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Justo suscipit pharetra semectus duis, modi himenaeos liquido dopibus fermentum pellentesque vivamus vulputate mollis magnus sed.",
+    image: christopherImg,
+    skills: [
+      { name: "TypeScript", level: "Avanzado" },
+      { name: "JavaScript", level: "Avanzado" },
+      { name: "SpringBoot", level: "Intermedio" },
+      { name: "MySQL", level: "Intermedio" },
+      { name: "ReactJS", level: "Avanzado" },
+      { name: "HTML/CSS", level: "Experto" },
+    ]
+  },
+  {
+    id: 10,
+    name: "Silvia Angarita",
+    role: "Fullstack Software Developer",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Justo suscipit pharetra semectus duis, modi himenaeos liquido dopibus fermentum pellentesque vivamus vulputate mollis magnus sed.",
+    image: silviaImg,
+    skills: [
+      { name: "TypeScript", level: "Avanzado" },
+      { name: "JavaScript", level: "Avanzado" },
+      { name: "SpringBoot", level: "Intermedio" },
+      { name: "MySQL", level: "Intermedio" },
+      { name: "ReactJS", level: "Avanzado" },
+      { name: "HTML/CSS", level: "Experto" },
+    ]
+  },
+  {
+    id: 11,
+    name: "Hernan Mendez",
+    role: "Fullstack Software Developer",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Justo suscipit pharetra semectus duis, modi himenaeos liquido dopibus fermentum pellentesque vivamus vulputate mollis magnus sed.",
+    image: hernanImg,
+    skills: [
+      { name: "TypeScript", level: "Avanzado" },
+      { name: "JavaScript", level: "Avanzado" },
+      { name: "SpringBoot", level: "Intermedio" },
+      { name: "MySQL", level: "Intermedio" },
+      { name: "ReactJS", level: "Avanzado" },
+      { name: "HTML/CSS", level: "Experto" },
+    ]
+  }
 ];
 
 export default campersData;

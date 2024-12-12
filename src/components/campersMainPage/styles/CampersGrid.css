@@ -1,87 +1,120 @@
 
 .campersgrid{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     height: 100vh;
     margin-top: 2rem;
+    padding: 0 5rem 0 5rem;
     background-image:
     linear-gradient(rgba(1, 1, 48, 0.7), rgba(1, 1, 48, 0.7)), /* Filtro de color */
     url('src/assets/campuswall.png');
-  background-size: cover;
-  background-position: center; 
-  background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat; 
 }
 
-.campersgrid-title{
-    text-align: center;
-    color: #FDB347;
-    font-size: 5rem;
-    text-decoration: underline;
-    text-underline-offset: 15px;
+.campersgrid-title {
+  text-align: center;
+  color: #F4B422;
+  font-size: 5rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: black;
+  position: relative; /* Necesario para usar el pseudo-elemento */
+  margin-top: 1rem;
+  text-shadow: 
+      1px 1px 2px rgba(0, 0, 0, 0.5), 
+      -1px -1px 2px rgba(0, 0, 0, 0.5);
 }
+
+.campersgrid-title::after {
+  content: "";
+  position: absolute;
+  bottom: 5px; /* Ajusta la distancia entre el texto y el subrayado */
+  left: -10%; /* Extiende el subrayado hacia la izquierda */
+  width: 120%; /* Hace que el subrayado sea más largo que el texto */
+  height: 2px; /* Grosor del subrayado */
+  background-color: #F4B422; /* Color del subrayado */
+}
+
 
 .grid-container{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 20px;
+    gap: 15px;
+    margin-top: 2.5rem;
+    justify-content: center;
+}
+
+.camper-maininfo{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
 }
 
 .developer-card {
     display: flex;
     flex-direction: row;
+    align-items: center;
     width: 500px;
-    height: 250px;
+    height: 200px;
     max-width: 600px;
-    padding: 24px;
+    padding: 14px 24px 24px 24px;
     border-radius: 8px;
     background-color: #2D2B54;
     color: white;
     margin-bottom: 20px;
   }
   
-  .card-content {
+  .dev-card-content {
     display: flex;
+    height: 180px;
     flex-direction: column;
+    justify-content: space-between;
+    padding-left: 24px;
+  }
+  
+  .camper-image {
+    display: flex;
+    width: 200px;
+    height: 100%;
     align-items: center;
-    gap: 24px;
   }
-  
+
   .camper-image img {
-    width: 96px;
-    height: 96px;
+    width: 200px;
+    max-height: 130px;
     border-radius: 50%;
-    background-color: white;
-    border: 2px solid white;
+    height: auto;
+    border: 2px solid #D9D9D9;
   }
   
-  .card-content {
-    flex: 1;
-  }
-  
-  .card-content h2 {
-    font-size: 24px;
+  .dev-card-content h3 {
+    font-size: 25px;
     font-weight: 600;
-    margin: 0 0 4px 0;
   }
   
-  .card-content .title {
-    font-size: 18px;
-    margin: 0 0 12px 0;
+  .camper-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
   }
-  
-  .technologies {
-    margin-bottom: 16px;
+
+  .camper-title {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 15px;
+    line-height: 10px;
   }
   
   .tech-label {
-    color: #FDB347;
+    color: #F4B422;
     font-weight: 500;
   }
   
   .technologies p {
     color: #e0e0e0;
-    margin: 4px 0 0 0;
   }
   
   .buttons {
@@ -99,7 +132,7 @@
   }
   
   .info-button, .sponsor-button {
-    background-color: #FDB347;
+    background-color: #F4B422;
     color: #2D2B54;
   }
   
@@ -108,7 +141,7 @@
   }
   
   @media (max-width: 480px) {
-    .card-content {
+    .dev-card-content {
       flex-direction: column;
       align-items: flex-start;
     }
