@@ -15,9 +15,6 @@ app.use(express.json());
 // Importar Rutas
 const userRoutes = require("./backend/routes/userRoutes");
 
-
-
-
 // Configuración de Rutas
 app.use("/users", userRoutes);
 

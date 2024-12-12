@@ -1,73 +1,42 @@
 import React, { useRef, useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import ButonrightImg from "../../assets/ButtonRight.png";
 import ButonleftImg from "../../assets/Buttonleft.png";
 import campersData from "../../api/camperSucess";
 import "./styles/Campers.css";
 
-const Campers = () => {
+const Campers = ({ autoSlide = true, slideInterval = 5000 }) => {
   const containerRef = useRef(null);
   const [data, setData] = useState(campersData);
-  const [scrolling, setScrolling] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const slide = (direction) => {
-    if (scrolling) return;
-    setScrolling(true);
     const container = containerRef.current;
-    const cardWidth = 300;
-    const distance = direction === "right" ? cardWidth : -cardWidth;
+    const maxIndex = data.length - 1;
 
-    container.scrollBy({ left: distance, behavior: "smooth" });
-
-    if (direction === "left" && container.scrollLeft === 0) {
-      setData((prevData) => [...campersData.slice(0, 3), ...prevData]);
-      container.scrollLeft = cardWidth;
+    let newIndex = activeIndex;
+    if (direction === "right") {
+      newIndex = activeIndex === maxIndex ? 0 : activeIndex + 1;
+    } else if (direction === "left") {
+      newIndex = activeIndex === 0 ? maxIndex : activeIndex - 1;
     }
 
-    if (direction === "right" && container.scrollLeft + container.offsetWidth >= container.scrollWidth) {
-      setData((prevData) => [...prevData, ...campersData]);
-    }
-
-    setTimeout(() => setScrolling(false), 500);
+    setActiveIndex(newIndex);
+    container.scrollTo({
+      left: newIndex * 300,
+      behavior: "smooth",
+    });
   };
 
   useEffect(() => {
-    const container = containerRef.current;
-    const handleScroll = () => {
-      const cardWidth = 300;
-      const containerWidth = container.offsetWidth;
-      const visibleCardsCount = Math.floor(containerWidth / cardWidth);
-      const centerPosition = container.scrollLeft + containerWidth / 2;
+    if (!autoSlide) return;
 
-      const cards = document.querySelectorAll(".card");
-      cards.forEach((card) => {
-        card.classList.remove("apply-margin-bottom", "corner");
-      });
+    const interval = setInterval(() => {
+      slide("right");
+    }, slideInterval);
 
-      [...cards].forEach((card, index) => {
-        const cardLeft = card.offsetLeft + cardWidth / 2;
-        if (cardLeft >= centerPosition - (visibleCardsCount / 2) * cardWidth &&
-            cardLeft <= centerPosition + (visibleCardsCount / 2) * cardWidth) {
-          if (index !== 0 && index !== cards.length - 1) {
-            card.classList.add("apply-margin-bottom");
-          }
-        }
-      });
-
-      if (cards.length > 0) {
-        cards[0].classList.add("corner");
-        cards[cards.length - 1].classList.add("corner");
-        cards[1].classList.add("corner");
-        cards[cards.length - 2].classList.add("corner");
-      }
-
-      if (container.scrollLeft + container.offsetWidth >= container.scrollWidth) {
-        setData((prevData) => [...prevData, ...campersData]);
-      }
-    };
-
-    container.addEventListener("scroll", handleScroll);
-    return () => container.removeEventListener("scroll", handleScroll);
-  }, [data]);
+    return () => clearInterval(interval);
+  }, [activeIndex, autoSlide, slideInterval]);
 
   const generateInfiniteCards = () =>
     data.map((camper, index) => (
@@ -85,7 +54,7 @@ const Campers = () => {
 
   return (
     <div className="container">
-        <img className="sec-title" src="/src/assets/campersexitosos.png" alt=""/>
+      <img className="sec-title" src="/src/assets/campersexitosos.png" alt=""/>
       <div className="cards-container-wrapper">
         <div className="cards-container" ref={containerRef}>
           {generateInfiniteCards()}
@@ -101,6 +70,11 @@ const Campers = () => {
       </div>
     </div>
   );
+};
+
+Campers.propTypes = {
+  autoSlide: PropTypes.bool,
+  slideInterval: PropTypes.number,
 };
 
 export default Campers;
