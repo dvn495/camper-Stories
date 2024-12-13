@@ -13,7 +13,7 @@
     align-items: start;
 }
 
-.footer-container .line{
+.footer-container .line {
     width: 100%;
     height: 2px;
     background-color: white;
@@ -28,7 +28,7 @@
 .footer-container p {
     padding: .5rem 0 0 1rem;
     font-family: 'Roboto Mono', monospace;
-    font-weight: 400px;
+    font-weight: 400;
     font-size: 16px;
 }
 
@@ -44,4 +44,13 @@
     flex-direction: row;
     font-size: 25px;
     gap: 1.5rem;
+}
+
+.social-logos a {
+    color: white;
+    transition: transform 0.2s ease; /* Transición para un suave cambio */
+}
+
+.social-logos a:hover {
+    transform: scale(1.3); /* Aumenta el tamaño al 120% */
 }
