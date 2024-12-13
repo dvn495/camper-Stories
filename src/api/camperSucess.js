@@ -170,6 +170,171 @@ const campersData = [
       { name: "ReactJS", level: "Avanzado" },
       { name: "HTML/CSS", level: "Experto" },
     ]
+  },
+  {
+    id: 12,
+    name: "Angie Ardila",
+    role: "Fullstack Software Developer",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Justo suscipit pharetra semectus duis, modi himenaeos liquido dopibus fermentum pellentesque vivamus vulputate mollis magnus sed.",
+    image: davidImg,
+    skills: [
+      { name: "TypeScript", level: "Avanzado" },
+      { name: "JavaScript", level: "Avanzado" },
+      { name: "SpringBoot", level: "Intermedio" },
+      { name: "MySQL", level: "Intermedio" },
+      { name: "ReactJS", level: "Avanzado" },
+      { name: "HTML/CSS", level: "Experto" },
+    ]
+  },
+  {
+    id: 13,
+    name: "Cristopher Buitrago",
+    role: "Fullstack Software Developer",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Justo suscipit pharetra semectus duis, modi himenaeos liquido dopibus fermentum pellentesque vivamus vulputate mollis magnus sed.",
+    image: christopherImg,
+    skills: [
+      { name: "TypeScript", level: "Avanzado" },
+      { name: "JavaScript", level: "Avanzado" },
+      { name: "SpringBoot", level: "Intermedio" },
+      { name: "MySQL", level: "Intermedio" },
+      { name: "ReactJS", level: "Avanzado" },
+      { name: "HTML/CSS", level: "Experto" },
+    ]
+  },
+  {
+    id: 14,
+    name: "Silvia Angarita",
+    role: "Fullstack Software Developer",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Justo suscipit pharetra semectus duis, modi himenaeos liquido dopibus fermentum pellentesque vivamus vulputate mollis magnus sed.",
+    image: silviaImg,
+    skills: [
+      { name: "TypeScript", level: "Avanzado" },
+      { name: "JavaScript", level: "Avanzado" },
+      { name: "SpringBoot", level: "Intermedio" },
+      { name: "MySQL", level: "Intermedio" },
+      { name: "ReactJS", level: "Avanzado" },
+      { name: "HTML/CSS", level: "Experto" },
+    ]
+  },
+  {
+    id: 15,
+    name: "Hernan Mendez",
+    role: "Fullstack Software Developer",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Justo suscipit pharetra semectus duis, modi himenaeos liquido dopibus fermentum pellentesque vivamus vulputate mollis magnus sed.",
+    image: hernanImg,
+    skills: [
+      { name: "TypeScript", level: "Avanzado" },
+      { name: "JavaScript", level: "Avanzado" },
+      { name: "SpringBoot", level: "Intermedio" },
+      { name: "MySQL", level: "Intermedio" },
+      { name: "ReactJS", level: "Avanzado" },
+      { name: "HTML/CSS", level: "Experto" },
+    ]
+  },
+  {
+    id: 16,
+    name: "Angie Ardila",
+    role: "Fullstack Software Developer",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Justo suscipit pharetra semectus duis, modi himenaeos liquido dopibus fermentum pellentesque vivamus vulputate mollis magnus sed.",
+    image: angieImg,
+    skills: [
+      { name: "TypeScript", level: "Avanzado" },
+      { name: "JavaScript", level: "Avanzado" },
+      { name: "SpringBoot", level: "Intermedio" },
+      { name: "MySQL", level: "Intermedio" },
+      { name: "ReactJS", level: "Avanzado" },
+      { name: "HTML/CSS", level: "Experto" },
+    ]
+  },
+  {
+    id: 17,
+    name: "David Lopez",
+    role: "Fullstack Software Developer",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Justo suscipit pharetra semectus duis, modi himenaeos liquido dopibus fermentum pellentesque vivamus vulputate mollis magnus sed.",
+    image: jhonImg,
+    skills: [
+      { name: "TypeScript", level: "Avanzado" },
+      { name: "JavaScript", level: "Avanzado" },
+      { name: "SpringBoot", level: "Intermedio" },
+      { name: "MySQL", level: "Intermedio" },
+      { name: "ReactJS", level: "Avanzado" },
+      { name: "HTML/CSS", level: "Experto" },
+    ]
+  },
+  {
+    id: 18,
+    name: "David Lopez",
+    role: "Fullstack Software Developer",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Justo suscipit pharetra semectus duis, modi himenaeos liquido dopibus fermentum pellentesque vivamus vulputate mollis magnus sed.",
+    image: jhonImg,
+    skills: [
+      { name: "TypeScript", level: "Avanzado" },
+      { name: "JavaScript", level: "Avanzado" },
+      { name: "SpringBoot", level: "Intermedio" },
+      { name: "MySQL", level: "Intermedio" },
+      { name: "ReactJS", level: "Avanzado" },
+      { name: "HTML/CSS", level: "Experto" },
+    ]
+  },
+  {
+    id: 19,
+    name: "David Lopez",
+    role: "Fullstack Software Developer",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Justo suscipit pharetra semectus duis, modi himenaeos liquido dopibus fermentum pellentesque vivamus vulputate mollis magnus sed.",
+    image: jhonImg,
+    skills: [
+      { name: "TypeScript", level: "Avanzado" },
+      { name: "JavaScript", level: "Avanzado" },
+      { name: "SpringBoot", level: "Intermedio" },
+      { name: "MySQL", level: "Intermedio" },
+      { name: "ReactJS", level: "Avanzado" },
+      { name: "HTML/CSS", level: "Experto" },
+    ]
+  },
+  {
+    id: 20,
+    name: "Cristopher Buitrago",
+    role: "Fullstack Software Developer",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Justo suscipit pharetra semectus duis, modi himenaeos liquido dopibus fermentum pellentesque vivamus vulputate mollis magnus sed.",
+    image: christopherImg,
+    skills: [
+      { name: "TypeScript", level: "Avanzado" },
+      { name: "JavaScript", level: "Avanzado" },
+      { name: "SpringBoot", level: "Intermedio" },
+      { name: "MySQL", level: "Intermedio" },
+      { name: "ReactJS", level: "Avanzado" },
+      { name: "HTML/CSS", level: "Experto" },
+    ]
+  },
+  {
+    id: 21,
+    name: "Silvia Angarita",
+    role: "Fullstack Software Developer",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Justo suscipit pharetra semectus duis, modi himenaeos liquido dopibus fermentum pellentesque vivamus vulputate mollis magnus sed.",
+    image: silviaImg,
+    skills: [
+      { name: "TypeScript", level: "Avanzado" },
+      { name: "JavaScript", level: "Avanzado" },
+      { name: "SpringBoot", level: "Intermedio" },
+      { name: "MySQL", level: "Intermedio" },
+      { name: "ReactJS", level: "Avanzado" },
+      { name: "HTML/CSS", level: "Experto" },
+    ]
+  },
+  {
+    id: 22,
+    name: "Hernan Mendez",
+    role: "Fullstack Software Developer",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Justo suscipit pharetra semectus duis, modi himenaeos liquido dopibus fermentum pellentesque vivamus vulputate mollis magnus sed.",
+    image: hernanImg,
+    skills: [
+      { name: "TypeScript", level: "Avanzado" },
+      { name: "JavaScript", level: "Avanzado" },
+      { name: "SpringBoot", level: "Intermedio" },
+      { name: "MySQL", level: "Intermedio" },
+      { name: "ReactJS", level: "Avanzado" },
+      { name: "HTML/CSS", level: "Experto" },
+    ]
   }
 ];
 

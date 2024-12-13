@@ -13,6 +13,20 @@
     background-size: cover;
     background-position: center; 
     background-repeat: no-repeat; 
+    box-shadow: 0px -10px 200px #17172b;
+    overflow: hidden;
+}
+
+.campersgrid:before {
+  content: '';
+  position: absolute;
+  top: 100px; /* Ajusta según el tamaño del blur */
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: inherit; /* Hereda el fondo */
+  filter: blur(500px); /* Ajusta el nivel del blur */
+  z-index: -1; /* Mantiene el pseudo-elemento detrás */
 }
 
 .campersgrid-title {
@@ -21,7 +35,7 @@
   font-size: 5rem;
   font-family: 'Poppins', sans-serif;
   font-weight: black;
-  position: relative; /* Necesario para usar el pseudo-elemento */
+  position: relative;
   margin-top: 1rem;
   text-shadow: 
       1px 1px 2px rgba(0, 0, 0, 0.5), 
@@ -31,11 +45,11 @@
 .campersgrid-title::after {
   content: "";
   position: absolute;
-  bottom: 5px; /* Ajusta la distancia entre el texto y el subrayado */
-  left: -10%; /* Extiende el subrayado hacia la izquierda */
-  width: 120%; /* Hace que el subrayado sea más largo que el texto */
-  height: 2px; /* Grosor del subrayado */
-  background-color: #F4B422; /* Color del subrayado */
+  bottom: 5px;
+  left: -10%;
+  width: 120%;
+  height: 2px;
+  background-color: #F4B422;
 }
 
 
@@ -44,7 +58,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 15px;
-    margin-top: 2.5rem;
+    margin: 3rem 0 3.8rem 0;
     justify-content: center;
 }
 
