@@ -12,22 +12,29 @@ body {
     font-family: 'Title1';
     min-height: 100vh;
     width: 100%;
+    overflow-x: hidden;
 }
 
 main {
-    width: 100%;
+    width: 100vw;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 10px;
+    overflow-x: hidden;
 }
 
 /* Estilos del título */
 .title {
     text-align: center;
     height: 15vh;
+    max-height: 200px;
+    padding: 1rem;
 }
 
 .title h2 {
     color: var(--color1);
     font-family: 'Title1';
-    font-size: 2.5rem;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
     font-weight: bold;
     font-style: italic;
 }
@@ -35,7 +42,7 @@ main {
 .title h1 {
     color: var(--color2);
     font-family: 'Title2';
-    font-size: 3.5rem;
+    font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 800;
     font-style: oblique;
 }
@@ -114,4 +121,31 @@ main {
 .logo {
     max-width: 100%;
     height: auto;
+}
+
+/* Media queries para diferentes tamaños de pantalla */
+@media (max-width: 768px) {
+    .navigation {
+        gap: 0.5rem;
+    }
+
+    .nav-button {
+        width: 35px;
+        height: 35px;
+    }
+
+    main {
+        padding: 0 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        padding: 0 5px;
+    }
+
+    .title {
+        height: auto;
+        padding: 0.5rem;
+    }
 }

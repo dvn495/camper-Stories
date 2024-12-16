@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import campersData from "../../api/camperSucess";
 import "./styles/Campers.css";
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import campersTitle from "../../assets/campersexitosos.png";
 
 const Campers = () => {
   const containerRef = useRef(null);
@@ -134,10 +135,9 @@ const Campers = () => {
   };
 
   return (
-    <div className="container">
+    <div className="campers-container">
       <div className="title">
-        <h2>CAMPERS</h2>
-        <h1>EXITOSOS</h1>
+        <img src={campersTitle} alt="Campers" />
       </div>
       <div className="cards-container-wrapper">
         <div className="cards-container" ref={containerRef}>

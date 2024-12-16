@@ -5,6 +5,9 @@
     width: 100%;
 }
 
+.campers-container{
+    width: 100%;
+}
 /* Contenedor de tarjetas */
 .cards-container {
     display: flex;
@@ -137,4 +140,17 @@
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
+}
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 2rem;
+    margin-top: 100px;
+}
+
+.title img {
+    max-width: 100%;
+    height: auto;
 }
