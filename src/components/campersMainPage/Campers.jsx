@@ -1,8 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
-import ButonrightImg from "../../assets/ButtonRight.png";
-import ButonleftImg from "../../assets/Buttonleft.png";
 import campersData from "../../api/camperSucess";
 import "./styles/Campers.css";
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Campers = () => {
   const containerRef = useRef(null);
@@ -146,11 +145,19 @@ const Campers = () => {
         </div>
       </div>
       <div className="navigation">
-        <button className="nav-button" onClick={() => slide("left")}>
-          <img src={ButonleftImg} alt="Left" />
+        <button 
+          className="nav-button" 
+          onClick={() => slide("left")}
+          aria-label="Deslizar a la izquierda"
+        >
+          <ChevronLeft size={24} />
         </button>
-        <button className="nav-button" onClick={() => slide("right")}>
-          <img src={ButonrightImg} alt="Right" />
+        <button 
+          className="nav-button" 
+          onClick={() => slide("right")}
+          aria-label="Deslizar a la derecha"
+        >
+          <ChevronRight size={24} />
         </button>
       </div>
     </div>

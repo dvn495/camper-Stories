@@ -26,3 +26,13 @@
     font-family: 'P--Profile';
     src: url('../assets/fonts/Poppins-Medium.ttf');
 }
+
+@font-face {
+    font-family: 'titulo--programador';
+    src: url('../assets/fonts/RobotoMono-Medium.ttf');
+}
+
+font-face {
+    font-family: 'titulo--campers';
+    src: url('../assets/fonts/RobotoSlab-Bold.ttf');
+}

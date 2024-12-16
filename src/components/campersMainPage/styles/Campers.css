@@ -20,7 +20,7 @@
 .card {
     width: 18rem;
     min-width: 250px;
-    height: 450px;
+    height: 465px;
     background: var(--color3);
     border-radius: 15px;
     overflow: hidden;
@@ -53,16 +53,19 @@
 /* Textos dentro de la tarjeta */
 .card-content h3 {
     color: var(--color1);
-    font-size: 0.9rem;
+    font-size: 1.5rem;
     margin-bottom: 0.5rem;
-    font-family: 'Title1';
+    font-family: 'titulo--campers';
+    text-align: center;
+    
 }
 
 .card-content h4 {
     color: var(--color2);
     font-size: 0.7rem;
     margin-bottom: 0.8rem;
-    font-family: 'Title2';
+    font-family: 'titulo--programador';
+    text-align: justify;
 }
 
 .card-content p {
@@ -72,6 +75,7 @@
     margin: 0;
     padding: 0;
     font-family: 'P--Profile';
+    text-align: justify;
 }
 
 /* Efectos hover */
@@ -88,4 +92,45 @@
 .card:hover .card-content h4,
 .card:hover .card-content p {
     color: var(--color3);
+}
+
+.navigation-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.nav-button {
+    background: var(--color2);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+    background: var(--color1);
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+/* Si necesitas posicionar los botones a los lados */
+.nav-button.prev {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.nav-button.next {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
 }
