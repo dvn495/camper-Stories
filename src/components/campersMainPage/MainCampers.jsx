@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Logo from '../../assets/Logo.png';
+
 import './styles/MainCampers.css';
 
 import profiles from '../../api/camperProfile'; // Importa la constante profiles
@@ -35,6 +36,8 @@ const MainCampers = ({ apiImage }) => {
             <button className="profile-card-nav-button" onClick={nextProfile}>→</button>
           </div>
         </div>
+      </div>
+      <div className="carrousel">
       </div>
     </div>
   );

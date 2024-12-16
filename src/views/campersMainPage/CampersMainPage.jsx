@@ -5,9 +5,6 @@ import CampersGrid from '../../components/campersMainPage/CampersGrid';
 import FormSection from '../../components/campersMainPage/FormSection';
 import Footer from '../../components/footer/Footer';
 import "./styles/CampersMainPage.css";
-import TestComponent from '../../components/TestComponent';
-
-
 
 const CampersMainPage = () => {
   return (
@@ -17,7 +14,6 @@ const CampersMainPage = () => {
       <Campers />
       <CampersGrid />
       <FormSection />
-      <TestComponent/>
       </main>
       <Footer />
     </div>
