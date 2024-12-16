@@ -1,3 +1,7 @@
+.campers-pagination{
+  gap: 10px;
+}
+
 .campers-pagination li:hover{
   background-color: #F4B422;
 

@@ -25,7 +25,7 @@ const CampersGrid = () => {
 
     return (
         <section className='campersgrid'>
-            <h2 className='campersgrid-title'>NUESTROS CAMPERS</h2>
+            <img className='campersgrid-title' src="src/assets/NuestrosCampers.png" alt="NUESTROS CAMPERS" />
             <AnimatePresence mode="wait">
                 <motion.div
                     key={currentPage} // Importante: clave única basada en la página actual

@@ -1,12 +1,16 @@
 /* Importar variables globales */
 @import '/src/styles/variables.css';
 
+.cards-container-wrapper{
+    width: 100%;
+}
+
 /* Contenedor de tarjetas */
 .cards-container {
     display: flex;
     align-items: end;
     flex-wrap: nowrap;
-    width: 1900px;
+    /* width: 1900px; */
     height: 530px;
     gap: 2rem;
     padding: 10px 15px;
