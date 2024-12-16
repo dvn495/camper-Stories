@@ -205,20 +205,24 @@ main {
     /* Asegura que el contenedor de la imagen tenga el mismo ancho */
 }
 
-/* Efecto triangular del mismo ancho que la imagen */
+/* Estilo base del triángulo */
 .perfil::after {
     content: '';
     position: absolute;
     bottom: 18px;
     left: 0;
     width: 100%;
-    /* Igual ancho que la imagen */
     height: 40px;
     background: #0D0B57;
     clip-path: polygon(0 100%, 100% 100%, 50% 0);
     z-index: 1;
     border-radius: 0 0 10px 10px;
-    /* Coincide con el radio de la imagen si es necesario */
+    transition: background-color 0.3s ease; /* Añadir transición */
+}
+
+/* Cambiar el color del triángulo cuando se hace hover en la tarjeta */
+.card:hover .perfil::after {
+    background: var(--color2); /* Color amarillo */
 }
 
 .card-overlay {

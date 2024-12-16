@@ -9,60 +9,6 @@ const Campers = () => {
   const [data, setData] = useState(campersData);
   const [scrolling, setScrolling] = useState(false);
 
-  useEffect(() => {
-    const container = containerRef.current;
-    const cardWidth = 100; // Ajusta según el ancho de tu card
-    const containerWidth = container.offsetWidth;
-
-    const visibleCardsCount = Math.floor(containerWidth / cardWidth);
-    const centerPosition = container.scrollLeft + containerWidth / 2;
-    const startRange = centerPosition - (visibleCardsCount / 2) * cardWidth;
-    const endRange = centerPosition + (visibleCardsCount / 2) * cardWidth;
-
-    const cards = document.querySelectorAll(".card");
-    let cardsInRange = [];
-
-    cards.forEach((card) => {
-      const cardLeft = card.offsetLeft + cardWidth / 2;
-      if (cardLeft >= startRange && cardLeft <= endRange) {
-        cardsInRange.push(card);
-      }
-    });
-
-    cardsInRange.forEach((card, index) => {
-      if (index !== 0 && index !== cardsInRange.length - 1) {
-        card.classList.add("apply-margin-bottom");
-      }
-    });
-  }, []);
-
-  const slide = (direction) => {
-    if (scrolling) return;
-    setScrolling(true);
-    const container = containerRef.current;
-    const cardWidth = 300;
-    const distance = direction === "right" ? cardWidth : -cardWidth;
-
-    container.scrollBy({ left: distance, behavior: "smooth" });
-
-    if (direction === "left" && container.scrollLeft === 0) {
-      setData((prevData) => {
-        const newCards = campersData.slice(0, 3);
-        return [...newCards, ...prevData];
-      });
-      container.scrollLeft = cardWidth;
-    }
-
-    if (
-      direction === "right" &&
-      container.scrollLeft + container.offsetWidth >= container.scrollWidth
-    ) {
-      setData((prevData) => [...prevData, ...campersData]);
-    }
-
-    setTimeout(() => setScrolling(false), 500);
-  };
-
   const handleScroll = () => {
     const container = containerRef.current;
     const cardWidth = 100;
@@ -103,23 +49,72 @@ const Campers = () => {
         card.classList.add("shadow-card");
       }
     });
-
-    const isEndOfScroll =
-      container.scrollLeft + container.offsetWidth >= container.scrollWidth;
-
-    if (isEndOfScroll) {
-      setData((prevData) => [...prevData, ...campersData]);
-    }
   };
 
+  const autoSlide = () => {
+    if (scrolling) return;
+    setScrolling(true);
+    const container = containerRef.current;
+    const cardWidth = 300; // Ancho de la tarjeta + gap
+
+    if (container.scrollLeft + container.offsetWidth >= container.scrollWidth) {
+      setData(prevData => [...prevData, ...campersData]);
+    }
+
+    container.scrollBy({ left: cardWidth, behavior: "smooth" });
+    setTimeout(() => {
+      setScrolling(false);
+      handleScroll(); // Llamamos a handleScroll después de cada slide
+    }, 500);
+  };
+
+  // Efecto para el estilo inicial
+  useEffect(() => {
+    setTimeout(handleScroll, 0);
+  }, []);
+
+  // Efecto para el scroll automático
+  useEffect(() => {
+    const interval = setInterval(autoSlide, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Efecto para el evento scroll
   useEffect(() => {
     const container = containerRef.current;
     container.addEventListener("scroll", handleScroll);
-
-    return () => {
-      container.removeEventListener("scroll", handleScroll);
-    };
+    return () => container.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const slide = (direction) => {
+    if (scrolling) return;
+    setScrolling(true);
+    const container = containerRef.current;
+    const cardWidth = 300;
+    const distance = direction === "right" ? cardWidth : -cardWidth;
+
+    container.scrollBy({ left: distance, behavior: "smooth" });
+
+    if (direction === "left" && container.scrollLeft === 0) {
+      setData((prevData) => {
+        const newCards = campersData.slice(0, 3);
+        return [...newCards, ...prevData];
+      });
+      container.scrollLeft = cardWidth;
+    }
+
+    if (
+      direction === "right" &&
+      container.scrollLeft + container.offsetWidth >= container.scrollWidth
+    ) {
+      setData((prevData) => [...prevData, ...campersData]);
+    }
+
+    setTimeout(() => {
+      setScrolling(false);
+      handleScroll(); // Llamamos a handleScroll después de cada slide manual
+    }, 500);
+  };
 
   const generateInfiniteCards = () => {
     return data.map((camper, index) => {
