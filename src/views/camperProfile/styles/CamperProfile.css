@@ -6,15 +6,25 @@
 }
 
 /* Estilos del encabezado */
-.title {
+.profile-subtitle {
   font-family: 'Poppins', sans-serif;
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: bold;
   color: #FFFFFF;
   display: inline-flex;
-  align-items: center;
+  justify-content: flex-start;
   gap: 0.5rem;
+  margin-bottom: 3rem;
+  margin-top: 100px;
 }
+
+.video-item blockquote {
+  background-color: rgb(255, 255, 255);
+  padding: 2px 3px 2px 3px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px black;
+}
+
 
 .highlight {
   color: #FACC15;
@@ -97,6 +107,7 @@
   background-color: #05055f;
   border-radius: 10px;
   max-width: 25%;
+  height: 70vh;
 }
 
 .skills h2{
@@ -111,33 +122,38 @@
 }
 
 .skills-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 10px;
   padding: 0 10px 0 10px;
 }
 
+.skills-title{
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 25px;
+  color: #FFFFFF;
+}
+
 .skillCard {
   background-color: #f7b500;
+  color: #000000;
+  font-size: 18px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   text-align: center;
-  transition: transform 0.3s ease;
 }
 
-.skillCard:hover {
-  transform: translateY(-3px);
+.skillCard span {
+  font-family: 'Roboto Mono', monospace;
+  padding-bottom: 1px;
+  font-weight: 700;
 }
 
 .skill-name {
   font-size: 1.2rem;
   font-weight: bold;
   color: #333;
-}
-
-.skill-level {
-  font-size: 1rem;
-  color: #777;
-  margin-top: 8px;
 }
