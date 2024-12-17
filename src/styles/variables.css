@@ -32,7 +32,17 @@
     src: url('../assets/fonts/RobotoMono-Medium.ttf');
 }
 
-font-face {
+@font-face {
     font-family: 'titulo--campers';
     src: url('../assets/fonts/RobotoSlab-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'titulo--exitosos';
+    src: url('../assets/fonts/Westway W00 Westbound.ttf');
+}
+
+@font-face {
+    font-family: 'titulo--campersexitosos';
+    src: url('../assets/fonts/Bank Gothic Medium.ttf');
 }

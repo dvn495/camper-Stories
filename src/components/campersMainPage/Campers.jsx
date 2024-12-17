@@ -67,7 +67,7 @@ const Campers = () => {
 
   return (
     <div className="campers-container">
-      <div className="title">
+      <div className="title-campers">
         <h3>Campers</h3>
         <h2> exitosos</h2>
       </div>
