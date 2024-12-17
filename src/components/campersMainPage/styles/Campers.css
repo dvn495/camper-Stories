@@ -6,8 +6,9 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-margin-bottom: 2rem;
-margin-top: 100px;
+padding-bottom: 3rem;
+padding-top: 3rem;
+background-color: #030337;
 gap: -10px;
 }
 
@@ -32,6 +33,8 @@ gap: -10px;
 
 .campers-container{
     width: 100%;
+    height: 90vh;
+    background-color: #030337 ;
 }
 
 /* Contenedor de tarjetas */
@@ -39,7 +42,6 @@ gap: -10px;
     display: flex;
     align-items: end;
     flex-wrap: nowrap;
-
     height: 540px;
     gap: 2rem;
     padding: 20px 15px;

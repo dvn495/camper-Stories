@@ -9,12 +9,10 @@ import "./styles/CampersMainPage.css";
 const CampersMainPage = () => {
   return (
     <div className="camper-success-view">
-      <main>
       <MainCampers />
       <Campers />
       <CampersGrid />
       <FormSection />
-      </main>
       <Footer />
     </div>
   );
