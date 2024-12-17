@@ -126,7 +126,7 @@
 .edge-card {
     transform: translateY(30px) scale(0.95);
     opacity: 0.6;
-    pointer-events: none; /* Deshabilita el hover */
+    pointer-events: auto; /* Habilitamos los eventos para poder hacer clic */
 }
 
 .adjacent-card {

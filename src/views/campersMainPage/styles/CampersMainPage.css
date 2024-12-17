@@ -63,6 +63,11 @@
 
 /* Efectos hover */
 .card:hover .perfil::after {
+    background: var(--color3);
+}
+
+/* Solo aplicamos el efecto amarillo a las tarjetas centrales */
+.center-card:hover .perfil::after {
     background: var(--color2);
 }
 

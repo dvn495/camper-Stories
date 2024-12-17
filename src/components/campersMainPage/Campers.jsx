@@ -45,6 +45,18 @@ const Campers = () => {
       <div
         key={`${index}-${camper.name}`}
         className={`card ${camper.cardType}-card`}
+        onClick={() => {
+          // Si es la primera tarjeta (index 0), deslizar a la izquierda
+          // Si es la última tarjeta (index 5), deslizar a la derecha
+          if (index === 0) {
+            slide("left");
+          } else if (index === 5) {
+            slide("right");
+          }
+        }}
+        style={{ 
+          cursor: (index === 0 || index === 5) ? 'pointer' : 'default' 
+        }}
       >
         <div className="perfil">
           <img src={camper.image} alt={camper.name} className="card-image" />
