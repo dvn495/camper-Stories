@@ -15,7 +15,9 @@ const Campers = () => {
       const index = (currentIndex + i) % campersData.length;
       visibleCards.push({
         ...campersData[index],
-        isCenter: i > 0 && i < 5,
+        cardType: i === 0 || i === 5 ? 'edge' : // Primera y última
+                  i === 1 || i === 4 ? 'adjacent' : // Segunda y quinta
+                  'center' // Tercera y cuarta
       });
     }
     return visibleCards;
@@ -42,7 +44,7 @@ const Campers = () => {
     return getVisibleCampers().map((camper, index) => (
       <div
         key={`${index}-${camper.name}`}
-        className={`card ${camper.isCenter ? "apply-margin-bottom" : "gradient-card shadow-card"}`}
+        className={`card ${camper.cardType}-card`}
       >
         <div className="perfil">
           <img src={camper.image} alt={camper.name} className="card-image" />
