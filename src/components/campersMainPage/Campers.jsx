@@ -2,21 +2,20 @@ import React, { useRef, useState, useEffect } from "react";
 import campersData from "../../api/camperSucess";
 import "./styles/Campers.css";
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import campersTitle from "../../assets/campersexitosos.png";
 
 const Campers = () => {
   const containerRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [scrolling, setScrolling] = useState(false);
 
-  // Crear un array circular de 6 elementos
+  // Generar las tarjetas visibles
   const getVisibleCampers = () => {
     const visibleCards = [];
     for (let i = 0; i < 6; i++) {
       const index = (currentIndex + i) % campersData.length;
       visibleCards.push({
         ...campersData[index],
-        isCenter: i > 0 && i < 5 // Los elementos 1,2,3,4 son centrales (true)
+        isCenter: i > 0 && i < 5,
       });
     }
     return visibleCards;
@@ -26,7 +25,7 @@ const Campers = () => {
     if (scrolling) return;
     setScrolling(true);
 
-    setCurrentIndex(prevIndex => {
+    setCurrentIndex((prevIndex) => {
       if (direction === "right") {
         return (prevIndex + 1) % campersData.length;
       } else {
@@ -41,9 +40,9 @@ const Campers = () => {
 
   const generateCards = () => {
     return getVisibleCampers().map((camper, index) => (
-      <div 
-        key={`${index}-${camper.name}`} 
-        className={`card ${camper.isCenter ? 'apply-margin-bottom' : 'gradient-card shadow-card'}`}
+      <div
+        key={`${index}-${camper.name}`}
+        className={`card ${camper.isCenter ? "apply-margin-bottom" : "gradient-card shadow-card"}`}
       >
         <div className="perfil">
           <img src={camper.image} alt={camper.name} className="card-image" />
@@ -53,14 +52,13 @@ const Campers = () => {
           <h4>{camper.role}</h4>
           <p>{camper.description}</p>
         </div>
-        <div className="card-overlay"></div>
       </div>
     ));
   };
 
   useEffect(() => {
     const interval = setInterval(() => {
-      slide('right');
+      slide("right");
     }, 5000);
     return () => clearInterval(interval);
   }, []);
@@ -77,15 +75,15 @@ const Campers = () => {
         </div>
       </div>
       <div className="navigation">
-        <button 
-          className="nav-button" 
+        <button
+          className="nav-button"
           onClick={() => slide("left")}
           aria-label="Deslizar a la izquierda"
         >
           <ChevronLeft size={24} />
         </button>
-        <button 
-          className="nav-button" 
+        <button
+          className="nav-button"
           onClick={() => slide("right")}
           aria-label="Deslizar a la derecha"
         >
