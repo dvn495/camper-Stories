@@ -21,6 +21,9 @@
     scroll-behavior: smooth;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    flex-direction: row;
+    justify-content: center;
+    transition: all 0.5s ease-in-out;
 }
 
 /* Tarjeta individual */
@@ -32,10 +35,11 @@
     border-radius: 15px;
     overflow: hidden;
     position: relative;
-    transition: all 0.3s ease;
+    transition: all 0.5s ease-in-out;
     cursor: pointer;
     border: 2px solid var(--color2);
     padding: 10px;
+    transform-origin: center;
 }
 
 /* Imagen de la tarjeta */
@@ -89,6 +93,7 @@
 .card:hover {
     transform: translateY(-10px) scale(1.05);
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+    z-index: 3;
 }
 
 .card:hover .card-content {
@@ -143,6 +148,7 @@
 }
 .title {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -153,4 +159,17 @@
 .title img {
     max-width: 100%;
     height: auto;
+}
+
+/* Tarjetas laterales (false) */
+.card.gradient-card {
+    transform: translateY(30px) scale(0.95);
+    opacity: 0.6;
+}
+
+/* Tarjetas centrales (true) */
+.card.apply-margin-bottom {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    z-index: 2;
 }

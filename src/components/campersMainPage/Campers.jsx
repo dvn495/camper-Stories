@@ -68,7 +68,8 @@ const Campers = () => {
   return (
     <div className="campers-container">
       <div className="title">
-        <img src={campersTitle} alt="Campers" />
+        <h3>Campers</h3>
+        <h2> exitosos</h2>
       </div>
       <div className="cards-container-wrapper">
         <div className="cards-container" ref={containerRef}>
