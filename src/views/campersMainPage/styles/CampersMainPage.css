@@ -38,27 +38,6 @@
 }
 
 /* Navegación */
-.navigation {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-.nav-button {
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    color: white;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.nav-button:hover {
-    background: var(--color2);
-}
 
 /* Efecto del perfil */
 .perfil {
@@ -115,14 +94,6 @@
 
 /* Media queries para diferentes tamaños de pantalla */
 @media (max-width: 768px) {
-    .navigation {
-        gap: 0.5rem;
-    }
-
-    .nav-button {
-        width: 35px;
-        height: 35px;
-    }
 
     main {
         padding: 0 8px;

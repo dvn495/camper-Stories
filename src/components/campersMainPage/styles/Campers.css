@@ -1,18 +1,25 @@
-/* Importar variables globales */
+/* Importaciones */
 @import '/src/styles/variables.css';
 
-.title-campers{
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-padding-bottom: 3rem;
-padding-top: 3rem;
-background-color: #030337;
-gap: -10px;
+/* Contenedor principal */
+.campers-container {
+    width: 100%;
+    height: 100vh;
+    background-color: #030337;
 }
 
-.title-campers h2{
+/* Sección del título */
+.title-campers {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 0;
+    background-color: #030337;
+    gap: -10px;
+}
+
+.title-campers h2 {
     font-size: 5rem;
     font-family: 'titulo--exitosos';
     color: var(--color2);
@@ -20,28 +27,26 @@ gap: -10px;
     line-height: 0.9;
 }
 
-.title-campers h3{
+.title-campers h3 {
     font-size: 5rem;
     font-family: 'titulo--campersexitosos';
     color: var(--color1);
     margin: 0;
     line-height: 0.9;
 }
-.cards-container-wrapper{
-    width: 100%;
-}
-
-.campers-container{
-    width: 100%;
-    height: 90vh;
-    background-color: #030337 ;
-}
 
 /* Contenedor de tarjetas */
+.cards-container-wrapper {
+    width: 100%;
+    position: relative;
+}
+
 .cards-container {
     display: flex;
     align-items: end;
+    justify-content: center;
     flex-wrap: nowrap;
+    flex-direction: row;
     height: 540px;
     gap: 2rem;
     padding: 20px 15px;
@@ -49,36 +54,31 @@ gap: -10px;
     scroll-behavior: smooth;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    flex-direction: row;
-    justify-content: center;
     transition: all 0.5s ease-in-out;
 }
 
-/* Tarjeta individual */
+/* Estilos de las tarjetas */
 .card {
     width: 20rem;
     min-width: 250px;
     height: 495px;
     background: var(--color3);
-    border-radius: 15px;
-    overflow: hidden;
-    position: relative;
-    transition: all 0.5s ease-in-out;
-    cursor: pointer;
     border: 2px solid var(--color2);
+    border-radius: 15px;
     padding: 20px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
     transform-origin: center;
 }
 
-/* Imagen de la tarjeta */
 .card-image {
     width: 100%;
     height: 280px;
     object-fit: cover;
-    
 }
 
-/* Contenido de la tarjeta */
 .card-content {
     padding: 0.5rem;
     position: relative;
@@ -89,14 +89,13 @@ gap: -10px;
     transition: background-color 0.3s ease;
 }
 
-/* Textos dentro de la tarjeta */
+/* Textos de las tarjetas */
 .card-content h3 {
     color: var(--color1);
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
     font-family: 'titulo--campers';
     text-align: center;
-    
 }
 
 .card-content h4 {
@@ -123,7 +122,19 @@ gap: -10px;
     width: 100%;
 }
 
-/* Efectos hover */
+/* Estados de las tarjetas */
+.card.gradient-card {
+    transform: translateY(30px) scale(0.95);
+    opacity: 0.6;
+}
+
+.card.apply-margin-bottom {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    z-index: 2;
+}
+
+/* Efectos hover de las tarjetas */
 .card:hover {
     transform: translateY(-10px) scale(1.05);
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
@@ -134,48 +145,16 @@ gap: -10px;
     background-color: var(--color2);
 }
 
-.card:hover .card-content h4{
-    color:var(--color1)
+.card:hover .card-content h4 {
+    color: var(--color1);
 }
+
 .card:hover .card-content h3,
 .card:hover .card-content p {
     color: var(--color3);
 }
 
-.navigation-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    margin-top: 1rem;
-}
-
-.nav-button {
-    background: var(--color2);
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    color: var(--color3);
-}
-
-.nav-button:hover {
-    background: var(--color1);
-    transform: scale(1.1);
-}
-
-/* Eliminar los estilos específicos de posicionamiento absoluto */
-.nav-button.prev,
-.nav-button.next {
-    position: static;
-    transform: none;
-}
-
-/* Ajustar el contenedor de navegación */
+/* Navegación */
 .navigation {
     display: flex;
     justify-content: center;
@@ -183,15 +162,20 @@ gap: -10px;
     margin-top: 2rem;
 }
 
-/* Tarjetas laterales (false) */
-.card.gradient-card {
-    transform: translateY(30px) scale(0.95);
-    opacity: 0.6;
+.nav-button {
+    background: #444;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--color3);
+    pointer-events: auto;
 }
 
-/* Tarjetas centrales (true) */
-.card.apply-margin-bottom {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-    z-index: 2;
+.nav-button:hover {
+    border-color: var(--color2);
+    transform: scale(1.1);
 }
