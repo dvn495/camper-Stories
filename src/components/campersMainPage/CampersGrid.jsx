@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Pagination } from 'antd';
 import { motion, AnimatePresence } from 'framer-motion';
 import campersData from "../../api/camperSucess";
@@ -6,8 +6,24 @@ import "./styles/CampersGrid.css";
 import "./styles/GridPagination.css";
 
 const CampersGrid = () => {
-    const campersPerPage = 9;
     const [currentPage, setCurrentPage] = useState(1);
+    const [campersPerPage, setCampersPerPage] = useState(9); // Dinámico basado en el tamaño de pantalla
+
+    // Detectar el tamaño de la pantalla y ajustar el número de tarjetas por página
+    useEffect(() => {
+        const updateCampersPerPage = () => {
+            if (window.innerWidth <= 768) {
+                setCampersPerPage(4); // 3 tarjetas por página en móviles
+            } else {
+                setCampersPerPage(9); // 9 tarjetas por página en pantallas más grandes
+            }
+        };
+
+        updateCampersPerPage(); // Ejecutar al cargar
+        window.addEventListener("resize", updateCampersPerPage); // Escuchar cambios de tamaño
+
+        return () => window.removeEventListener("resize", updateCampersPerPage);
+    }, []);
 
     const startIndex = (currentPage - 1) * campersPerPage;
     const endIndex = startIndex + campersPerPage;
@@ -28,7 +44,7 @@ const CampersGrid = () => {
             <img className='campersgrid-title' src="src/assets/NuestrosCampers.png" alt="NUESTROS CAMPERS" />
             <AnimatePresence mode="wait">
                 <motion.div
-                    key={currentPage} // Importante: clave única basada en la página actual
+                    key={currentPage}
                     className='grid-container'
                     initial="hidden"
                     animate="visible"
@@ -81,7 +97,6 @@ const CampersGrid = () => {
                     return originalElement;
                 }}
             />
-
         </section>
     );
 };
