@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 10rem;
+    padding-top: 130px;
     width: 100%;
     height: 100vh;
     background: linear-gradient(
@@ -13,21 +13,24 @@
     );
 }
 
-.como{
+.como {
+    text-align: start;
     color: white;
-    line-height: 50px;
-    font-size: 5.5rem;
+    line-height: clamp(40px, 5vw, 50px); /* Mínimo: 40px, dinámico: 5% del ancho de la pantalla, máximo: 50px */
+    font-size: clamp(3rem, 5vw, 5.5rem); /* Mínimo: 3rem, dinámico: 5% del ancho de la pantalla, máximo: 5.5rem */
     font-family: 'Poppins', sans-serif;
     font-weight: 900;
 }
 
-.aportar{
+.aportar {
+    text-align: start;
     color: #6C3AFF;
-    font-size: 6rem;
+    font-size: clamp(3.5rem, 6vw, 6rem); /* Mínimo: 3.5rem, dinámico: 6% del ancho de la pantalla, máximo: 6rem */
     font-family: 'Poppins', sans-serif;
     font-weight: 900;
-    margin-bottom: 2.5rem   ;
+    margin-bottom: 2.5rem;
 }
+
 
 .content{
     margin: 0 auto;
@@ -45,4 +48,30 @@
 
 .bot-text span{
     font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .content{
+        margin: 0;
+        width: 85%;
+    }
+
+    .form-section{
+        height: 140vh;
+        padding-top: 15rem;
+    }
+
+    .bot-text {
+        padding-top: 3rem;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .form-section{
+        height: 160vh;
+        padding-top: 16rem;
+    }
+
 }
