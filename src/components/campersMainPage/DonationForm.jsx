@@ -102,7 +102,7 @@ export default function DonationForm() {
                 </div>
 
                 <button type="submit" className="submit-button">
-                    DONAR
+                    PATROCINAR
                 </button>
             </form>
         </div>

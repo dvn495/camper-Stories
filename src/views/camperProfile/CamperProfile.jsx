@@ -56,7 +56,7 @@ const CamperProfile = () => {
                 title: "E-commerce Platform",
                 description:
                     "Una plataforma de comercio electrónico completa con carrito de compras, pagos y gestión de pedidos.",
-                image: "/placeholder.svg?height=200&width=400",
+                image: "src/assets/proyecto.png",
                 technologies: ["React", "Node.js", "MongoDB"],
                 codeUrl: "https://github.com/example/e-commerce",
             },
@@ -64,7 +64,7 @@ const CamperProfile = () => {
                 title: "Task Manager App",
                 description:
                     "Aplicación de gestión de tareas con funcionalidades de colaboración en tiempo real.",
-                image: "/placeholder.svg?height=200&width=400",
+                image: "src/assets/proyecto.png",
                 technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
                 codeUrl: "https://github.com/example/task-manager",
             },
@@ -72,7 +72,7 @@ const CamperProfile = () => {
                 title: "Weather Forecast Dashboard",
                 description:
                     "Dashboard interactivo que muestra pronósticos del tiempo utilizando datos de API en tiempo real.",
-                image: "/placeholder.svg?height=200&width=400",
+                image: "src/assets/proyecto.png",
                 technologies: ["React", "D3.js", "Weather API"],
                 codeUrl: "https://github.com/example/weather-dashboard",
             },
@@ -80,7 +80,7 @@ const CamperProfile = () => {
                 title: "Weather Forecast Dashboard",
                 description:
                     "Dashboard interactivo que muestra pronósticos del tiempo utilizando datos de API en tiempo real.",
-                image: "/placeholder.svg?height=200&width=400",
+                image: "src/assets/proyecto.png",
                 technologies: ["React", "D3.js", "Weather API"],
                 codeUrl: "https://github.com/example/weather-dashboard",
             },
@@ -88,7 +88,7 @@ const CamperProfile = () => {
                 title: "Weather Forecast Dashboard",
                 description:
                     "Dashboard interactivo que muestra pronósticos del tiempo utilizando datos de API en tiempo real.",
-                image: "/placeholder.svg?height=200&width=400",
+                image: "src/assets/proyecto.png",
                 technologies: ["React", "D3.js", "Weather API"],
                 codeUrl: "https://github.com/example/weather-dashboard",
             },
@@ -96,7 +96,7 @@ const CamperProfile = () => {
                 title: "Task Manager App",
                 description:
                     "Aplicación de gestión de tareas con funcionalidades de colaboración en tiempo real.",
-                image: "/placeholder.svg?height=200&width=400",
+                image: "src/assets/proyecto.png",
                 technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
                 codeUrl: "https://github.com/example/task-manager",
             },
