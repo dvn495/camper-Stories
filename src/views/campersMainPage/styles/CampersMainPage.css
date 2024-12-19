@@ -63,14 +63,16 @@
     transition: background-color 0.3s ease;
 }
 
-/* Efectos hover */
-.card:hover .perfil::after {
-    background: var(--color3);
-}
+/* Efectos hover - los movemos dentro de una media query para pantallas más grandes */
+@media (min-width: 769px) {
+    .card:hover .perfil::after {
+        background: var(--color3);
+    }
 
-/* Solo aplicamos el efecto amarillo a las tarjetas centrales */
-.center-card:hover .perfil::after {
-    background: var(--color2);
+    /* Solo aplicamos el efecto amarillo a las tarjetas centrales */
+    .center-card:hover .perfil::after {
+        background: var(--color2);
+    }
 }
 
 /* Overlay de la tarjeta */
