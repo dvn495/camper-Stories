@@ -43,11 +43,6 @@ const EducationSection = () => {
 
   return (
     <div className="education-section">
-      <div className="flex items-center space-x-2 mb-4">
-        <Code className="w-8 h-8 text-yellow-500" />
-        <h1 className="text-3xl font-bold">Educación</h1>
-      </div>
-
       <div className="grid gap-4">
         {education.map((item, index) => (
           <Card

@@ -143,10 +143,18 @@ const CamperProfile = () => {
 
                 <section className="tec-info">
                     <h2 className="profile-subtitle">
-                        <span className="highlight">&lt;/</span> Proyectos
+                        <span className="highlight">&lt;/</span> Educacion
                     </h2>
                     <div className="tec-content">
+                    <div className="education">
+                            <EducationSection />
+                        </div>
                         <div className="projects">
+                            <div className="projects-subtitle">
+                                <h2 className="project-subtitle">
+                                    <span className="highlight">&lt;/</span> Proyectos
+                                </h2>
+                            </div>
                             {camper.projects.map((project, index) => (
                                 <ProjectCard
                                     key={index}
@@ -158,9 +166,7 @@ const CamperProfile = () => {
                                 />
                             ))}
                         </div>
-                        <div className="education">
-                            <EducationSection />
-                        </div>
+                        
                         {/* <div className="skills">
                             <h2 className="skills-title">Tecnologías</h2>
                             <div className="skills-container">
