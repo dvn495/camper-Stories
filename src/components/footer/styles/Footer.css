@@ -5,6 +5,8 @@
     padding: 5rem 6rem 2rem 6rem;
     width: 100%;
     background: #0C0C74;
+    position: relative;
+    z-index: 1;
 }
 
 .footer-container {
@@ -60,6 +62,8 @@
 @media (max-width: 768px) {
     .footer {
         padding: 2rem 2rem 1rem 2rem;
+        position: relative;
+        bottom: 0;
     }
 
     .footer-container {
