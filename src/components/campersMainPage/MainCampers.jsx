@@ -36,11 +36,11 @@ const MainCampers = () => {
   };
 
   const slide = (direction) => {
-    if (direction === "right") {
-      setCurrentIndex((prev) => (prev + 1) % profiles.length);
-    } else {
-      setCurrentIndex((prev) => (prev - 1 + profiles.length) % profiles.length);
-    }
+    setCurrentIndex((prev) =>
+      direction === 'right'
+        ? (prev + 1) % profiles.length
+        : (prev - 1 + profiles.length) % profiles.length
+    );
   };
 
   const renderContent = (profile) => (
@@ -50,7 +50,7 @@ const MainCampers = () => {
         initial={{ rotate: 20, opacity: 0 }}
         animate={{ rotate: 0, opacity: 1 }}
         exit={{ rotate: -45, opacity: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
       >
         <img className="camper" src={profile.image} alt={profile.name} />
         <img className="camper-frame" src="/src/assets/mainFrame.png" alt="" />
@@ -60,6 +60,7 @@ const MainCampers = () => {
         className="profile-card-content"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -40 }}
         transition={{ duration: 0.7 }}
       >
         <h2>{profile.name}</h2>
@@ -69,6 +70,22 @@ const MainCampers = () => {
           <p>{profile.name}</p>
         </div>
         <button className="profile-card-button">{profile.buttonText}</button>
+        <div className="profile-card-nav">
+          <button
+            className="profile-card-nav-button"
+            onClick={() => slide('left')}
+            aria-label="Anterior"
+          >
+            <ChevronLeft size={24} />
+          </button>
+          <button
+            className="profile-card-nav-button"
+            onClick={() => slide('right')}
+            aria-label="Siguiente"
+          >
+            <ChevronRight size={24} />
+          </button>
+        </div>
       </motion.div>
     </div>
   );
@@ -97,25 +114,17 @@ const MainCampers = () => {
             ))}
           </Swiper>
         ) : (
-          <>
-            {renderContent(profiles[currentIndex])}
-            <div className="profile-card-nav">
-              <button
-                className="profile-card-nav-button"
-                onClick={() => slide("left")}
-                aria-label="Anterior"
-              >
-                <ChevronLeft size={24} />
-              </button>
-              <button
-                className="profile-card-nav-button"
-                onClick={() => slide("right")}
-                aria-label="Siguiente"
-              >
-                <ChevronRight size={24} />
-              </button>
-            </div>
-          </>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={profiles[currentIndex].id}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -40 }}
+              transition={{ duration: 0.7 }}
+            >
+              {renderContent(profiles[currentIndex])}
+            </motion.div>
+          </AnimatePresence>
         )}
       </div>
     </div>
