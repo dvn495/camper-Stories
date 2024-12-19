@@ -257,3 +257,15 @@
     transform: scale(1.1);
     background: rgba(255, 255, 255, 0.8);
 }
+
+/* Animación para la tarjeta 4 */
+@keyframes cardShake {
+    0% { transform: translateY(0) scale(1); }
+    25% { transform: translateY(-5px) scale(1.02); }
+    75% { transform: translateY(2px) scale(1.01); }
+    100% { transform: translateY(0) scale(1); }
+}
+
+.card-animate {
+    animation: cardShake 0.5s ease-in-out;
+}

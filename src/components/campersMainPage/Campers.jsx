@@ -10,6 +10,7 @@ const Campers = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
+  const [animateCard, setAnimateCard] = useState(false);
 
   // Mínima distancia requerida para considerar un swipe (en píxeles)
   const minSwipeDistance = 50;
@@ -65,7 +66,7 @@ const Campers = () => {
     return getVisibleCampers().map((camper, index) => (
       <div
         key={`${index}-${camper.name}`}
-        className={`card ${camper.cardType}-card`}
+        className={`card ${camper.cardType}-card ${index === 3 && animateCard ? 'card-animate' : ''}`}
         onClick={() => {
           // Si es la primera tarjeta (index 0), deslizar a la izquierda
           // Si es la última tarjeta (index 5), deslizar a la derecha
@@ -94,6 +95,8 @@ const Campers = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       slide("right");
+      setAnimateCard(true);
+      setTimeout(() => setAnimateCard(false), 500);
     }, 5000);
     return () => clearInterval(interval);
   }, []);
