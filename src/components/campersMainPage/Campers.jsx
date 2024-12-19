@@ -8,6 +8,11 @@ const Campers = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [scrolling, setScrolling] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
+  // Mínima distancia requerida para considerar un swipe (en píxeles)
+  const minSwipeDistance = 50;
 
   useEffect(() => {
     const handleResize = () => {
@@ -93,33 +98,63 @@ const Campers = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      slide("right");
+    } else if (isRightSwipe) {
+      slide("left");
+    }
+  };
+
   return (
     <div className="campers-container">
       <div className="title-campers">
         <h3>Campers</h3>
         <h2> exitosos</h2>
       </div>
-      <div className="cards-container-wrapper">
+      <div 
+        className="cards-container-wrapper"
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
         <div className="cards-container" ref={containerRef}>
           {generateCards()}
         </div>
       </div>
-      <div className="navigation">
-        <button
-          className="nav-button"
-          onClick={() => slide("left")}
-          aria-label="Deslizar a la izquierda"
-        >
-          <ChevronLeft size={24} />
-        </button>
-        <button
-          className="nav-button"
-          onClick={() => slide("right")}
-          aria-label="Deslizar a la derecha"
-        >
-          <ChevronRight size={24} />
-        </button>
-      </div>
+      {!isMobile && (
+        <div className="navigation">
+          <button
+            className="nav-button"
+            onClick={() => slide("left")}
+            aria-label="Deslizar a la izquierda"
+          >
+            <ChevronLeft size={24} />
+          </button>
+          <button
+            className="nav-button"
+            onClick={() => slide("right")}
+            aria-label="Deslizar a la derecha"
+          >
+            <ChevronRight size={24} />
+          </button>
+        </div>
+      )}
     </div>
   );
 };

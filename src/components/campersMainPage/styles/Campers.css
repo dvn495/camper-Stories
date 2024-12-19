@@ -14,7 +14,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 3rem 0;
+    padding: 2rem 0;
     background-color: #030337;
     gap: -10px;
 }
@@ -40,6 +40,8 @@
 .cards-container-wrapper {
     width: 100%;
     position: relative;
+    touch-action: pan-y pinch-zoom;
+    user-select: none;
 }
 
 .cards-container {
@@ -177,6 +179,7 @@
     .cards-container {
         height: auto;
         padding: 10px;
+        transition: transform 0.3s ease;
     }
 
     .card {
@@ -204,7 +207,7 @@
     }
 
     .navigation {
-        margin-top: 1rem;
+        display: none;
     }
 
     .nav-button {
