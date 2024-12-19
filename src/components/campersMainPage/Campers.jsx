@@ -7,17 +7,33 @@ const Campers = () => {
   const containerRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [scrolling, setScrolling] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
-  // Generar las tarjetas visibles
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const getVisibleCampers = () => {
+    if (isMobile) {
+      return [{
+        ...campersData[currentIndex],
+        cardType: 'center'
+      }];
+    }
+
     const visibleCards = [];
     for (let i = 0; i < 6; i++) {
       const index = (currentIndex + i) % campersData.length;
       visibleCards.push({
         ...campersData[index],
-        cardType: i === 0 || i === 5 ? 'edge' : // Primera y última
-                  i === 1 || i === 4 ? 'adjacent' : // Segunda y quinta
-                  'center' // Tercera y cuarta
+        cardType: i === 0 || i === 5 ? 'edge' :
+                 i === 1 || i === 4 ? 'adjacent' :
+                 'center'
       });
     }
     return visibleCards;
