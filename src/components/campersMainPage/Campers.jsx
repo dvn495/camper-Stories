@@ -67,7 +67,7 @@ const Campers = () => {
     setTimeout(() => {
       setScrolling(false);
       container.classList.remove('sliding-right', 'sliding-left');
-    }, 500);
+    }, 1300);
   };
 
   const generateCards = () => {
