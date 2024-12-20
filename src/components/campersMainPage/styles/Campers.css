@@ -266,14 +266,39 @@
     .cards-container {
         height: auto;
         padding: 10px;
-        transition: transform 0.3s ease;
+        min-height: 65vh;
     }
 
     .card {
         width: 85%;
         min-width: auto;
         height: auto;
+        min-height: 480px;
         margin: 0 auto;
+    }
+
+    .card-image {
+        height: 34vh;
+        object-fit: cover;
+    }
+
+    .card-content {
+        padding: 1rem;
+    }
+
+    .card-content h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.7rem;
+    }
+
+    .card-content h4 {
+        font-size: 0.85rem;
+        margin-bottom: 0.9rem;
+    }
+
+    .card-content p {
+        font-size: 0.8rem;
+        line-height: 1.4;
     }
 
     .edge-card,
@@ -287,10 +312,6 @@
     .title-campers h2,
     .title-campers h3 {
         font-size: 3rem;
-    }
-
-    .card-content h3 {
-        font-size: 1rem;
     }
 
     .navigation {
