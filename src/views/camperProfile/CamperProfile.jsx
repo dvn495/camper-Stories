@@ -145,39 +145,24 @@ const CamperProfile = () => {
                     <h2 className="profile-subtitle">
                         <span className="highlight">&lt;/</span> Educacion
                     </h2>
-                    <div className="tec-content">
                     <div className="education">
-                            <EducationSection />
-                        </div>
-                        <div className="projects">
-                            <div className="projects-subtitle">
-                                <h2 className="project-subtitle">
-                                    <span className="highlight">&lt;/</span> Proyectos
-                                </h2>
-                            </div>
-                            {camper.projects.map((project, index) => (
-                                <ProjectCard
-                                    key={index}
-                                    title={project.title}
-                                    description={project.description}
-                                    image={project.image}
-                                    technologies={project.technologies}
-                                    codeUrl={project.codeUrl}
-                                />
-                            ))}
-                        </div>
-                        
-                        {/* <div className="skills">
-                            <h2 className="skills-title">Tecnologías</h2>
-                            <div className="skills-container">
-                                {camper.skills.map((skill) => (
-                                    <TechnologyItem key={skill.name} {...skill} />
-                                ))}
-                            </div>
-                            <div className="skills-button">
-                                <button className="btn-patrocinar-2">Patrocinar</button>
-                            </div>
-                        </div> */}
+                        <EducationSection />
+                    </div>
+                    <h2 className="profile-subtitle">
+                        <span className="highlight">&lt;/</span> Proyectos
+                    </h2>
+                    <div className="projects">
+
+                        {camper.projects.map((project, index) => (
+                            <ProjectCard
+                                key={index}
+                                title={project.title}
+                                description={project.description}
+                                image={project.image}
+                                technologies={project.technologies}
+                                codeUrl={project.codeUrl}
+                            />
+                        ))}
                     </div>
                 </section>
                 <section className="sponsor-call-to-action">
