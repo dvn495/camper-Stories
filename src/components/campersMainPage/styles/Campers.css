@@ -69,7 +69,7 @@
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     transform-origin: center;
 }
 
@@ -122,23 +122,54 @@
     width: 100%;
 }
 
-/* Estados de las tarjetas */
+/* Estados de las tarjetas con animaciones */
 .edge-card {
     transform: translateY(30px) scale(0.95);
     opacity: 0.6;
     z-index: 1;
+    animation: moveCard 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .adjacent-card {
     transform: translateY(0) scale(1);
     opacity: 1;
     z-index: 2;
+    animation: moveCard 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .center-card {
     transform: translateY(0) scale(1);
     opacity: 1;
     z-index: 3;
+    animation: moveCard 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Agregar keyframes para la animación de movimiento */
+@keyframes moveCard {
+    0% {
+        transform: translateX(100px) scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Animación para movimiento hacia la izquierda */
+.slide-left {
+    animation: moveCardLeft 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes moveCardLeft {
+    0% {
+        transform: translateX(-100px) scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
 }
 
 /* Modificar los hover para que solo funcionen en desktop */
@@ -254,29 +285,6 @@
     background: rgba(255, 255, 255, 0.8);
 }
 
-/* Animación para la tarjeta 4 */
-@keyframes cardShake {
-    0% { transform: translateY(0) scale(1); }
-    25% { transform: translateY(-5px) scale(1.02); }
-    75% { transform: translateY(2px) scale(1.01); }
-    100% { transform: translateY(0) scale(1); }
-}
-
-.card-animate {
-    animation: cardShake 0.5s ease-in-out;
-}
-
-/* Añadir animación de entrada/salida */
-@keyframes slideOut {
-    from {
-        transform: translateX(0);
-        opacity: 1;
-    }
-    to {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-}
 
 @keyframes slideIn {
     from {

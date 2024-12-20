@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import campersData from "../../api/camperSucess";
 import "./styles/Campers.css";
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const Campers = () => {
   const containerRef = useRef(null);
@@ -10,7 +10,6 @@ const Campers = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
-  const [animateCard, setAnimateCard] = useState(false);
 
   // Mínima distancia requerida para considerar un swipe (en píxeles)
   const minSwipeDistance = 50;
@@ -20,16 +19,18 @@ const Campers = () => {
       setIsMobile(window.innerWidth <= 768);
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const getVisibleCampers = () => {
     if (isMobile) {
-      return [{
-        ...campersData[currentIndex],
-        cardType: 'center'
-      }];
+      return [
+        {
+          ...campersData[currentIndex],
+          cardType: "center",
+        },
+      ];
     }
 
     const visibleCards = [];
@@ -37,9 +38,12 @@ const Campers = () => {
       const index = (currentIndex + i) % campersData.length;
       visibleCards.push({
         ...campersData[index],
-        cardType: i === 0 || i === 5 ? 'edge' :
-                 i === 1 || i === 4 ? 'adjacent' :
-                 'center'
+        cardType:
+          i === 0 || i === 5
+            ? "edge"
+            : i === 1 || i === 4
+            ? "adjacent"
+            : "center",
       });
     }
     return visibleCards;
@@ -57,12 +61,8 @@ const Campers = () => {
       }
     });
 
-    // Añadir clase de animación
-    setAnimateCard(true);
-
     setTimeout(() => {
       setScrolling(false);
-      setAnimateCard(false);
     }, 500);
   };
 
@@ -70,18 +70,16 @@ const Campers = () => {
     return getVisibleCampers().map((camper, index) => (
       <div
         key={`${index}-${camper.name}`}
-        className={`card ${camper.cardType}-card ${index === 3 && animateCard ? 'card-animate' : ''}`}
+        className={`card ${camper.cardType}-card`}
         onClick={() => {
-          // Si es la primera tarjeta (index 0), deslizar a la izquierda
-          // Si es la última tarjeta (index 5), deslizar a la derecha
           if (index === 0) {
             slide("left");
           } else if (index === 5) {
             slide("right");
           }
         }}
-        style={{ 
-          cursor: (index === 0 || index === 5) ? 'pointer' : 'default' 
+        style={{
+          cursor: index === 0 || index === 5 ? "pointer" : "default",
         }}
       >
         <div className="perfil">
@@ -99,8 +97,6 @@ const Campers = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       slide("right");
-      setAnimateCard(true);
-      setTimeout(() => setAnimateCard(false), 500);
     }, 5000);
     return () => clearInterval(interval);
   }, []);
@@ -110,13 +106,9 @@ const Campers = () => {
     setTouchStart(e.targetTouches[0].clientX);
   };
 
-  const onTouchMove = (e) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
-
   const onTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
-    
+
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > minSwipeDistance;
     const isRightSwipe = distance < -minSwipeDistance;
@@ -134,10 +126,9 @@ const Campers = () => {
         <h3>Campers</h3>
         <h2> exitosos</h2>
       </div>
-      <div 
+      <div
         className="cards-container-wrapper"
         onTouchStart={onTouchStart}
-        onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
       >
         <div className="cards-container" ref={containerRef}>
