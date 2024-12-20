@@ -69,8 +69,10 @@
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
     transform-origin: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    will-change: transform, opacity, box-shadow;
 }
 
 .card-image {
@@ -122,23 +124,112 @@
     width: 100%;
 }
 
-/* Estados de las tarjetas */
+/* Estados de las tarjetas con animaciones */
 .edge-card {
-    transform: translateY(30px) scale(0.95);
+    animation: up-edge 400ms linear forwards alternate;
     opacity: 0.6;
     z-index: 1;
+    filter: blur(1px);
+}
+
+@keyframes up-edge {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        transform: translateY(30px) scale(0.95);
+    }
 }
 
 .adjacent-card {
-    transform: translateY(0) scale(1);
-    opacity: 1;
+    animation: up-adjacent 400ms linear forwards alternate;
+    opacity: 0.8;
     z-index: 2;
+    filter: blur(0.5px);
+}
+
+@keyframes up-adjacent {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        transform: translateY(15px) scale(0.98);;
+    }
 }
 
 .center-card {
     transform: translateY(0) scale(1);
     opacity: 1;
     z-index: 3;
+    transition: all 0.5s ease-in-out;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    filter: blur(0);
+}
+
+/* Animaciones de scroll */
+.sliding-right .card {
+    animation: scrollRight 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.sliding-left .card {
+    animation: scrollLeft 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+@keyframes scrollRight {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes scrollLeft {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* Animación de movimiento mejorada */
+@keyframes moveCard {
+    0% {
+        transform: translateX(100%) rotate(8deg) scale(0.8);
+    }
+    50% {
+        transform: translateX(50%) rotate(4deg) scale(0.9);
+    }
+    100% {
+        transform: translateX(0) rotate(0deg) scale(1);
+    }
+}
+
+/* Animación para movimiento hacia la izquierda mejorada */
+@keyframes moveCardLeft {
+    0% {
+        transform: translateX(-100%) rotate(-8deg) scale(0.8);
+    }
+    50% {
+        transform: translateX(-50%) rotate(-4deg) scale(0.9);
+    }
+    100% {
+        transform: translateX(0) rotate(0deg) scale(1);
+    }
+}
+
+/* Desvanecimiento más suave */
+@keyframes fadeToOpacity {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0.6;
+    }
 }
 
 /* Modificar los hover para que solo funcionen en desktop */
@@ -175,14 +266,39 @@
     .cards-container {
         height: auto;
         padding: 10px;
-        transition: transform 0.3s ease;
+        min-height: 65vh;
     }
 
     .card {
         width: 85%;
         min-width: auto;
         height: auto;
+        min-height: 480px;
         margin: 0 auto;
+    }
+
+    .card-image {
+        height: 34vh;
+        object-fit: cover;
+    }
+
+    .card-content {
+        padding: 1rem;
+    }
+
+    .card-content h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.7rem;
+    }
+
+    .card-content h4 {
+        font-size: 0.85rem;
+        margin-bottom: 0.9rem;
+    }
+
+    .card-content p {
+        font-size: 0.8rem;
+        line-height: 1.4;
     }
 
     .edge-card,
@@ -196,10 +312,6 @@
     .title-campers h2,
     .title-campers h3 {
         font-size: 3rem;
-    }
-
-    .card-content h3 {
-        font-size: 1rem;
     }
 
     .navigation {
@@ -254,29 +366,6 @@
     background: rgba(255, 255, 255, 0.8);
 }
 
-/* Animación para la tarjeta 4 */
-@keyframes cardShake {
-    0% { transform: translateY(0) scale(1); }
-    25% { transform: translateY(-5px) scale(1.02); }
-    75% { transform: translateY(2px) scale(1.01); }
-    100% { transform: translateY(0) scale(1); }
-}
-
-.card-animate {
-    animation: cardShake 0.5s ease-in-out;
-}
-
-/* Añadir animación de entrada/salida */
-@keyframes slideOut {
-    from {
-        transform: translateX(0);
-        opacity: 1;
-    }
-    to {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-}
 
 @keyframes slideIn {
     from {

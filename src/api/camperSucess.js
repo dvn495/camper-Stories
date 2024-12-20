@@ -97,36 +97,6 @@ const campersData = [
     ]
   },
   {
-    id: 7,
-    name: "David Lopez",
-    role: "Fullstack Software Developer",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Justo suscipit pharetra semectus duis, modi himenaeos liquido dopibus fermentum pellentesque vivamus vulputate mollis magnus sed.",
-    image: jhonImg,
-    skills: [
-      { name: "TypeScript", level: "Avanzado" },
-      { name: "JavaScript", level: "Avanzado" },
-      { name: "SpringBoot", level: "Intermedio" },
-      { name: "MySQL", level: "Intermedio" },
-      { name: "ReactJS", level: "Avanzado" },
-      { name: "HTML/CSS", level: "Experto" },
-    ]
-  },
-  {
-    id: 8,
-    name: "David Lopez",
-    role: "Fullstack Software Developer",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Justo suscipit pharetra semectus duis, modi himenaeos liquido dopibus fermentum pellentesque vivamus vulputate mollis magnus sed.",
-    image: jhonImg,
-    skills: [
-      { name: "TypeScript", level: "Avanzado" },
-      { name: "JavaScript", level: "Avanzado" },
-      { name: "SpringBoot", level: "Intermedio" },
-      { name: "MySQL", level: "Intermedio" },
-      { name: "ReactJS", level: "Avanzado" },
-      { name: "HTML/CSS", level: "Experto" },
-    ]
-  },
-  {
     id: 9,
     name: "Cristopher Buitrago",
     role: "Fullstack Software Developer",
@@ -248,36 +218,6 @@ const campersData = [
   },
   {
     id: 17,
-    name: "David Lopez",
-    role: "Fullstack Software Developer",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Justo suscipit pharetra semectus duis, modi himenaeos liquido dopibus fermentum pellentesque vivamus vulputate mollis magnus sed.",
-    image: jhonImg,
-    skills: [
-      { name: "TypeScript", level: "Avanzado" },
-      { name: "JavaScript", level: "Avanzado" },
-      { name: "SpringBoot", level: "Intermedio" },
-      { name: "MySQL", level: "Intermedio" },
-      { name: "ReactJS", level: "Avanzado" },
-      { name: "HTML/CSS", level: "Experto" },
-    ]
-  },
-  {
-    id: 18,
-    name: "David Lopez",
-    role: "Fullstack Software Developer",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Justo suscipit pharetra semectus duis, modi himenaeos liquido dopibus fermentum pellentesque vivamus vulputate mollis magnus sed.",
-    image: jhonImg,
-    skills: [
-      { name: "TypeScript", level: "Avanzado" },
-      { name: "JavaScript", level: "Avanzado" },
-      { name: "SpringBoot", level: "Intermedio" },
-      { name: "MySQL", level: "Intermedio" },
-      { name: "ReactJS", level: "Avanzado" },
-      { name: "HTML/CSS", level: "Experto" },
-    ]
-  },
-  {
-    id: 19,
     name: "David Lopez",
     role: "Fullstack Software Developer",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Justo suscipit pharetra semectus duis, modi himenaeos liquido dopibus fermentum pellentesque vivamus vulputate mollis magnus sed.",
