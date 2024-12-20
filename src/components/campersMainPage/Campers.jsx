@@ -57,8 +57,12 @@ const Campers = () => {
       }
     });
 
+    // Añadir clase de animación
+    setAnimateCard(true);
+
     setTimeout(() => {
       setScrolling(false);
+      setAnimateCard(false);
     }, 500);
   };
 
