@@ -121,24 +121,6 @@
   max-width: 75%;
 }
 
-.skills {
-  display: flex;
-  flex-direction: column;
-  width: 24%;
-  align-items: center;
-  padding: 1rem 1rem 3rem 1rem;
-  background-color: #050544;
-  border: 1px solid #1a3079 ;
-  border-radius: 10px;
-
-}
-
-.skills-button{
-  padding-top: 3rem;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
 
 .btn-patrocinar-2{
   display: flex;
@@ -209,18 +191,53 @@
   color: #333;
 }
 
-.education{
+.education {
   width: 100%;
   height: 100%;
-  padding: 0 20rem;
 }
 
 .education-section {
   width: 100%;
   background-color: #050544;
-  border: 1px solid #1a3079 ;
+  border: 1px solid #1a3079;
   border-radius: 10px;
+  padding: 2rem 2rem 1rem 2rem;
+  transition: all 0.3s ease-in-out;
+  
 }
+
+/* Aseguramos que las cards mantengan su ancho en las columnas */
+.education-section .card {
+  width: 100%;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Estilo para el botón de "Ver más/menos" */
+/* Botón base */
+.education-section button {
+  background: none; /* Sin fondo */
+  border: none; /* Sin borde */
+  color: #1D4ED8; /* Azul (ajustable) */
+  font-size: 1rem; /* Tamaño del texto */
+  cursor: pointer; /* Indicador de clic */
+  display: inline-flex; /* Para alinear el texto y el ícono */
+  align-items: center;
+  gap: 0.5rem; /* Espacio entre texto e ícono */
+  transition: transform 0.2s ease, color 0.2s ease; /* Suavizado en hover */
+}
+
+/* Hover: Cambio de color y ligero movimiento */
+.education-section button:hover {
+  transform: translateY(-2px); /* Subir ligeramente */
+  color: #2563EB; /* Cambiar a un azul más claro (ajustable) */
+}
+
+.education-section button:focus {
+  outline: none; /* Quita el borde generado por el focus */
+  box-shadow: none; /* Elimina sombras en algunos navegadores */
+}
+
 
 /* Call-to-Action Section */
 .sponsor-call-to-action {
