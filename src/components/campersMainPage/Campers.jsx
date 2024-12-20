@@ -53,6 +53,9 @@ const Campers = () => {
     if (scrolling) return;
     setScrolling(true);
 
+    const container = containerRef.current;
+    container.classList.add(direction === 'right' ? 'sliding-right' : 'sliding-left');
+
     setCurrentIndex((prevIndex) => {
       if (direction === "right") {
         return (prevIndex + 1) % campersData.length;
@@ -63,6 +66,7 @@ const Campers = () => {
 
     setTimeout(() => {
       setScrolling(false);
+      container.classList.remove('sliding-right', 'sliding-left');
     }, 500);
   };
 
