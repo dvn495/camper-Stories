@@ -10,6 +10,7 @@ const Campers = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
+  const intervalRef = useRef(null);
 
   // Mínima distancia requerida para considerar un swipe (en píxeles)
   const minSwipeDistance = 50;
@@ -49,6 +50,15 @@ const Campers = () => {
     return visibleCards;
   };
 
+  const startInterval = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    intervalRef.current = setInterval(() => {
+      slide("right");
+    }, 5000);
+  };
+
   const slide = (direction) => {
     if (scrolling) return;
     setScrolling(true);
@@ -63,6 +73,8 @@ const Campers = () => {
         return prevIndex === 0 ? campersData.length - 1 : prevIndex - 1;
       }
     });
+
+    startInterval();
 
     setTimeout(() => {
       setScrolling(false);
@@ -99,10 +111,12 @@ const Campers = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      slide("right");
-    }, 5000);
-    return () => clearInterval(interval);
+    startInterval();
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
   }, []);
 
   const onTouchStart = (e) => {
