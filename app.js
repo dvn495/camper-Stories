@@ -12,11 +12,15 @@ const server = http.createServer(app);
 
 // Middleware para parsear JSON
 app.use(express.json());
+
 // Importar Rutas
 const userRoutes = require("./backend/routes/userRoutes");
+const camperRoutes = require("./backend/routes/camperRoutes");
 
 // Configuración de Rutas
 app.use("/users", userRoutes);
+app.use("/campers", camperRoutes);
+
 // Verificar conexión al iniciar el servidor
 (async () => {
     try {
