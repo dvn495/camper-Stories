@@ -76,14 +76,14 @@ const MainCampers = () => {
             onClick={() => slide('left')}
             aria-label="Anterior"
           >
-            <ChevronLeft size={24} />
+            <ChevronLeft size={54} />
           </button>
           <button
             className="profile-card-nav-button"
             onClick={() => slide('right')}
             aria-label="Siguiente"
           >
-            <ChevronRight size={24} />
+            <ChevronRight size={54} />
           </button>
         </div>
       </motion.div>

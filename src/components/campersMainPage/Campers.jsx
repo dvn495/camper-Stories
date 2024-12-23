@@ -160,14 +160,14 @@ const Campers = () => {
             onClick={() => slide("left")}
             aria-label="Deslizar a la izquierda"
           >
-            <ChevronLeft size={24} />
+            <ChevronLeft size={70} />
           </button>
           <button
             className="nav-button"
             onClick={() => slide("right")}
             aria-label="Deslizar a la derecha"
           >
-            <ChevronRight size={24} />
+            <ChevronRight size={70} />
           </button>
         </div>
       )}
