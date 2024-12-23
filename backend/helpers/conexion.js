@@ -1,15 +1,16 @@
+require('dotenv').config();
 const mysql = require('mysql2/promise');
 
 class Conexion {
     constructor() {
         this.config = {
-            host: process.env.DB_HOST || 'localhost',
-            user: process.env.DB_USER || 'campus2023',
-            password: process.env.DB_PASSWORD || 'campus2023',
-            port: process.env.DB_PORT || 3306,
-            database: process.env.DB_NAME || 'campuslands',
+            host: process.env.DB_HOST,
+            user: process.env.DB_USER,
+            password: process.env.DB_PASSWORD,
+            port: process.env.DB_PORT,
+            database: process.env.DB_NAME,
         };
-        this.pool = mysql.createPool(this.config); // Uso de pool para manejar múltiples conexiones
+        this.pool = mysql.createPool(this.config);
     }
 
     /**
