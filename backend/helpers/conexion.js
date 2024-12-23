@@ -5,7 +5,7 @@ class Conexion {
         this.config = {
             host: process.env.DB_HOST || 'localhost',
             user: process.env.DB_USER || 'root',
-            password: process.env.DB_PASSWORD || 'campus2023',
+            password: process.env.DB_PASSWORD || '12345678',
             port: process.env.DB_PORT || 3306,
             database: process.env.DB_NAME || 'campuslands',
         };

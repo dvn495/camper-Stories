@@ -1,62 +1,65 @@
 const UserModel = require("../models/UserModel");
 
 const UserController = {
-    // Obtener todos los usuarios
     getAll: async (req, res) => {
         try {
             const result = await UserModel.getAllUsers();
             res.status(200).json(result.data);
         } catch (error) {
-            console.error(error);
             res.status(500).json({ message: "Error al obtener los usuarios", error: error.message });
         }
     },
 
-    // Obtener un usuario por ID
     getById: async (req, res) => {
-        const { id } = req.params;
         try {
-            const result = await UserModel.getUserById(id);
+            const result = await UserModel.getUserById(req.params.id);
             if (!result.data.length) {
                 return res.status(404).json({ message: "Usuario no encontrado" });
             }
             res.status(200).json(result.data[0]);
         } catch (error) {
-            res.status(500).json({ message: "Error al obtener el usuario", error });
+            if (error.message === 'ID es requerido') {
+                return res.status(400).json({ message: error.message });
+            }
+            res.status(500).json({ message: "Error al obtener el usuario", error: error.message });
         }
     },
 
-    // Crear un nuevo usuario
     create: async (req, res) => {
-        const { first_name, last_name, email, password, role } = req.body;
         try {
-            const result = await UserModel.createUser({ first_name, last_name, email, password, role });
+            const result = await UserModel.createUser(req.body);
             res.status(201).json({ message: "Usuario creado", id: result.data.insertId });
         } catch (error) {
-            res.status(500).json({ message: "Error al crear el usuario", error });
+            if (error.message === 'Email y password son requeridos' || 
+                error.message === 'El email ya está registrado') {
+                return res.status(400).json({ message: error.message });
+            }
+            res.status(500).json({ message: "Error al crear el usuario", error: error.message });
         }
     },
 
-    // Actualizar un usuario existente
     update: async (req, res) => {
-        const { id } = req.params;
-        const { first_name, last_name, email, password, role } = req.body;
         try {
-            const result = await UserModel.updateUser(id, { first_name, last_name, email, password, role });
+            await UserModel.updateUser(req.params.id, req.body);
             res.status(200).json({ message: "Usuario actualizado" });
         } catch (error) {
-            res.status(500).json({ message: "Error al actualizar el usuario", error });
+            if (error.message === 'ID es requerido' || 
+                error.message === 'No hay datos para actualizar') {
+                return res.status(400).json({ message: error.message });
+            }
+            res.status(500).json({ message: "Error al actualizar el usuario", error: error.message });
         }
     },
 
-    // Eliminar un usuario
     delete: async (req, res) => {
-        const { id } = req.params;
         try {
-            const result = await UserModel.deleteUser(id);
+            await UserModel.deleteUser(req.params.id);
             res.status(200).json({ message: "Usuario eliminado" });
         } catch (error) {
-            res.status(500).json({ message: "Error al eliminar el usuario", error });
+            if (error.message === 'ID es requerido') {
+                return res.status(400).json({ message: error.message });
+            }
+            res.status(500).json({ message: "Error al eliminar el usuario", error: error.message });
         }
     },
 };

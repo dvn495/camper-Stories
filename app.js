@@ -17,7 +17,6 @@ const userRoutes = require("./backend/routes/userRoutes");
 
 // Configuración de Rutas
 app.use("/users", userRoutes);
-
 // Verificar conexión al iniciar el servidor
 (async () => {
     try {
