@@ -16,7 +16,6 @@
 
 .project-card {
   flex: 1 1 calc(33.33% - 24px);
-  max-width: calc(33.33% - 24px);
   box-sizing: border-box;
 }
 
