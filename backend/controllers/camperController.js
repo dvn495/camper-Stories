@@ -28,11 +28,13 @@ const CamperController = {
 
     // Crear un nuevo camper
     create: async (req, res) => {
-        const { title, description, about, image, main_video_url } = req.body;
         try {
-            const result = await CamperModel.createCamper({ title, description, about, image, main_video_url });
+            console.log(req.body);
+            const result = await CamperModel.createCamper(req.body);
             res.status(201).json({ message: "Camper creado", id: result.data.insertId });
         } catch (error) {
+            console.log(req.body);
+            console.log(error);
             res.status(500).json({ message: "Error al crear el Camper", error });
         }
     },
@@ -43,8 +45,9 @@ const CamperController = {
         const { title, description, about, image, main_video_url } = req.body;
         try {
             const result = await CamperModel.updateCamper(id, { title, description, about, image, main_video_url });
-            res.status(200).json({ message: ""})
+            res.status(200).json({ message: "Camper actualizado"})
         } catch (error) {
+            console.log(error);
             res.status(500).json({ message: "Error al actualizar el camper", error });
         }
     },

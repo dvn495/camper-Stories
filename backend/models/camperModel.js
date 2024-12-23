@@ -14,9 +14,9 @@ const CamperModel = {
     },
 
     // Crear un nuevo camper
-    createCamper: async ({ title, description, about, image, main_video_url }) => {
-        const query = "INSERT INTO CAMPER (title, description, about, image, main_video_url) VALUES (?, ?, ?, ?, ?)";
-        return db.query(query, [title, description, about, image, main_video_url]);
+    createCamper: async ({ user_id, title, description, about, image, main_video_url }) => {
+        const query = "INSERT INTO CAMPER (user_id, title, description, about, image, main_video_url) VALUES (?, ?, ?, ?, ?, ?)";
+        return db.query(query, [user_id, title, description, about, image, main_video_url]);
     },
 
     // Actualizar un camper existente
@@ -30,7 +30,7 @@ const CamperModel = {
             main_video_url = ?
             WHERE id = ?
         `;
-        return db.query(query, [title, description, about, image, main_video_url]);
+        return db.query(query, [title, description, about, image, main_video_url, id]); // Aquí se pasa el `id` al final del arreglo
     },
 
     // Eliminar un camper
