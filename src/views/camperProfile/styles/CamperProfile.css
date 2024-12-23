@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;  
-  padding: clamp(1rem, 5vw, 15rem) clamp(1rem, 5vw, 15rem) 2rem;
+  padding: clamp(1rem, 5vw, 15rem) clamp(1rem, 10vw, 15rem) 2rem;
   background: linear-gradient(180deg, #070727 0%, #090955 70%, #0C0C74 100%);
 }
 
@@ -75,11 +75,23 @@
   max-width: 100%;
 }
 
+.process{
+  width: 100%;
+}
+
+
+
+
 /* Videos grid */
 .videos {
   display: flex;  
   justify-content: center;
+  max-width: 89vw;
   gap: 20px;
+}
+
+.swiper-slide, .swiper-slide-active, .video-item{
+  width: 325px!important;
 }
 
 .profile-mobile-swiper {

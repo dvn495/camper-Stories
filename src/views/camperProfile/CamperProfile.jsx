@@ -9,6 +9,8 @@ import TikTokEmbed from "../../components/camperProfile/TiktokEmbed";
 import Footer from "../../components/footer/Footer"
 import "./styles/CamperProfile.css";
 import EducationSection from "../../components/camperProfile/EducationSection";
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 
 const CamperProfile = () => {
@@ -166,20 +168,30 @@ const CamperProfile = () => {
                                     onSlideChange={handleSlideChange}
                                     className="profile-mobile-swiper"
                                 >
-                                {camper.processTikToks.map((video, index) => (
-                                    <SwiperSlide key={index}>
+                                    {camper.processTikToks.map((video, index) => (
+                                        <SwiperSlide key={index}>
                                             <TikTokEmbed videoUrl={video.url} title={video.title} />
-                                    </SwiperSlide>
-                                ))}
+                                        </SwiperSlide>
+                                    ))}
                                 </Swiper>
                             ) : (
-                                camper.processTikToks.map((video, index) => (
-                                    <div key={index} className="video-item">
-                                        <TikTokEmbed videoUrl={video.url} title={video.title} />
-                                    </div>
-                                ))
-                            )
-                        }
+                                <Swiper
+                                    slidesPerView={3}
+                                    spaceBetween={30}
+                                    pagination={{
+                                        clickable: true,
+                                    }}
+                                    modules={[Pagination]}
+                                    className="mySwiper"
+                                >
+                                {camper.processTikToks.map((video, index) => (
+                                        <SwiperSlide key={index} className="video-item">
+                                            <TikTokEmbed videoUrl={video.url} title={video.title} />
+                                        </SwiperSlide>
+                                ))}
+                                    
+                                </Swiper>
+                            )}
                     </div>
                 </section>
 
