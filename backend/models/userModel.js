@@ -22,7 +22,17 @@ const UserModel = {
         };
     },
 
-    register: async ({ first_name, last_name, email, password, role }) => {
+    getAllUsers: async () => {
+        const query = "SELECT id, first_name, last_name, email, role FROM USER";
+        return await db.query(query);
+    },
+
+    getUserById: async (id) => {
+        const query = "SELECT id, first_name, last_name, email, role FROM USER WHERE id = ?";
+        return await db.query(query, [id]);
+    },
+
+    createUser: async ({ first_name, last_name, email, password, role }) => {
         if (!['admin', 'camper'].includes(role)) {
             throw new Error("El rol debe ser 'admin' o 'camper'");
         }
@@ -32,15 +42,24 @@ const UserModel = {
             INSERT INTO USER (first_name, last_name, email, password, role)
             VALUES (?, ?, ?, ?, ?)
         `;
-        const result = await db.query(query, [
+        return await db.query(query, [
             first_name,
             last_name,
             email.toLowerCase(),
             hashedPassword,
             role
         ]);
+    },
 
-        return result.data.insertId;
+    updateUser: async (id, userData) => {
+        // Implementar lógica de actualización
+        const query = "UPDATE USER SET ? WHERE id = ?";
+        return await db.query(query, [userData, id]);
+    },
+
+    deleteUser: async (id) => {
+        const query = "DELETE FROM USER WHERE id = ?";
+        return await db.query(query, [id]);
     }
 };
 
