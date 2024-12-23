@@ -3,8 +3,7 @@ INSERT INTO USER (first_name, last_name, email, password, role) VALUES
 ('Natalia', 'Diaz Suarez', 'natalia@example.com', 'hashed_password1', 'camper'),
 ('Cristopher', 'Buitrago', 'cristopher@example.com', 'hashed_password2', 'camper'),
 ('Silvia', 'Angarita', 'silvia@example.com', 'hashed_password3', 'camper'),
-('Admin', 'Admin', 'admin@example.com', 'hashed_password4', 'admin'),
-('John', 'Doe', 'john@example.com', 'hashed_password5', 'sponsor');
+('Admin', 'Admin', 'admin@example.com', 'hashed_password4', 'admin');
 
 -- Insertar perfiles de campers
 INSERT INTO CAMPER (user_id, title, description, about, image, main_video_url) VALUES
@@ -52,8 +51,8 @@ INSERT INTO TRAINING_VIDEO (camper_id, title, video_url) VALUES
 (3, 'Video 1: Diseño de Bases de Datos', 'https://www.youtube.com/embed/example4');
 
 -- Insertar patrocinadores iniciales
-INSERT INTO SPONSOR (user_id, message) VALUES
-(5, 'Estoy encantado de apoyar a los talentosos desarrolladores de Campuslands.');
+INSERT INTO SPONSOR (id, first_name, last_name, email, phone, message) VALUES
+(1, 'John', 'Doe', 'john@example.com', '+123456789', 'Estoy encantado de apoyar a los talentosos desarrolladores de Campuslands.');
 
 -- Insertar pagos realizados por patrocinadores (PAYMENT)
 INSERT INTO PAYMENT (sponsor_id, camper_id, amount, payment_date) VALUES
