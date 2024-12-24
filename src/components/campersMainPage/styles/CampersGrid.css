@@ -184,17 +184,44 @@
   }
 
   .dev-card-content {
-    padding-left: 5px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center; 
+    padding-left: 0; 
+    width: 100%;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .camper-maininfo {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center;
+  }
+
+  .technologies
+  .Tecnologias {
+    display: flex;
+    border: 1px solid black; /* Para visualizar el div */
+
+    flex-direction: row; /* Asegura que el contenido se apile verticalmente */
+    align-items: center; /* Centra el contenido */
+    justify-content: center; /* Centra verticalmente */
+    text-align: center;
   }
 
 
   .camper-image img {
-    width: 80px;
-    max-height: 80px;
+    width: 110px;
+    max-height: 110px;
   }
 
   .camper-image{
-    width: 150px;
+    width: auto; /* Ajusta el ancho automáticamente */
+    
   }
 
   .campersgrid-title {
@@ -202,12 +229,21 @@
   }
 
   .developer-card {
-      width: 95%;
-      padding: 0.5rem;
+    flex-direction: column;
+    align-items: center; /* Centra todos los elementos dentro de la tarjeta */
+    text-align: center; /* Alinea el texto al centro */
+    width: 100%;
+    height: 90vw;
+    padding: 0.5rem;
+    border-radius: 7%;
   }
 
   .buttons button {
-      padding: 0.5rem 1rem;
-      font-size: 12px;
+    width: 100px;
+    height: 45px;
+    padding: 15px;
+    font-size: 13px;
+    border: 1px solid black; /* Para visualizar el div */
+    margin: 5px;
   }
 }
