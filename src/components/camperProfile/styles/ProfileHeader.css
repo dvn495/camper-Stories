@@ -1,22 +1,24 @@
 /* Fondo y espaciado general */
 .profile-header {
-    padding: 2rem 0;
+    padding: 2rem 0 3rem 0;
   }
   
   /* Contenido del perfil */
   .profile-content {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    text-align: center;
+
   }
   
-  @media (min-width: 640px) {
-    .profile-content {
-      flex-direction: row;
-      text-align: left;
-    }
+  .profile-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: fit-content;
   }
+  
   
   /* Imagen del perfil */
   .profile-image {
@@ -39,6 +41,14 @@
   /* Detalles del perfil */
   .profile-details {
     margin-top: 1rem;
+  }
+
+  .profile-badges-box{
+    background-color: #0e205a;
+    border-radius: 10px;
+    padding: 1rem;
+    width: 30rem;
+    height: 12rem;
   }
   
   @media (min-width: 640px) {

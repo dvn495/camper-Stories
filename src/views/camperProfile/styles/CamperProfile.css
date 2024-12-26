@@ -8,9 +8,10 @@
   display: flex;
   flex-direction: column;
   width: 100%;  
-  padding: clamp(1rem, 5vw, 15rem) clamp(1rem, 10vw, 15rem) 2rem;
+  padding: 0 clamp(1rem, 10vw, 10rem) 2rem;
   background: linear-gradient(180deg, #070727 0%, #090955 70%, #0C0C74 100%);
 }
+
 
 /* Typography */
 .profile-subtitle,

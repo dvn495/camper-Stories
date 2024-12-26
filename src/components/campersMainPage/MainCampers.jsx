@@ -62,7 +62,6 @@ const MainCampers = () => {
 
   return (
     <div className="developer-profiles">
-      <img src={Logo} alt="Logo" className="logo" />
       <div className="profile-card">
         <AnimatePresence mode="wait">
           <motion.div
