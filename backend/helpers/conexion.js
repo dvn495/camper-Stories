@@ -1,22 +1,34 @@
 require('dotenv').config();
-console.log("Variables de entorno cargadas:", process.env);
+
+// Verificación de variables de entorno
+console.log('Verificando variables de entorno:');
+const variablesRequeridas = ['DB_HOST', 'DB_USER', 'DB_PASSWORD', 'DB_PORT', 'DB_NAME'];
+const variablesFaltantes = variablesRequeridas.filter(variable => !process.env[variable]);
+
+if (variablesFaltantes.length > 0) {
+    console.error('Faltan las siguientes variables de entorno:', variablesFaltantes);
+    process.exit(1);
+}
+
 const mysql = require('mysql2/promise');
 
 class Conexion {
     constructor() {
         this.config = {
-            host: '212.56.44.105',
-            user: 'camperStory',
-            password: 'camperStory2024',
-            port: 3306,
-            database: 'Campuslands'
+            host: process.env.DB_HOST,
+            user: process.env.DB_USER,
+            password: process.env.DB_PASSWORD,
+            port: process.env.DB_PORT,
+            database: process.env.DB_NAME
         };
-        console.log('Configuración de la base de datos:', {
+        
+        console.log('Configuración cargada:', {
             host: this.config.host,
             user: this.config.user,
             port: this.config.port,
-            database: this.config.database,
+            database: this.config.database
         });
+        
         this.pool = mysql.createPool(this.config);
     }
 
