@@ -1,4 +1,4 @@
-
+/* Base styles */
 .camper-profile-view {
   width: 100%;  
   font-family: 'Courier New', Courier, monospace;
@@ -8,54 +8,54 @@
   display: flex;
   flex-direction: column;
   width: 100%;  
-  padding: 0 15rem 2rem;
-  background: linear-gradient(180deg,
-  #070727 0%,
-  #090955 70%,
-  #0C0C74 100%);
+  padding: clamp(1rem, 5vw, 15rem) clamp(1rem, 10vw, 15rem) 2rem;
+  background: linear-gradient(180deg, #070727 0%, #090955 70%, #0C0C74 100%);
 }
 
-/* Estilos del encabezado */
+/* Typography */
+.profile-subtitle,
+.project-subtitle,
+.about-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  color: #FFFFFF;
+  display: inline-flex;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
 .profile-subtitle {
-  font-family: 'Poppins', sans-serif;
-  font-size: 3rem;
-  font-weight: bold;
-  color: #FFFFFF;
-  display: inline-flex;
-  justify-content: flex-start;
-  gap: 0.5rem;
-  margin-bottom: 3rem;
-  margin-top: 100px;
+  font-size: clamp(1.5rem, 3vw, 3rem);
+  margin-bottom: clamp(1.5rem, 4vw, 3rem);
+  margin-top: clamp(2rem, 5vw, 100px);
 }
 
-.project-subtitle {
-  font-family: 'Poppins', sans-serif;
-  font-size: 2rem;
-  font-weight: bold;
-  color: #FFFFFF;
-  display: inline-flex;
-  justify-content: flex-start;
-  gap: 0.5rem;
+.project-subtitle,
+.about-subtitle {
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
 }
 
-.video-item blockquote {
-  background-color: rgb(255, 255, 255);
-  padding: 2px 3px 2px 3px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px black;
+.about-subtitle {
+  padding-bottom: 1.5rem;
 }
-
 
 .highlight {
   color: #FACC15;
   font-weight: bold;
 }
 
+/* Layout sections */
 .about {
   display: flex;
-  flex-direction: row;  
-  gap: 40px;
+  flex-direction: column;  
   align-items: flex-start;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: row;
+  gap: clamp(20px, 3vw, 40px);
+  flex-wrap: wrap;
 }
 
 .col-info {
@@ -71,107 +71,77 @@
 }
 
 .col-video {
-  flex: 1; 
-  max-width: 60%;
+  flex: 1 1 300px;
+  max-width: 100%;
 }
 
+.process{
+  width: 100%;
+}
+
+
+
+
+/* Videos grid */
 .videos {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  display: flex;  
+  justify-content: center;
+  max-width: 89vw;
   gap: 20px;
 }
 
-.btn-patrocinar {
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  background-color: #f7b500;
-  color: #000000;
-  padding: 12px 24px;
-  font-size: 20px;
-  font-weight: 600;
-  text-transform: uppercase;
-  font-family: 'Poppins', sans-serif;
-  border-radius: 20px;
-  border: none;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+.swiper-slide, .swiper-slide-active, .video-item{
+  width: 325px!important;
 }
 
-.btn-patrocinar:hover {
-  background-color: #f0a500;
-  cursor: pointer;
+.profile-mobile-swiper {
+  width: 100%;
+  height: fit-content;
 }
 
-.btn-patrocinar:focus {
-  outline: none;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+
+.video-item blockquote {
+  background-color: rgb(255, 255, 255);
+  padding: 2px 3px;
+  width: fit-content;
+  border-radius: 10px;
+  box-shadow: 0 0 10px black;
+  margin: 0;
 }
 
-.tec-info {
-  display: flex;
-  flex-direction: column;
-}
-
+/* Projects section */
 .projects {
-  flex: 1;
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  max-width: 75%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(10px, 2vw, 20px);
+  width: 100%;
 }
 
-
-.btn-patrocinar-2{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  background-color: #f7b500;
-  color: #000000;
-  padding: 15px 40px;
-  font-size: 25px;
-  font-weight: 600;
-  text-transform: uppercase;
-  font-family: 'Poppins', sans-serif;
-  border-radius: 20px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.btn-patrocinar-2:hover {
-  background-color: #f0a500;
-  cursor: pointer;
-}
-
-.tec-content {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-}
-
+/* Skills section */
 .skills-container {
   display: flex;
   flex-direction: column;
   width: 100%;
   gap: 10px;
-  padding: 0 10px 0 10px;
+  padding: 0 10px;
 }
 
-.skills-title{
+.skills-title {
   display: flex;
   justify-content: center;
   width: 100%;
   font-family: 'Poppins', sans-serif;
-  font-size: 2.3rem;
+  font-size: clamp(1.5rem, 2.5vw, 2.3rem);
   font-weight: bold;
-  padding: 1rem 0 2rem 0;
+  padding: 1rem 0 2rem;
   color: #FFFFFF;
 }
-
 
 .skillCard {
   background-color: #f7b500;
   color: #000000;
-  font-size: 18px;
+  font-size: clamp(0.9rem, 1.2vw, 1.2rem);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -185,12 +155,7 @@
   font-weight: 700;
 }
 
-.skill-name {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #333;
-}
-
+/* Education section */
 .education {
   width: 100%;
   height: 100%;
@@ -201,76 +166,121 @@
   background-color: #050544;
   border: 1px solid #1a3079;
   border-radius: 10px;
-  padding: 2rem 2rem 1rem 2rem;
+  padding: 2rem;
   transition: all 0.3s ease-in-out;
-  
 }
 
-/* Aseguramos que las cards mantengan su ancho en las columnas */
 .education-section .card {
   width: 100%;
   margin-bottom: 1rem;
   transition: all 0.3s ease-in-out;
 }
 
-/* Estilo para el botón de "Ver más/menos" */
-/* Botón base */
 .education-section button {
-  background: none; /* Sin fondo */
-  border: none; /* Sin borde */
-  color: #1D4ED8; /* Azul (ajustable) */
-  font-size: 1rem; /* Tamaño del texto */
-  cursor: pointer; /* Indicador de clic */
-  display: inline-flex; /* Para alinear el texto y el ícono */
+  background: none;
+  border: none;
+  color: #1D4ED8;
+  font-size: 1rem;
+  cursor: pointer;
+  display: inline-flex;
   align-items: center;
-  gap: 0.5rem; /* Espacio entre texto e ícono */
-  transition: transform 0.2s ease, color 0.2s ease; /* Suavizado en hover */
+  gap: 0.5rem;
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
-/* Hover: Cambio de color y ligero movimiento */
 .education-section button:hover {
-  transform: translateY(-2px); /* Subir ligeramente */
-  color: #2563EB; /* Cambiar a un azul más claro (ajustable) */
+  transform: translateY(-2px);
+  color: #2563EB;
 }
 
 .education-section button:focus {
-  outline: none; /* Quita el borde generado por el focus */
-  box-shadow: none; /* Elimina sombras en algunos navegadores */
+  outline: none;
+  box-shadow: none;
 }
 
-
-/* Call-to-Action Section */
+/* Call-to-Action and Buttons */
 .sponsor-call-to-action {
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
   margin-top: 2rem;
   padding: 2rem;
+  gap: 1rem;
   text-align: center;
 }
 
 .cta-text {
-  font-size: 1.2rem;
-  color: #ffffff;
-  margin-bottom: 1rem;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  max-width: 800px;
+  margin: 0 auto;
 }
 
+.btn-patrocinar,
+.btn-patrocinar-2,
 .btn-sponsor {
   display: flex;
   flex-direction: row;
   align-items: center;
   background-color: #f7b500;
   color: #000000;
-  padding: 15px 40px;
-  font-size: 25px;
+  font-family: 'Poppins', sans-serif;
   font-weight: 600;
   text-transform: uppercase;
-  font-family: 'Poppins', sans-serif;
   border-radius: 20px;
   transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
+  padding: clamp(8px, 2vw, 15px) clamp(16px, 3vw, 40px);
+}
+
+.btn-patrocinar {
+  margin-top: 2rem;
+  border: none;
+}
+
+.btn-patrocinar:hover,
+.btn-patrocinar-2:hover {
+  background-color: #f0a500;
+  cursor: pointer;
 }
 
 .btn-sponsor:hover {
   background-color: #cc7a00;
 }
 
+.btn-patrocinar:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .profile-main-content {
+    padding: 0 1.5rem 1rem;
+  }
+
+
+  .projects{
+    grid-template-columns: repeat(auto-fit);
+  }
+
+
+  .about-content {
+    flex-direction: column;
+  }
+  
+  .col-info,
+  .col-video {
+    max-width: 100%;
+  }
+  
+  .education-section {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .videos,
+  .projects {
+    grid-template-columns: 1fr;
+  }
+}

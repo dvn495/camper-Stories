@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from 'react';
 import { Code2, Database, FileJson, FileType2, Globe, Layout } from 'lucide-react'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper/modules';
 import ProfileHeader from "../../components/camperProfile/ProfileHeader";
 import VideoPlayer from "../../components/camperProfile/VIdeoPlayer";
 import ProjectCard from "../../components/camperProfile/ProjectCard";
@@ -7,17 +9,34 @@ import TikTokEmbed from "../../components/camperProfile/TiktokEmbed";
 import Footer from "../../components/footer/Footer"
 import "./styles/CamperProfile.css";
 import EducationSection from "../../components/camperProfile/EducationSection";
+import 'swiper/css';
+import 'swiper/css/pagination';
 
-function TechnologyItem({ icon, name }) {
-    return (
-        <div className="skillCard flex items-center gap-3 w-full p-4 hover:bg-amber-500 transition-colors rounded-lg cursor-pointer">
-            {icon}
-            <span className="font-medium text-navy-900">{name}</span>
-        </div>
-    )
-}
 
 const CamperProfile = () => {
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    const swiperRef = useRef(null);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    useEffect(() => {
+        // Forzar actualización del Swiper cuando cambia isMobile
+        if (swiperRef.current && swiperRef.current.swiper) {
+            swiperRef.current.swiper.update();
+        }
+    }, [isMobile]);
+
+    const handleSlideChange = (swiper) => {
+        setCurrentIndex(swiper.activeIndex);
+    };
+
     const camper = {
         name: "Natalia Diaz Suarez",
         title: "Fullstack Software Developer",
@@ -113,19 +132,21 @@ const CamperProfile = () => {
                 />
 
                 <section className="about">
-                    <div className="col-video">
-                        <h2 className="profile-subtitle">
-                            <span className="highlight">&lt;/</span> Su historia
-                        </h2>
-                        <VideoPlayer videoUrl={camper.mainVideo} title="Historia Camper" />
+                    <h2 className="profile-subtitle">
+                        <span className="highlight">&lt;/</span> Su historia
+                    </h2>
+                    <div className="about-content">
+                        <div className="col-video">
+                            <VideoPlayer videoUrl={camper.mainVideo} title="Historia Camper" />
+                        </div>
+                        <div className="col-info">
+                            <h2 className="about-subtitle">Acerca de</h2>
+                            <p>{camper.about}</p>
+                            <button className="btn-patrocinar">Patrocinar</button>
+                        </div>
+
                     </div>
-                    <div className="col-info">
-                        <h2 className="profile-subtitle">
-                            <span className="highlight">&lt;/</span> Acerca de
-                        </h2>
-                        <p>{camper.about}</p>
-                        <button className="btn-patrocinar">Patrocinar</button>
-                    </div>
+
                 </section>
 
                 <section className="process">
@@ -133,11 +154,44 @@ const CamperProfile = () => {
                         <span className="highlight">&lt;/</span> Su proceso de Formación
                     </h2>
                     <div className="videos">
-                        {camper.processTikToks.map((video, index) => (
-                            <div key={index} className="video-item">
-                                <TikTokEmbed videoUrl={video.url} title={video.title} />
-                            </div>
-                        ))}
+                        {
+                            isMobile ? (
+                                <Swiper
+                                    ref={swiperRef}
+                                    modules={[Pagination]}
+                                    spaceBetween={30}
+                                    slidesPerView={1}
+                                    pagination={{
+                                        clickable: true,
+                                        dynamicBullets: true,
+                                    }}
+                                    onSlideChange={handleSlideChange}
+                                    className="profile-mobile-swiper"
+                                >
+                                    {camper.processTikToks.map((video, index) => (
+                                        <SwiperSlide key={index}>
+                                            <TikTokEmbed videoUrl={video.url} title={video.title} />
+                                        </SwiperSlide>
+                                    ))}
+                                </Swiper>
+                            ) : (
+                                <Swiper
+                                    slidesPerView={3}
+                                    spaceBetween={30}
+                                    pagination={{
+                                        clickable: true,
+                                    }}
+                                    modules={[Pagination]}
+                                    className="mySwiper"
+                                >
+                                {camper.processTikToks.map((video, index) => (
+                                        <SwiperSlide key={index} className="video-item">
+                                            <TikTokEmbed videoUrl={video.url} title={video.title} />
+                                        </SwiperSlide>
+                                ))}
+                                    
+                                </Swiper>
+                            )}
                     </div>
                 </section>
 
