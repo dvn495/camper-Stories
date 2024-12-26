@@ -26,11 +26,12 @@ app.use((err, req, res, next) => {
 // Importar Rutas
 const userRoutes = require("./backend/routes/userRoutes");
 const camperRoutes = require("./backend/routes/camperRoutes");
+const sponsorRoutes = require("./backend/routes/sponsorRoutes");
 
 // Configuración de Rutas
 app.use("/users", userRoutes);
 app.use("/campers", camperRoutes);
-
+app.use("/sponsors", sponsorRoutes);
 
 // Verificar conexión al iniciar el servidor
 (async () => {
