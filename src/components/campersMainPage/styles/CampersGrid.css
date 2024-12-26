@@ -187,6 +187,44 @@ button {
 
 @media (max-width: 480px) {
 
+ .technologies {
+    margin: 20px 0;
+ }
+ 
+ .tech-label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+ }
+ 
+ .skills-container {
+    /*display: grid ;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)) ;*/
+    flex-direction: row !important ;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 300px !important;
+    gap: 1px;
+    overflow-x: auto;
+ }
+ 
+ .skill-item {
+    background-color: #636386;
+    height: fit-content;
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 20px;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+ }
+ 
+ .skill-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+ }
   .campersgrid {
       padding: 1rem 0.5rem;
   }
@@ -197,14 +235,20 @@ button {
 
   .dev-card-content {
     display: flex;
-    flex-direction: column; 
+    justify-content: center;
     align-items: center;
-    justify-content: center; 
+    flex-direction: column; 
     padding-left: 0; 
-    width: 100%;
-    gap: 1rem;
     text-align: center;
-  }
+}
+
+.technologies {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Asegura que el contenido se apile verticalmente */
+  text-align: center;
+}
 
   .camper-maininfo {
     display: flex;
@@ -214,21 +258,10 @@ button {
     text-align: center;
   }
 
-  .technologies
-  .Tecnologias {
-    display: flex;
-    border: 1px solid black; /* Para visualizar el div */
-
-    flex-direction: row; /* Asegura que el contenido se apile verticalmente */
-    align-items: center; /* Centra el contenido */
-    justify-content: center; /* Centra verticalmente */
-    text-align: center;
-  }
-
 
   .camper-image img {
-    width: 110px;
-    max-height: 110px;
+    width: 128px;
+    max-height: 128px;
   }
 
   .camper-image{
@@ -241,21 +274,65 @@ button {
   }
 
   .developer-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
-    align-items: center; /* Centra todos los elementos dentro de la tarjeta */
-    text-align: center; /* Alinea el texto al centro */
-    width: 100%;
-    height: 90vw;
-    padding: 0.5rem;
-    border-radius: 7%;
+    width: 280vw;
+    border-radius: 20px;
   }
 
   .buttons button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100px;
     height: 45px;
     padding: 15px;
     font-size: 13px;
-    border: 1px solid black; /* Para visualizar el div */
-    margin: 5px;
+    margin: 5px;    
   }
+}
+
+
+
+
+
+
+
+
+.skills-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.skills-container {
+  max-height: 50px;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  transition: max-height 0.3s ease;
+}
+
+.skills-container.expanded {
+  max-height: 300px;
+}
+
+.expand-skills-button {
+  margin-top: 20px;  
+  background: linear-gradient(transparent, #2D2B54 50%);
+  position: relative;
+  bottom: -20px;     
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 25px 0 8px;
+  margin-top: -30px;
+  border: none;
+}
+button:focus, button:focus-visible {
+  outline: 0px ;
 }

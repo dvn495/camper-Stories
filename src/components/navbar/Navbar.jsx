@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import './styles/Navbar.css';
 import campusLogo from '../../assets/campus.svg';
 import campusLogoCompleto from '../../assets/CampusLogo.png';
+import useScrollDirection from '../../hooks/useScrollDirection';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { scrollDirection, isInCampersSection } = useScrollDirection();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -15,7 +17,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${isInCampersSection && scrollDirection === 'down' ? 'navbar-hidden' : ''}`}>
       <div className="navbar-container">
         <ul className="navbar-links left-links">
           <li className="hidden-links">
@@ -26,14 +28,14 @@ const Navbar = () => {
           </li>
         </ul>
         <div className="navbar-logo">
-            <a href="#mainCampers" onClick={handleLinkClick}>
-                <img src={campusLogo} alt="Campus Logo" />
-            </a>
+          <a href="#mainCampers" onClick={handleLinkClick}>
+            <img src={campusLogo} alt="Campus Logo" />
+          </a>
         </div>
         <div className='navbar-hamburguesa-logo'>
-            <a href="#mainCampers" onClick={handleLinkClick}>
-                <img src={campusLogoCompleto} alt="Campus Logo" />
-            </a>
+          <a href="#mainCampers" onClick={handleLinkClick}>
+            <img src={campusLogoCompleto} alt="Campus Logo" />
+          </a>
         </div>
         <ul className="navbar-links right-links">
           <li className="hidden-links">
@@ -43,7 +45,10 @@ const Navbar = () => {
             <a href="#formSection" onClick={handleLinkClick}>Donar</a>
           </li>
         </ul>
-        <button className={`hamburger-menu ${isMenuOpen ? 'is-active' : ''}`} onClick={toggleMenu}>
+        <button 
+          className={`hamburger-menu ${isMenuOpen ? 'is-active' : ''}`} 
+          onClick={toggleMenu}
+        >
           <span className="hamburger-icon"></span>
         </button>
       </div>
