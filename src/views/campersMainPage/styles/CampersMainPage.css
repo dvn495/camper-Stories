@@ -7,6 +7,10 @@
     box-sizing: border-box;
 }
 
+body{
+    background-color: #0C0C74;
+}
+
 .camper-success-view {
     display: flex;
     flex-direction: column;
