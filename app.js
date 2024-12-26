@@ -12,11 +12,14 @@ const server = http.createServer(app);
 
 // Middleware para parsear JSON
 app.use(express.json());
+
 // Importar Rutas
 const userRoutes = require("./backend/routes/userRoutes");
+const camperRoutes = require("./backend/routes/camperRoutes");
 
 // Configuración de Rutas
 app.use("/users", userRoutes);
+app.use("/campers", camperRoutes);
 
 // Verificar conexión al iniciar el servidor
 (async () => {
@@ -35,7 +38,6 @@ if (process.env.NODE_ENV === "production") {
         res.sendFile(path.join(__dirname, "dist", "client", "index.html"));
     });
 }
-
 
 // Inicialización del servidor
 const PORT = process.env.PORT || 5000;

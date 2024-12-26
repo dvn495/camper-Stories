@@ -87,3 +87,14 @@ CREATE TABLE PAYMENT (
     FOREIGN KEY (sponsor_id) REFERENCES SPONSOR(id) ON DELETE CASCADE,
     FOREIGN KEY (camper_id) REFERENCES CAMPER(id) ON DELETE CASCADE
 );
+
+CREATE TABLE SPONSOR_CAMPER (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    sponsor_id INT NOT NULL, -- Relación con la tabla SPONSOR
+    camper_id INT NOT NULL,  -- Relación con la tabla CAMPER
+    start_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Fecha de inicio
+    end_date TIMESTAMP NULL, -- Fecha de finalización (opcional)
+    status ENUM('active', 'completed', 'canceled') DEFAULT 'active', -- Estado del patrocinio
+    FOREIGN KEY (sponsor_id) REFERENCES SPONSOR(id) ON DELETE CASCADE,
+    FOREIGN KEY (camper_id) REFERENCES CAMPER(id) ON DELETE CASCADE
+);
