@@ -88,6 +88,7 @@
     z-index: 2;
     background-color: var(--color3);
     border-radius: 0 0 15px 15px;
+    height: 18vh;
     transition: background-color 0.3s ease;
 }
 
@@ -254,8 +255,8 @@
     }
 
     .nav-button:hover {
-        background: rgba(255, 255, 255, 0.6);
-        transform: scale(1.2);
+        background: rgba(255, 255, 255, 0.507);
+        transform: scale(1.1);
         border-color: rgba(255, 255, 255, 1);
         color: rgba(255, 255, 255, 1);
     }
@@ -349,7 +350,7 @@
 
 .nav-button {
     background: rgba(255, 255, 255, 0.3);
-    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-color: rgba(255, 255, 255, 1);
     border-radius: 50%;
     width: clamp(50px, 5vw, 65px); /* Ajusta el ancho */
     height: clamp(50px, 5vw, 65px); /* Ajusta la altura */
