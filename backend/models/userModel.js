@@ -1,43 +1,66 @@
-const db = require("../helpers/conexion"); // Importa la conexión a MySQL
+const db = require("../helpers/conexion");
+const bcrypt = require('bcrypt');
 
 const UserModel = {
-    // Obtener todos los usuarios
+    login: async (email, password) => {
+        const query = "SELECT id, first_name, last_name, email, role, password FROM USER WHERE email = ?";
+        const result = await db.query(query, [email]);
+        
+        if (!result.data.length) throw new Error("Usuario no encontrado");
+
+        const user = result.data[0];
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+
+        if (!isPasswordValid) throw new Error("Contraseña incorrecta");
+
+        return {
+            id: user.id,
+            first_name: user.first_name,
+            last_name: user.last_name,
+            email: user.email,
+            role: user.role
+        };
+    },
+
     getAllUsers: async () => {
-        const query = "SELECT * FROM USER";
-        return db.query(query);
+        const query = "SELECT id, first_name, last_name, email, role FROM USER";
+        return await db.query(query);
     },
 
-    // Obtener un usuario por ID
     getUserById: async (id) => {
-        const query = "SELECT * FROM USER WHERE id = ?";
-        return db.query(query, [id]);
+        const query = "SELECT id, first_name, last_name, email, role FROM USER WHERE id = ?";
+        return await db.query(query, [id]);
     },
 
-    // Crear un nuevo usuario
     createUser: async ({ first_name, last_name, email, password, role }) => {
-        const query = "INSERT INTO USER (first_name, last_name, email, password, role) VALUES (?, ?, ?, ?, ?)";
-        return db.query(query, [first_name, last_name, email, password, role]);
-    },
+        if (!['admin', 'camper'].includes(role)) {
+            throw new Error("El rol debe ser 'admin' o 'camper'");
+        }
 
-    // Actualizar un usuario existente
-    updateUser: async (id, { first_name, last_name, email, password, role }) => {
+        const hashedPassword = await bcrypt.hash(password, 10);
         const query = `
-            UPDATE USER SET 
-            first_name = ?, 
-            last_name = ?, 
-            email = ?, 
-            password = ?, 
-            role = ? 
-            WHERE id = ?
+            INSERT INTO USER (first_name, last_name, email, password, role)
+            VALUES (?, ?, ?, ?, ?)
         `;
-        return db.query(query, [first_name, last_name, email, password, role, id]);
+        return await db.query(query, [
+            first_name,
+            last_name,
+            email.toLowerCase(),
+            hashedPassword,
+            role
+        ]);
     },
 
-    // Eliminar un usuario
+    updateUser: async (id, userData) => {
+        // Implementar lógica de actualización
+        const query = "UPDATE USER SET ? WHERE id = ?";
+        return await db.query(query, [userData, id]);
+    },
+
     deleteUser: async (id) => {
         const query = "DELETE FROM USER WHERE id = ?";
-        return db.query(query, [id]);
-    },
+        return await db.query(query, [id]);
+    }
 };
 
 module.exports = UserModel;
