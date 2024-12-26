@@ -29,26 +29,34 @@ const CamperController = {
     // Crear un nuevo camper
     create: async (req, res) => {
         try {
-            console.log(req.body);
-            const result = await CamperModel.createCamper(req.body);
+            const result = await CamperModel.createCamper(
+                req.body,
+                req.user.id,  // ID del usuario que hace la petición
+                req.user.role // Rol del usuario que hace la petición
+            );
             res.status(201).json({ message: "Camper creado", id: result.data.insertId });
         } catch (error) {
-            console.log(req.body);
             console.log(error);
-            res.status(500).json({ message: "Error al crear el Camper", error });
+            res.status(error.message.includes('permiso') ? 403 : 500)
+                .json({ message: error.message });
         }
     },
 
     // Actualizar un camper existente
     update: async (req, res) => {
         const { id } = req.params;
-        const { title, description, about, image, main_video_url } = req.body;
         try {
-            const result = await CamperModel.updateCamper(id, { title, description, about, image, main_video_url });
+            const result = await CamperModel.updateCamper(
+                id, 
+                req.body,
+                req.user.id,
+                req.user.role
+            );
             res.status(200).json({ message: "Camper actualizado"})
         } catch (error) {
             console.log(error);
-            res.status(500).json({ message: "Error al actualizar el camper", error });
+            res.status(error.message.includes('permiso') ? 403 : 500)
+                .json({ message: error.message });
         }
     },
 
@@ -56,10 +64,15 @@ const CamperController = {
     delete: async (req, res) => {
         const { id } = req.params;
         try {
-            const result = await CamperModel.deleteUser(id);
+            const result = await CamperModel.deleteCamper(
+                id,
+                req.user.id,
+                req.user.role
+            );
             res.status(200).json({ message: "Camper eliminado" });
         } catch (error) {
-            res.status(500).json({ message: "Error al eliminar el camper"})
+            res.status(error.message.includes('permiso') ? 403 : 500)
+                .json({ message: error.message });
         }
     },
 };

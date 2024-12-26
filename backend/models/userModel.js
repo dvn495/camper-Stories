@@ -1,38 +1,47 @@
 const db = require("../helpers/conexion");
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
-const UserModel = {
-    login: async (email, password) => {
-        const query = "SELECT id, first_name, last_name, email, role, password FROM USER WHERE email = ?";
-        const result = await db.query(query, [email]);
-        
-        if (!result.data.length) throw new Error("Usuario no encontrado");
+class UserModel {
+    static async login(email, password) {
+        try {
+            const query = 'SELECT * FROM users WHERE email = ?';
+            const result = await db.query(query, [email]);
+            
+            if (!result.data.length) {
+                throw new Error('Usuario no encontrado');
+            }
 
-        const user = result.data[0];
-        const isPasswordValid = await bcrypt.compare(password, user.password);
+            const user = result.data[0];
+            const isValidPassword = await bcrypt.compare(password, user.password);
+            
+            if (!isValidPassword) {
+                throw new Error('Contraseña incorrecta');
+            }
 
-        if (!isPasswordValid) throw new Error("Contraseña incorrecta");
+            return user;
+        } catch (error) {
+            throw error;
+        }
+    }
 
-        return {
-            id: user.id,
-            first_name: user.first_name,
-            last_name: user.last_name,
-            email: user.email,
-            role: user.role
-        };
-    },
-
-    getAllUsers: async () => {
+    static async getAllUsers(requestingUserId, userRole) {
+        if (userRole !== 'admin') {
+            const query = "SELECT id, first_name, last_name, email, role FROM USER WHERE id = ?";
+            return await db.query(query, [requestingUserId]);
+        }
         const query = "SELECT id, first_name, last_name, email, role FROM USER";
         return await db.query(query);
-    },
+    }
 
-    getUserById: async (id) => {
+    static async getUserById(id, requestingUserId, userRole) {
+        if (userRole !== 'admin' && requestingUserId !== id) {
+            throw new Error('No tienes permiso para ver esta información');
+        }
         const query = "SELECT id, first_name, last_name, email, role FROM USER WHERE id = ?";
         return await db.query(query, [id]);
-    },
+    }
 
-    createUser: async ({ first_name, last_name, email, password, role }) => {
+    static async createUser({ first_name, last_name, email, password, role }) {
         if (!['admin', 'camper'].includes(role)) {
             throw new Error("El rol debe ser 'admin' o 'camper'");
         }
@@ -49,18 +58,29 @@ const UserModel = {
             hashedPassword,
             role
         ]);
-    },
+    }
 
-    updateUser: async (id, userData) => {
-        // Implementar lógica de actualización
+    static async updateUser(id, userData, requestingUserId, userRole) {
+        if (userRole !== 'admin' && requestingUserId !== id) {
+            throw new Error('No tienes permiso para modificar este usuario');
+        }
+
+        if (userRole !== 'admin' && userData.role) {
+            throw new Error('No tienes permiso para cambiar el rol');
+        }
+
         const query = "UPDATE USER SET ? WHERE id = ?";
         return await db.query(query, [userData, id]);
-    },
+    }
 
-    deleteUser: async (id) => {
+    static async deleteUser(id, requestingUserId, userRole) {
+        if (userRole !== 'admin') {
+            throw new Error('Solo los administradores pueden eliminar usuarios');
+        }
+        
         const query = "DELETE FROM USER WHERE id = ?";
         return await db.query(query, [id]);
     }
-};
+}
 
 module.exports = UserModel;

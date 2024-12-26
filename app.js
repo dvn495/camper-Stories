@@ -1,7 +1,9 @@
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const http = require("http");
 const fs = require("fs");
+const jwt = require('jsonwebtoken');
 
 // Importar conexión
 const db = require("./backend/helpers/conexion");
@@ -13,6 +15,14 @@ const server = http.createServer(app);
 // Middleware para parsear JSON
 app.use(express.json());
 
+// Manejo de errores JWT
+app.use((err, req, res, next) => {
+    if (err instanceof jwt.JsonWebTokenError) {
+        return res.status(401).json({ message: 'Token inválido' });
+    }
+    next(err);
+});
+
 // Importar Rutas
 const userRoutes = require("./backend/routes/userRoutes");
 const camperRoutes = require("./backend/routes/camperRoutes");
@@ -20,6 +30,7 @@ const camperRoutes = require("./backend/routes/camperRoutes");
 // Configuración de Rutas
 app.use("/users", userRoutes);
 app.use("/campers", camperRoutes);
+
 
 // Verificar conexión al iniciar el servidor
 (async () => {
