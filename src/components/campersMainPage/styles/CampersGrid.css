@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: auto;
+  min-height: 100vh;
   padding: 2rem 1rem;
   background-image:
       linear-gradient(rgba(1, 1, 48, 0.7), rgba(1, 1, 48, 0.7)), 
@@ -12,7 +12,8 @@
   background-position: center; 
   background-repeat: no-repeat; 
   box-shadow: 0px -10px 200px #17172b;
-  overflow-x: hidden;
+  position: relative;
+  overflow: visible;
 }
 
 .campersgrid-title {
@@ -20,12 +21,23 @@
   width: 70vw;
 }
 
+.badge-filters {
+  display: flex;
+  width: 76%;
+  height: 10rem;
+  border-radius: 20px;
+  background-color: #26235886;
+  margin-bottom: 1rem;
+}
+
 .grid-container {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
-  margin: 3rem 0 1.05rem;
+  padding-top: 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 .developer-card {
@@ -333,6 +345,6 @@ button {
   margin-top: -30px;
   border: none;
 }
-button:focus, button:focus-visible {
+.expand-skills-button:focus {
   outline: 0px ;
 }
