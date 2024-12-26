@@ -11,6 +11,7 @@ import "./styles/CamperProfile.css";
 import EducationSection from "../../components/camperProfile/EducationSection";
 import 'swiper/css';
 import 'swiper/css/pagination';
+import Navbar from '@/components/navbar/Navbar';
 
 
 const CamperProfile = () => {
@@ -124,6 +125,7 @@ const CamperProfile = () => {
 
     return (
         <div className="camper-profile-view">
+            <Navbar />
             <div className="profile-main-content">
                 <ProfileHeader
                     name={camper.name}

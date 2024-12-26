@@ -77,3 +77,7 @@ button:focus-visible {
     --radius: 0.5rem;
   }
 }
+
+html {
+  scroll-behavior: smooth;
+}
