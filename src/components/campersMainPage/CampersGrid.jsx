@@ -47,7 +47,7 @@ const CampersGrid = () => {
                                 <div className='camper-maininfo'>
                                     <h3>{camper.name}</h3>
                                     <p>{camper.role}</p>
-                                </div>
+                                
                                 <div className="technologies">
                                     <span className="tech-label">Meritos:</span>
                                     <motion.div layout className="skills-wrapper">
@@ -89,6 +89,7 @@ const CampersGrid = () => {
                                 <div className="buttons">
                                     <button className="info-button">Mas Info</button>
                                     <button className="sponsor-button">Patrocinar</button>
+                                </div>
                                 </div>
                             </div>
                         </div>
