@@ -11,6 +11,7 @@ import "./styles/CamperProfile.css";
 import 'swiper/css';
 import 'swiper/css/pagination';
 import NavbarProfile from '../../components/navbar/NavbarProfile';
+import DreamsGrid from '../../components/camperProfile/DreamsGrid';
 
 
 const CamperProfile = () => {
@@ -154,7 +155,8 @@ const CamperProfile = () => {
                         <span className="highlight">&lt;/</span> Mis Sueños
                     </h2>
                     <div className='dreams-grid-container'>
-                        <p>seccion grid mis sueños</p>
+                        
+                        <DreamsGrid />
                     </div>
 
                 </section>

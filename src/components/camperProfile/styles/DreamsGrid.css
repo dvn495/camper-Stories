@@ -1,0 +1,59 @@
+.bento-grid-dreams-profile {
+    min-height: 40vh; /* Reducido a 70% de la altura de la ventana */
+    display: flex;
+    height: 650px;
+    gap: 0.7em; /* Reducido gap */
+    padding: 0.7em;
+    box-sizing: border-box;
+ }
+ 
+ .col-left-dreams {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7em;
+ }
+ 
+ .col-right-dreams {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7em;
+ }
+ 
+ .box-dreams {
+    flex: 1;
+    border-radius: 0.7em;
+    display: flex;
+    gap: 0.7em;
+    overflow: hidden;
+ }
+ 
+ .inner-box-dreams {
+    flex: 1;
+    border-radius: 0.7em;
+    overflow: hidden;
+    opacity: 0.8;
+    transition: transform 0.2s ease-in-out;
+ }
+ 
+ .col-left-dreams .inner-box-dreams:nth-of-type(1) {
+    flex: 2;
+ }
+ 
+ .col-left-dreams .box-dreams:nth-of-type(2) .inner-box-dreams:nth-of-type(2) {
+    flex: 3;
+ }
+ 
+ .box-dreams img,
+ .inner-box-dreams img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+ }
+ 
+ .inner-box-dreams:hover,
+ .col-right-dreams .box-dreams:hover {
+    transform: scale(1.02);
+    opacity: 1;
+ }
