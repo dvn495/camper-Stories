@@ -7,7 +7,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    min-height: 100vh;
+    min-height: 95vh;
     background: linear-gradient(180deg, #0C0C74 0%, #03033D 70%, #030337 100%);
     position: relative;
     overflow: hidden;
@@ -273,7 +273,7 @@
 
     .profile-card-content p {
         max-width: 550px;
-        font-size: 1.8rem;
+        font-size: 1.2rem;
     }
 
     .profile-card-signature p {

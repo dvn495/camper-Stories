@@ -40,7 +40,8 @@ const CamperProfile = () => {
 
     const camper = {
         name: "Natalia Diaz Suarez",
-        title: "Fullstack Software Developer",
+        ciudadOrigen: "Bucaramanga, Santander",
+        edad: "19",
         mainImage: "/placeholder.svg?height=280&width=280",
         mainVideo: "https://www.youtube.com/embed/example",
         about:
@@ -122,21 +123,19 @@ const CamperProfile = () => {
             },
         ],
     };
-
+    
     return (
         <div className="camper-profile-view">
             <Navbar />
             <div className="profile-main-content">
                 <ProfileHeader
                     name={camper.name}
-                    title={camper.title}
+                    ciudadOrigen={camper.ciudadOrigen}
+                    edad={camper.edad}
                     mainImage={camper.mainImage}
                 />
 
                 <section className="about">
-                    <h2 className="profile-subtitle">
-                        <span className="highlight">&lt;/</span> Su historia
-                    </h2>
                     <div className="about-content">
                         <div className="col-video">
                             <VideoPlayer videoUrl={camper.mainVideo} title="Historia Camper" />
