@@ -4,73 +4,71 @@ import campusLogo from '../../assets/campus.svg';
 import campusLogoCompleto from '../../assets/CampusLogo.png';
 
 const NavbarProfile = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+ // URL para WhatsApp con mensaje predefinido
+ const whatsappUrl = "https://wa.me/+573123456789?text=Hola,%20me%20interesa%20obtener%20más%20información";
+ const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const handleLinkClick = () => {
-    setIsMenuOpen(false);
-  };
+ const toggleMenu = () => {
+   setIsMenuOpen(!isMenuOpen);
+ };
 
-  return (
-    <nav className="navbar-profile">
-      <div className="navbar-container">
-        <ul className="navbar-links left-links">
-          <li className="hidden-links">
-            <a href="/" onClick={handleLinkClick}>Sobre mi</a>
-          </li>
-        </ul>
-        <ul className="navbar-links left-links">
-          <li className="hidden-links">
-            <a href="/" onClick={handleLinkClick}>Proceso</a>
-          </li>
-        </ul>
-        <ul className="navbar-links left-links">
-          <li className="hidden-links">
-            <a href="/" onClick={handleLinkClick}>Sueños</a>
-          </li>
-        </ul>
-        <div className="navbar-logo">
-          <a href="/">
-            <img src={campusLogo} alt="Campus Logo" />
-          </a>
-        </div>
-        <div className='navbar-hamburguesa-logo'>
-          <a href="/">
-            <img src={campusLogoCompleto} alt="Campus Logo" />
-          </a>
-        </div>
-        <ul className="navbar-links right-links">
-          <li className="hidden-links">
-            <a href="#formSection" onClick={handleLinkClick}>Proyectos</a>
-          </li>
-        </ul>
-        <ul className="navbar-links right-links">
-          <li className="hidden-links">
-            <a href="/" onClick={handleLinkClick}>Patrocinar</a>
-          </li>
-        </ul>
-        <ul className="navbar-links right-links">
-          <li className="hidden-links">
-            <a href="/" onClick={handleLinkClick}>Contactanos</a>
-          </li>
-        </ul>
-        <button className={`hamburger-menu ${isMenuOpen ? 'is-active' : ''}`} onClick={toggleMenu}>
-          <span className="hamburger-icon"></span>
-        </button>
-      </div>
-      {isMenuOpen && (
-        <div className="mobile-menu">
-          <ul className="mobile-links">
-            <li><a href="/" onClick={handleLinkClick}>Volver</a></li>
-            <li><a href="#formSection" onClick={handleLinkClick}>Patrocinar</a></li>
-          </ul>
-        </div>
-      )}
-    </nav>
-  );
+ const handleLinkClick = () => {
+   setIsMenuOpen(false);
+ };
+
+ const DesktopNav = () => (
+   <div className="desktop-nav-profile">
+     <div className="nav-links-profile left-group-profile">
+       <a href="#sobre-mi-profile" onClick={handleLinkClick}>Sobre mi</a>
+       <a href="#proceso-formacion-profile" onClick={handleLinkClick}>Proceso</a>
+       <a href="#no-esta" onClick={handleLinkClick}>Sueños</a>
+     </div>
+     <div className="nav-logo-profile">
+       <a href="/" onClick={handleLinkClick}>
+         <img src={campusLogo} alt="Campus Logo" />
+       </a>
+     </div>
+     <div className="nav-links-profile right-group-profile">
+       <a href="#projects-profile" onClick={handleLinkClick}>Proyectos</a>
+       <a href="#patrocinar-profile" onClick={handleLinkClick}>Patrocinar</a>
+       <a href={ whatsappUrl } target="_blank" rel="noopener noreferrer" onClick={handleLinkClick}>Contactanos</a>
+     </div>
+   </div>
+ );
+
+ const MobileNav = () => (
+   <div className="mobile-nav-profile">
+     <a href="/" onClick={handleLinkClick}>
+       <img src={campusLogoCompleto} alt="Campus Logo" className="mobile-logo-profile" />
+     </a>
+     <button 
+       className={`hamburger-menu-profile ${isMenuOpen ? 'is-active' : ''}`} 
+       onClick={toggleMenu}
+     >
+       <span className="hamburger-icon-profile"></span>
+     </button>
+     {isMenuOpen && (
+       <div className="mobile-menu-profile">
+         <div className="mobile-links-profile">
+           <a href="/" onClick={handleLinkClick}>Sobre mi</a>
+           <a href="/" onClick={handleLinkClick}>Proceso</a>
+           <a href="/" onClick={handleLinkClick}>Sueños</a>
+           <a href="#formSection" onClick={handleLinkClick}>Proyectos</a>
+           <a href="/" onClick={handleLinkClick}>Patrocinar</a>
+           <a href="/" onClick={handleLinkClick}>Contactanos</a>
+         </div>
+       </div>
+     )}
+   </div>
+ );
+
+ return (
+   <nav className="navbar-profile">
+     <div className="desktop-only-profile"><DesktopNav /></div>
+     <div className="mobile-only-profile"><MobileNav /></div>
+   </nav>
+ );
 };
 
 export default NavbarProfile;

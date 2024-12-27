@@ -135,7 +135,7 @@ const CamperProfile = () => {
                     mainImage={camper.mainImage}
                 />
 
-                <section className="about">
+                <section className="about" id="sobre-mi-profile">
                     <div className="about-content">
                         <div className="col-video">
                             <VideoPlayer videoUrl={camper.mainVideo} title="Historia Camper" />
@@ -150,7 +150,7 @@ const CamperProfile = () => {
 
                 </section>
 
-                <section className="process">
+                <section className="process" id='proceso-formacion-profile'>
                     <h2 className="profile-subtitle">
                         <span className="highlight">&lt;/</span> Su proceso de Formación
                     </h2>
@@ -206,7 +206,7 @@ const CamperProfile = () => {
                     <h2 className="profile-subtitle">
                         <span className="highlight">&lt;/</span> Proyectos
                     </h2>
-                    <div className="projects">
+                    <div className="projects" id="projects-profile">
 
                         {camper.projects.map((project, index) => (
                             <ProjectCard
@@ -220,7 +220,7 @@ const CamperProfile = () => {
                         ))}
                     </div>
                 </section>
-                <section className="sponsor-call-to-action">
+                <section className="sponsor-call-to-action" id="patrocinar-profile">
                     <p className="cta-text">
                         "Con tu apoyo, puedo continuar desarrollando habilidades y creando soluciones innovadoras. ¡Gracias por creer en mi potencial!"
                     </p>
