@@ -29,8 +29,22 @@ const SponsorController = {
     // Crear un nuevo sponsor
     create: async (req, res) => {
         try {
-            const result = await SponsorModel.createSponsor(req.body);
-            res.status(201).json({ message: "Sponsor registrado exitosamente", id: result.data.insertId });
+            const { user_id, first_name, last_name, email, phone, message } = req.body;
+    
+            if (!user_id) {
+                return res.status(400).json({ message: "El campo user_id es obligatorio." });
+            }
+    
+            const result = await SponsorModel.createSponsor({
+                user_id,
+                first_name,
+                last_name,
+                email,
+                phone,
+                message,
+            });
+    
+            res.status(201).json({ message: "Sponsor registrado exitosamente", id: result.insertId });
         } catch (error) {
             res.status(500).json({ message: "Error al registrar el sponsor", error: error.message });
         }
