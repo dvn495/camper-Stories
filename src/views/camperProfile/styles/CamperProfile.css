@@ -80,8 +80,12 @@
   width: 100%;
 }
 
+/* Dreams section */
 
-
+.dreams{
+  position: relative;
+  margin-bottom: 4rem;
+}
 
 /* Videos grid */
 .videos {
