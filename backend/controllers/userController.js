@@ -94,6 +94,12 @@ const UserController = {
         } catch (error) {
             res.status(401).json({ message: error.message });
         }
+    },
+
+    logout: (req, res) => {
+        // Aquí puedes manejar la lógica de cierre de sesión si es necesario
+        // Por ejemplo, puedes eliminar el token del lado del cliente
+        res.json({ message: "Sesión cerrada exitosamente" });
     }
 };
 
