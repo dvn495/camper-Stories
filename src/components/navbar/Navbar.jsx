@@ -1,3 +1,4 @@
+// Navbar.jsx
 import React, { useState } from 'react';
 import './styles/Navbar.css';
 import campusLogo from '../../assets/campus.svg';
@@ -7,69 +8,61 @@ import useScrollDirection from '../../hooks/useScrollDirection';
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { scrollDirection, isInCampersSection } = useScrollDirection();
-
+  
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
+  
   const handleLinkClick = () => {
     setIsMenuOpen(false);
   };
-
-  return (
-    <nav className={`navbar ${isInCampersSection && scrollDirection === 'down' ? 'navbar-hidden' : ''}`}>
-      <div className="navbar-container">
-        <ul className="navbar-links left-links">
-          <li className="hidden-links">
-            <a href="#mainCampers" onClick={handleLinkClick}>Inicio</a>
-          </li>
-          <li className="hidden-links">
-            <a href="#campers" onClick={handleLinkClick}>Historias</a>
-          </li>
-        </ul>
-        <div className="navbar-logo">
-          <a href="#mainCampers" onClick={handleLinkClick}>
-            <img src={campusLogo} alt="Campus Logo" />
-          </a>
-        </div>
-        <div className='navbar-hamburguesa-logo'>
-          <a href="#mainCampers" onClick={handleLinkClick}>
-            <img src={campusLogoCompleto} alt="Campus Logo" />
-          </a>
-        </div>
-        <ul className="navbar-links right-links">
-          <li className="hidden-links">
-            <a href="#campersGrid" onClick={handleLinkClick}>Campers</a>
-          </li>
-          <li className="hidden-links">
-            <a href="#formSection" onClick={handleLinkClick}>Donar</a>
-          </li>
-        </ul>
-        <button 
-          className={`hamburger-menu ${isMenuOpen ? 'is-active' : ''}`} 
-          onClick={toggleMenu}
-        >
-          <span className="hamburger-icon"></span>
-        </button>
+  
+  const DesktopNav = () => (
+    <div className="desktop-nav">
+      <div className="nav-links left-group">
+        <a href="#mainCampers" onClick={handleLinkClick}>Inicio</a>
+        <a href="#campers" onClick={handleLinkClick}>Historias</a>
       </div>
+      <div className="nav-logo">
+        <a href="#mainCampers" onClick={handleLinkClick}>
+          <img src={campusLogo} alt="Campus Logo" />
+        </a>
+      </div>
+      <div className="nav-links right-group">
+        <a href="#campersGrid" onClick={handleLinkClick}>Campers</a>
+        <a href="#formSection" onClick={handleLinkClick}>Donar</a>
+      </div>
+    </div>
+  );
+  
+  const MobileNav = () => (
+    <div className="mobile-nav">
+      <a href="#mainCampers" onClick={handleLinkClick}>
+        <img src={campusLogoCompleto} alt="Campus Logo" className="mobile-logo" />
+      </a>
+      <button 
+        className={`hamburger-menu ${isMenuOpen ? 'is-active' : ''}`} 
+        onClick={toggleMenu}
+      >
+        <span className="hamburger-icon"></span>
+      </button>
       {isMenuOpen && (
         <div className="mobile-menu">
-          <ul className="mobile-links">
-            <li>
-              <a href="#mainCampers" onClick={handleLinkClick}>Inicio</a>
-            </li>
-            <li>
-              <a href="#campers" onClick={handleLinkClick}>Historias</a>
-            </li>
-            <li>
-              <a href="#campersGrid" onClick={handleLinkClick}>Campers</a>
-            </li>
-            <li>
-              <a href="#formSection" onClick={handleLinkClick}>Donar</a>
-            </li>
-          </ul>
+          <div className="mobile-links">
+            <a href="#mainCampers" onClick={handleLinkClick}>Inicio</a>
+            <a href="#campers" onClick={handleLinkClick}>Historias</a>
+            <a href="#campersGrid" onClick={handleLinkClick}>Campers</a>
+            <a href="#formSection" onClick={handleLinkClick}>Donar</a>
+          </div>
         </div>
       )}
+    </div>
+  );
+  
+  return (
+    <nav className={`navbar ${isInCampersSection && scrollDirection === 'down' ? 'navbar-hidden' : ''}`}>
+      <div className="desktop-only"><DesktopNav /></div>
+      <div className="mobile-only"><MobileNav /></div>
     </nav>
   );
 };
