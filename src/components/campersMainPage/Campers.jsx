@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import campersData from "../../api/camperSucess";
+import campersData from "../../services/camperSucess";
 import "./styles/Campers.css";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 

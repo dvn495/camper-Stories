@@ -3,7 +3,7 @@ import { Pagination } from 'antd';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import campersData from "../../api/camperSucess";
+import campersData from "../../services/camperSucess";
 import "./styles/CampersGrid.css";
 import "./styles/GridPagination.css";
 
