@@ -29,10 +29,11 @@ const CamperController = {
     // Crear un nuevo camper
     create: async (req, res) => {
         try {
+            // Si el usuario es admin o camper, permitimos la creación
             const result = await CamperModel.createCamper(
-                req.body,
-                req.user.id,  // ID del usuario que hace la petición
-                req.user.role // Rol del usuario que hace la petición
+                req.body,                  // Datos del camper (usuario que lo crea)
+                req.user.id,               // El ID del usuario autenticado
+                req.user.role              // El rol del usuario autenticado
             );
             res.status(201).json({ message: "Camper creado", id: result.data.insertId });
         } catch (error) {
@@ -41,6 +42,7 @@ const CamperController = {
                 .json({ message: error.message });
         }
     },
+    
 
     // Actualizar un camper existente
     update: async (req, res) => {

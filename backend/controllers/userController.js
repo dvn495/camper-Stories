@@ -19,6 +19,7 @@ const UserController = {
             }
             res.status(200).json(result.data[0]);
         } catch (error) {
+            console.log(error);
             if (error.message === 'ID es requerido') {
                 return res.status(400).json({ message: error.message });
             }

@@ -26,7 +26,7 @@ class UserModel {
 
     static async getAllUsers(requestingUserId, userRole) {
         if (userRole !== 'admin') {
-            const query = "SELECT id, first_name, last_name, email, role FROM USER WHERE id = ?";
+            const query = "SELECT * FROM USER";
             return await db.query(query, [requestingUserId]);
         }
         const query = "SELECT id, first_name, last_name, email, role FROM USER";

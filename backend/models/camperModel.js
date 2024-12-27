@@ -15,14 +15,15 @@ const CamperModel = {
 
     // Crear un nuevo camper (solo el dueño del perfil o admin)
     createCamper: async ({ user_id, title, description, about, image, main_video_url }, requestingUserId, userRole) => {
-        // Verificar que solo el dueño del perfil o admin pueda crear
+        // Si el rol es 'admin', puede crear un camper para cualquier usuario.
+        // Si el rol es 'camper', solo podrá crear su propio camper.
         if (userRole !== 'admin' && user_id !== requestingUserId) {
             throw new Error('No tienes permiso para crear un perfil para otro usuario');
         }
-
+    
         const query = "INSERT INTO CAMPER (user_id, title, description, about, image, main_video_url) VALUES (?, ?, ?, ?, ?, ?)";
         return db.query(query, [user_id, title, description, about, image, main_video_url]);
-    },
+    },    
 
     // Actualizar un camper existente (solo el dueño del perfil o admin)
     updateCamper: async (id, updateData, requestingUserId, userRole) => {
