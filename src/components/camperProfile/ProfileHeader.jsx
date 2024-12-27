@@ -1,5 +1,5 @@
 import React from 'react';
-import { Share2, Mail } from 'lucide-react';
+import { Share2, Mail, MapPin, Cake } from 'lucide-react';
 import './styles/ProfileHeader.css';
 
 const ProfileHeader = ({ name, ciudadOrigen, edad, mainImage }) => {
@@ -13,8 +13,12 @@ const ProfileHeader = ({ name, ciudadOrigen, edad, mainImage }) => {
           <div className="profile-details">
             <h1 className="profile-name">{name}</h1>
             <div className='camper-details'>
-              <p className="profile-city">{ciudadOrigen}</p>
-              <p className="profile-age">{edad}</p>
+              <div className='profile-city'>
+                <MapPin /><p className="">{ciudadOrigen}</p>
+              </div>
+              <div className='profile-age'>
+                <Cake /><p className="">{edad} Años</p>
+              </div>
             </div>
             <div className="profile-buttons">
               <button className="profile-button">
@@ -33,7 +37,7 @@ const ProfileHeader = ({ name, ciudadOrigen, edad, mainImage }) => {
           <p>Merito 2</p>
           <p>Merito 3</p>
           <p>Merito 4</p>
-          </div>
+        </div>
       </div>
     </div>
   );

@@ -8,7 +8,6 @@ import ProjectCard from "../../components/camperProfile/ProjectCard";
 import TikTokEmbed from "../../components/camperProfile/TiktokEmbed";
 import Footer from "../../components/footer/Footer"
 import "./styles/CamperProfile.css";
-import EducationSection from "../../components/camperProfile/EducationSection";
 import 'swiper/css';
 import 'swiper/css/pagination';
 import NavbarProfile from '../../components/navbar/NavbarProfile';
@@ -123,7 +122,7 @@ const CamperProfile = () => {
             },
         ],
     };
-    
+
     return (
         <div className="camper-profile-view">
             <NavbarProfile />
@@ -150,9 +149,19 @@ const CamperProfile = () => {
 
                 </section>
 
+                <section className='dreams'>
+                    <h2 className="profile-subtitle">
+                        <span className="highlight">&lt;/</span> Mis Sueños
+                    </h2>
+                    <div className='dreams-grid-container'>
+                        <p>seccion grid mis sueños</p>
+                    </div>
+
+                </section>
+
                 <section className="process" id='proceso-formacion-profile'>
                     <h2 className="profile-subtitle">
-                        <span className="highlight">&lt;/</span> Su proceso de Formación
+                        <span className="highlight">&lt;/</span> Mi proceso de Formación
                     </h2>
                     <div className="videos">
                         {
@@ -185,12 +194,12 @@ const CamperProfile = () => {
                                     modules={[Pagination]}
                                     className="mySwiper"
                                 >
-                                {camper.processTikToks.map((video, index) => (
+                                    {camper.processTikToks.map((video, index) => (
                                         <SwiperSlide key={index} className="video-item">
                                             <TikTokEmbed videoUrl={video.url} title={video.title} />
                                         </SwiperSlide>
-                                ))}
-                                    
+                                    ))}
+
                                 </Swiper>
                             )}
                     </div>
@@ -198,13 +207,7 @@ const CamperProfile = () => {
 
                 <section className="tec-info">
                     <h2 className="profile-subtitle">
-                        <span className="highlight">&lt;/</span> Educacion
-                    </h2>
-                    <div className="education">
-                        <EducationSection />
-                    </div>
-                    <h2 className="profile-subtitle">
-                        <span className="highlight">&lt;/</span> Proyectos
+                        <span className="highlight">&lt;/</span> Mis Proyectos
                     </h2>
                     <div className="projects" id="projects-profile">
 
