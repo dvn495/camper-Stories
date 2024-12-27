@@ -4,7 +4,6 @@ import campusLogo from '../../assets/campus.svg';
 import campusLogoCompleto from '../../assets/CampusLogo.png';
 
 const NavbarProfile = () => {
-
  // URL para WhatsApp con mensaje predefinido
  const whatsappUrl = "https://wa.me/+573123456789?text=Hola,%20me%20interesa%20obtener%20más%20información";
  const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -51,12 +50,12 @@ const NavbarProfile = () => {
      {isMenuOpen && (
        <div className="mobile-menu-profile">
          <div className="mobile-links-profile">
-           <a href="/" onClick={handleLinkClick}>Sobre mi</a>
-           <a href="/" onClick={handleLinkClick}>Proceso</a>
-           <a href="/" onClick={handleLinkClick}>Sueños</a>
-           <a href="#formSection" onClick={handleLinkClick}>Proyectos</a>
-           <a href="/" onClick={handleLinkClick}>Patrocinar</a>
-           <a href="/" onClick={handleLinkClick}>Contactanos</a>
+           <a href="#sobre-mi-profile" onClick={handleLinkClick}>Sobre mi</a>
+           <a href="#proceso-formacion-profile" onClick={handleLinkClick}>Proceso</a>
+           <a href="#no-esta" onClick={handleLinkClick}>Sueños</a>
+           <a href="#projects-profile" onClick={handleLinkClick}>Proyectos</a>
+           <a href="#patrocinar-profile" onClick={handleLinkClick}>Patrocinar</a>
+           <a href={ whatsappUrl } onClick={handleLinkClick}>Contactanos</a>
          </div>
        </div>
      )}
