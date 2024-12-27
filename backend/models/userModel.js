@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 class UserModel {
     static async login(email, password) {
         try {
-            const query = 'SELECT * FROM users WHERE email = ?';
+            const query = 'SELECT * FROM USER WHERE email = ?';
             const result = await db.query(query, [email]);
             
             if (!result.data.length) {
