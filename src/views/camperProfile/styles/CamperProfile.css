@@ -2,6 +2,7 @@
 .camper-profile-view {
   width: 100%;  
   font-family: 'Courier New', Courier, monospace;
+  background: linear-gradient(180deg, #070727 0%, #090955 70%, #0C0C74 100%);
 }
 
 .profile-main-content {
@@ -11,7 +12,6 @@
   padding: 0 clamp(1rem, 10vw, 10rem) 2rem;
   background: linear-gradient(180deg, #070727 0%, #090955 70%, #0C0C74 100%);
 }
-
 
 /* Typography */
 .profile-subtitle,
