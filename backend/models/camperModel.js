@@ -25,37 +25,21 @@ const CamperModel = {
     },
 
     // Actualizar un camper existente (solo el dueño del perfil o admin)
-    updateCamper: async (id, updateData, requestingUserId, userRole) => {
-        // Primero verificar si el camper existe y obtener su user_id
-        const camper = await db.query("SELECT user_id FROM CAMPER WHERE id = ?", [id]);
-        
-        if (!camper.data.length) {
-            throw new Error('Camper no encontrado');
-        }
-
+    updateCamper: async (user_id, camperData, requestingUserId, userRole) => {
         // Verificar permisos
-        if (userRole !== 'admin' && camper.data[0].user_id !== requestingUserId) {
-            throw new Error('No tienes permiso para modificar este perfil');
+        if (userRole !== 'admin' && user_id !== requestingUserId) {
+            throw new Error('No tienes permiso para actualizar este perfil');
         }
-
-        const query = `
-            UPDATE CAMPER SET
-            title = ?,
-            description = ?,
-            about = ?,
-            image = ?,
-            main_video_url = ?
-            WHERE id = ?
-        `;
-        return db.query(query, [
-            updateData.title, 
-            updateData.description, 
-            updateData.about, 
-            updateData.image, 
-            updateData.main_video_url, 
-            id
-        ]);
-    },
+    
+        const query = "UPDATE CAMPER SET ? WHERE user_id = ?";
+        const result = await db.query(query, [camperData, user_id]);
+    
+        if (result.affectedRows === 0) {
+            throw new Error('Camper no encontrado o no actualizado');
+        }
+    
+        return result;
+    },    
 
     // Eliminar un camper (solo admin o dueño del perfil)
     deleteCamper: async (id, requestingUserId, userRole) => {
