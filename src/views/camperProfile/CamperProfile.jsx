@@ -149,9 +149,7 @@ const CamperProfile = () => {
                             <p>{camper.about}</p>
                             <button className="btn-patrocinar">Patrocinar</button>
                         </div>
-
                     </div>
-
                 </section>
 
                 <section className='dreams'>
@@ -159,10 +157,8 @@ const CamperProfile = () => {
                         <span className="highlight">&lt;/</span> Mis Sueños
                     </h2>
                     <div className='dreams-grid-container'>
-                        
                         <DreamsGrid />
                     </div>
-
                 </section>
 
                 <section className="process" id='proceso-formacion-profile'>
