@@ -63,11 +63,11 @@ const NavbarProfile = () => {
  );
 
  return (
-   <nav className="navbar-profile">
-     <div className="desktop-only-profile"><DesktopNav /></div>
-     <div className="mobile-only-profile"><MobileNav /></div>
-   </nav>
- );
+  <nav className={`navbar-profile ${isMenuOpen ? 'menu-open' : ''}`}>
+    <div className="desktop-only-profile"><DesktopNav /></div>
+    <div className="mobile-only-profile"><MobileNav /></div>
+  </nav>
+);
 };
 
 export default NavbarProfile;
