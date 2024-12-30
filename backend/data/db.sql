@@ -98,3 +98,35 @@ CREATE TABLE SPONSOR_CAMPER (
     FOREIGN KEY (sponsor_id) REFERENCES SPONSOR(id) ON DELETE CASCADE,
     FOREIGN KEY (camper_id) REFERENCES CAMPER(id) ON DELETE CASCADE
 );
+
+DELIMITER //
+
+CREATE TRIGGER after_user_insert
+AFTER INSERT ON USER
+FOR EACH ROW
+BEGIN
+    IF NEW.role = 'camper' THEN
+        INSERT INTO CAMPER (user_id, title, description, about, image, main_video_url)
+        VALUES (NEW.id, 'Título predeterminado', 'Descripción predeterminada', 'Acerca del camper predeterminado', NULL, NULL);
+    END IF;
+END//
+
+DELIMITER ;
+
+
+-- Crear tabla MERIT
+CREATE TABLE MERIT (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    icon VARCHAR(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+);
+
+-- Crear tabla intermedia CAMPER_MERIT
+CREATE TABLE CAMPER_MERIT (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    camper_id INT NOT NULL,
+    merit_id INT NOT NULL,
+    FOREIGN KEY (camper_id) REFERENCES CAMPER(id) ON DELETE CASCADE,
+    FOREIGN KEY (merit_id) REFERENCES MERIT(id) ON DELETE CASCADE
+);
+
