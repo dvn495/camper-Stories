@@ -74,7 +74,11 @@ const UserController = {
 
     delete: async (req, res) => {
         try {
-            await UserModel.deleteUser(req.params.id);
+            const userId = req.params.id;
+            const requestingUserId = req.user.id;
+            const userRole = req.user.role;
+    
+            await UserModel.deleteUser(userId, requestingUserId, userRole);
             res.status(200).json({ message: "Usuario eliminado" });
         } catch (error) {
             if (error.message === 'ID es requerido') {
@@ -82,7 +86,7 @@ const UserController = {
             }
             res.status(500).json({ message: "Error al eliminar el usuario", error: error.message });
         }
-    },
+    },    
 
     login: async (req, res) => {
         try {
