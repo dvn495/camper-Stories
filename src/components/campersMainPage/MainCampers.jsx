@@ -6,7 +6,7 @@ import Logo from '../../assets/Logo.png';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import './styles/MainCampers.css';
-import profiles from '../../api/camperProfile';
+import profiles from '../../services/camperProfile';
 
 const MainCampers = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

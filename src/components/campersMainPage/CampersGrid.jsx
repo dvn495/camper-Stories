@@ -3,18 +3,18 @@ import { Pagination } from 'antd';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import campersData from "../../api/camperSucess";
+import campersData from "../../services/camperSucess";
 import "./styles/CampersGrid.css";
 import "./styles/GridPagination.css";
 
 const CampersGrid = () => {
     const [currentPage, setCurrentPage] = useState(1);
-    const [campersPerPage, setCampersPerPage] = useState(9);
+    const [campersPerPage, setCampersPerPage] = useState(8);
     const [expandedSkills, setExpandedSkills] = useState({});
 
     useEffect(() => {
         const updateCampersPerPage = () => {
-            setCampersPerPage(window.innerWidth <= 768 ? 4 : 9);
+            setCampersPerPage(window.innerWidth <= 768 ? 4 : 8);
         };
         updateCampersPerPage();
         window.addEventListener("resize", updateCampersPerPage);
@@ -47,7 +47,7 @@ const CampersGrid = () => {
                                 <div className='camper-maininfo'>
                                     <h3>{camper.name}</h3>
                                     <p>{camper.role}</p>
-                                </div>
+                                
                                 <div className="technologies">
                                     <span className="tech-label">Meritos:</span>
                                     <motion.div layout className="skills-wrapper">
@@ -89,6 +89,7 @@ const CampersGrid = () => {
                                 <div className="buttons">
                                     <button className="info-button">Mas Info</button>
                                     <button className="sponsor-button">Patrocinar</button>
+                                </div>
                                 </div>
                             </div>
                         </div>

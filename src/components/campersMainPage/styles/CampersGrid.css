@@ -1,92 +1,85 @@
+/* Base Layout */
 .campersgrid {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  min-height: 100vh;
-  padding: 2rem 1rem;
-  background-image:
-      linear-gradient(rgba(1, 1, 48, 0.7), rgba(1, 1, 48, 0.7)), 
-      url('src/assets/campuswall.png');
+  min-height: 80vh;
+  padding: 3rem 1rem;
+  background-image: linear-gradient(rgba(1, 1, 48, 0.7), rgba(1, 1, 48, 0.7)), 
+                    url('src/assets/campuswall.png');
   background-size: cover;
-  background-position: center; 
-  background-repeat: no-repeat; 
+  background-position: center;
+  background-repeat: no-repeat;
   box-shadow: 0px -10px 200px #17172b;
   position: relative;
   overflow: visible;
 }
 
-.campersgrid-title {
-  margin-top: 2rem;
-  width: 70vw;
+/* Grid Layout */
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding-top: 1rem;
+  position: relative;
+  z-index: 1;
 }
 
 .badge-filters {
   display: flex;
   width: 76%;
   height: 10rem;
-  border-radius: 20px;
-  background-color: #26235886;
   margin-bottom: 1rem;
+  background-color: #26235886;
+  border-radius: 20px;
 }
 
-.grid-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  padding-top: 2rem;
-  position: relative;
-  z-index: 1;
-}
-
+/* Developer Card */
 .developer-card {
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 500px;
-  height: 200px;
+  width: fit-content;
   max-width: 600px;
-  padding: 14px 24px;
-  border-radius: 8px;
-  background-color: #2D2B54;
-  color: white;
+  height: fit-content;
   margin-bottom: 20px;
-}
-
-.camper-image {
-  width: 200px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.camper-image img {
-  width: 200px;
-  max-height: 130px;
-  border-radius: 50%;
-  border: 2px solid #D9D9D9;
-  object-fit: cover;
+  background-color: #2D2B54;
+  color: #ffffff;
+  border-radius: 10px;
 }
 
 .dev-card-content {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  padding-left: 24px;
+  flex-direction: row;
+  width: 440px;
+  height: auto;
+  padding: 20px;
 }
 
+/* Camper Information */
 .camper-maininfo {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
 }
 
-.camper-name {
-  font-family: 'Poppins', sans-serif;
-  font-size: clamp(18px, 1.5vw, 20px);
-  font-weight: 600;
+.camper-image {
+  display: flex;
+  align-items: center;
+  width: 100px;
+  height: 230px;
+}
+
+.camper-image img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border: 2px solid #D9D9D9;
+  border-radius: 50%;
 }
 
 .camper-title {
@@ -96,16 +89,19 @@
   text-align: start;
 }
 
+/* Technologies Section */
 .technologies {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: 8px 0;
-  height: fit-content;
 }
 
 .tech-label {
   color: #F4B422;
   font-size: clamp(13px, 1.5vw, 15px);
   font-weight: 500;
-
 }
 
 .technologies p {
@@ -114,48 +110,106 @@
   line-height: 1.5;
 }
 
+/* Skills Display */
+.skills-container {
+  display: flex;
+  flex-direction: row !important;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 300px !important;
+  max-height: 30px;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.skills-container.expanded {
+  max-height: 300px;
+}
+
+.skill-item {
+  padding: 5px 10px;
+  background-color: #636386;
+  font-size: 12px;
+  width: fit-content;
+  height: fit-content;
+  white-space: nowrap;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.skill-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+}
+
+/* Buttons */
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
   padding: 0.6em 1.2em;
+  background-color: #1a1a1a;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  border: 1px solid transparent;
+  border-radius: 8px;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 
 .buttons {
   display: flex;
-  gap: 16px;
+  gap: 1em;
+  margin-top: 0.5em;
 }
 
 .buttons button {
   padding: 8px 24px;
+  font-weight: 500;
   border: none;
   border-radius: 4px;
-  font-weight: 500;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
-.info-button, .sponsor-button {
+.info-button,
+.sponsor-button {
   background-color: #F4B422;
   color: #2D2B54;
 }
 
-.info-button:hover, .sponsor-button:hover {
+.info-button:hover,
+.sponsor-button:hover {
   background-color: #FDC347;
+}
+
+.expand-skills-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 25px 0 8px;
+  margin-top: -30px;
+  background: linear-gradient(transparent, #2D2B54 50%);
+  border: none;
+  position: relative;
+  bottom: -20px;
+}
+
+.expand-skills-button:focus {
+  outline: 0;
 }
 
 /* Media Queries */
 @media (max-width: 768px) {
   .developer-card {
-      width: 90%;
-      height: auto;
-      min-height: 159px;
-      margin: 0.5rem 0;
+    width: 90%;
+    min-height: 159px;
+    height: auto;
+    margin: 0.5rem 0;
+  }
+
+  .dev-card-content {
+    justify-content: center;
   }
 
   .technologies {
@@ -163,7 +217,7 @@ button {
     text-align: start;
   }
 
-  .buttons{
+  .buttons {
     padding: 3px 0 5px 0;
   }
 
@@ -172,19 +226,6 @@ button {
     width: 100%;
     justify-content: center;
     padding: 0 2rem 0 3.3rem;
-  }
-
-  .camper-image img {
-    width: 100px;
-    max-height: 100px;
-    border-radius: 50%;
-    border: 2px solid #D9D9D9;
-    object-fit: cover;
-  }
-
-  .dev-card-content {
-      padding-left: 0;
-      justify-content: center;
   }
 
   .camper-name {
@@ -198,100 +239,53 @@ button {
 }
 
 @media (max-width: 480px) {
-
- .technologies {
-    margin: 20px 0;
- }
- 
- .tech-label {
-    font-weight: bold;
-    margin-bottom: 10px;
-    display: block;
- }
- 
- .skills-container {
-    /*display: grid ;
-    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)) ;*/
-    flex-direction: row !important ;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 300px !important;
-    gap: 1px;
-    overflow-x: auto;
- }
- 
- .skill-item {
-    background-color: #636386;
-    height: fit-content;
-    width: fit-content;
-    padding: 5px 10px;
-    border-radius: 20px;
-    text-align: center;
-    white-space: nowrap;
-    font-size: 12px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    transition: transform 0.2s;
- }
- 
- .skill-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
- }
   .campersgrid {
-      padding: 1rem 0.5rem;
+    padding: 1rem 0.5rem;
   }
 
   .grid-container {
     width: 85%;
   }
 
-  .dev-card-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column; 
-    padding-left: 0; 
-    text-align: center;
-}
-
-.technologies {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column; /* Asegura que el contenido se apile verticalmente */
-  text-align: center;
-}
-
-  .camper-maininfo {
-    display: flex;
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center; 
-    text-align: center;
-  }
-
-
-  .camper-image img {
-    width: 128px;
-    max-height: 128px;
-  }
-
-  .camper-image{
-    width: auto; /* Ajusta el ancho automáticamente */
-    
-  }
-
-  .campersgrid-title {
-      width: 100%;
-  }
-
   .developer-card {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    width: 280vw;
+    
+    width: 340px;
+    padding: 8px 0 0 0;
     border-radius: 20px;
+  }
+
+  .dev-card-content,
+  .technologies,
+  .camper-maininfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .camper-maininfo {
+    padding: 20px 0 0 0;
+  }
+
+  .technologies {
+    margin: 20px 0;
+  }
+
+  .tech-label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .camper-image,
+  .camper-image img {
+    width: 128px;
+    height: 128px;
   }
 
   .buttons button {
@@ -301,50 +295,12 @@ button {
     width: 100px;
     height: 45px;
     padding: 15px;
+    margin: 5px;
     font-size: 13px;
-    margin: 5px;    
   }
-}
 
-
-
-
-
-
-
-
-.skills-wrapper {
-  position: relative;
-  width: 100%;
-}
-
-.skills-container {
-  max-height: 50px;
-  overflow: hidden;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  transition: max-height 0.3s ease;
-}
-
-.skills-container.expanded {
-  max-height: 300px;
-}
-
-.expand-skills-button {
-  margin-top: 20px;  
-  background: linear-gradient(transparent, #2D2B54 50%);
-  position: relative;
-  bottom: -20px;     
-  border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 25px 0 8px;
-  margin-top: -30px;
-  border: none;
-}
-.expand-skills-button:focus {
-  outline: 0px ;
+  .skills-wrapper {
+    position: relative;
+    width: 100%;
+  }
 }

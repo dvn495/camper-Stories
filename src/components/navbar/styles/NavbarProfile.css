@@ -1,4 +1,4 @@
-.navbar {
+.navbar-profile {
     background-color: transparent;
     color: white;
     padding: 10px;
@@ -11,12 +11,8 @@
     transition: transform 0.3s ease;
   }
   
-  .navbar-hidden {
-    transform: translateY(-100%);
-  }
-  
   /* Desktop Navigation */
-  .desktop-nav {
+  .desktop-nav-profile {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
@@ -25,45 +21,45 @@
     gap: 20px;
   }
   
-  .nav-links {
+  .nav-links-profile {
     display: flex;
     gap: 2rem;
   }
   
-  .nav-logo img {
+  .nav-logo-profile img {
     height: 70px;
     width: auto;
     margin: 0 20px;
   }
   
-  .nav-links a {
+  .nav-links-profile a {
     text-decoration: none;
     color: white;
     font-size: 1rem;
+    font-weight: 500;
     transition: color 0.3s ease;
   }
   
-  .nav-links a:hover {
+  .nav-links-profile a:hover {
     color: #60a5fa;
   }
   
   /* Mobile Navigation */
-  .mobile-nav {
+  .mobile-nav-profile {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px 0 10px;
   }
   
-  .mobile-logo {
+  .mobile-logo-profile {
     width: 180px;
     height: auto;
     position: relative;
     z-index: 1001;
   }
   
-  /* Hamburger Menu */
-  .hamburger-menu {
+  .hamburger-menu-profile {
     display: block;
     background: none;
     border: none;
@@ -77,11 +73,11 @@
     transform: translateY(-5px);
   }
   
-  .hamburger-menu:focus {
+  .hamburger-menu-profile:focus {
     outline: none;
   }
   
-  .hamburger-icon {
+  .hamburger-icon-profile {
     position: relative;
     display: inline-block;
     width: 100%;
@@ -90,8 +86,8 @@
     transition: background-color 0.3s ease;
   }
   
-  .hamburger-icon::before,
-  .hamburger-icon::after {
+  .hamburger-icon-profile::before,
+  .hamburger-icon-profile::after {
     content: '';
     position: absolute;
     width: 100%;
@@ -100,30 +96,30 @@
     transition: transform 0.3s ease;
   }
   
-  .hamburger-icon::before {
+  .hamburger-icon-profile::before {
     top: -6px;
   }
   
-  .hamburger-icon::after {
+  .hamburger-icon-profile::after {
     bottom: -6px;
   }
   
-  .hamburger-menu.is-active .hamburger-icon {
+  .hamburger-menu-profile.is-active .hamburger-icon-profile {
     background-color: transparent;
   }
   
-  .hamburger-menu.is-active .hamburger-icon::before {
+  .hamburger-menu-profile.is-active .hamburger-icon-profile::before {
     transform: rotate(45deg);
     top: 0;
   }
   
-  .hamburger-menu.is-active .hamburger-icon::after {
+  .hamburger-menu-profile.is-active .hamburger-icon-profile::after {
     transform: rotate(-45deg);
     bottom: 0;
   }
   
   /* Mobile Menu */
-  .mobile-menu {
+  .mobile-menu-profile {
     background-color: rgba(0, 0, 102, 0.6);
     color: white;
     padding: 20px 0;
@@ -141,7 +137,7 @@
     z-index: 999;
   }
   
-  .mobile-links {
+  .mobile-links-profile {
     padding: 0;
     margin: 2rem;
     display: flex;
@@ -151,14 +147,14 @@
     width: 90%;
     max-width: 300px;
   }
-
-  .navbar.menu-open {
-    transform: none !important; /* Evita que se oculte cuando el menú está abierto */
-    position: fixed; /* Mantiene el navbar en su lugar cuando el menú está abierto */
-    width: 100%;
-  }
   
-  .mobile-links a {
+  .navbar-profile.menu-open {
+    transform: none !important;
+    position: fixed;
+    width: 100%;
+}
+
+  .mobile-links-profile a {
     text-decoration: none;
     color: white;
     font-size: 1.2rem;
@@ -167,20 +163,20 @@
     transition: color 0.3s ease;
   }
   
-  .mobile-links a:hover {
+  .mobile-links-profile a:hover {
     color: #60a5fa;
   }
   
   /* Responsive */
-  .mobile-only {
+  .mobile-only-profile {
     display: none;
   }
   
   @media (max-width: 768px) {
-    .desktop-only {
+    .desktop-only-profile {
       display: none;
     }
-    .mobile-only {
+    .mobile-only-profile {
       display: block;
     }
   }

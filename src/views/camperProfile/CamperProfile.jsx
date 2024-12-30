@@ -8,10 +8,10 @@ import ProjectCard from "../../components/camperProfile/ProjectCard";
 import TikTokEmbed from "../../components/camperProfile/TiktokEmbed";
 import Footer from "../../components/footer/Footer"
 import "./styles/CamperProfile.css";
-import EducationSection from "../../components/camperProfile/EducationSection";
 import 'swiper/css';
 import 'swiper/css/pagination';
-import Navbar from '@/components/navbar/Navbar';
+import NavbarProfile from '../../components/navbar/NavbarProfile';
+import DreamsGrid from '../../components/camperProfile/DreamsGrid';
 
 
 const CamperProfile = () => {
@@ -65,12 +65,15 @@ const CamperProfile = () => {
             },
         ],
         skills: [
-            { name: "TypeScript", icon: <FileType2 className="w-5 h-5 text-navy-900" /> },
-            { name: "JavaScript", icon: <FileJson className="w-5 h-5 text-navy-900" /> },
-            { name: "SpringBoot", icon: <Globe className="w-5 h-5 text-navy-900" /> },
-            { name: "MySQL", icon: <Database className="w-5 h-5 text-navy-900" /> },
-            { name: "ReactJS", icon: <Code2 className="w-5 h-5 text-navy-900" /> },
-            { name: "HTML/CSS", icon: <Layout className="w-5 h-5 text-navy-900" /> }
+            { name: "Espiritu Guerrero ⚔️" },
+            { name: "Nuevos horizontes🌅" },
+            { name: "Trota mundos 🌎"},
+            { name: "Primer programador 💻"},
+            { name: "Gran jefe 👑"},
+            { name: "Cabeza de familia 👨‍👩‍👧‍👦"},
+            { name: "Mujer de Impacto 💪"},
+            { name: "Emprendedor 💼"},
+            { name: "Rompe Esquemas 💥"}
         ],
         projects: [
             {
@@ -123,19 +126,20 @@ const CamperProfile = () => {
             },
         ],
     };
-    
+
     return (
         <div className="camper-profile-view">
-            <Navbar />
+            <NavbarProfile />
             <div className="profile-main-content">
                 <ProfileHeader
+                    skills={camper.skills}
                     name={camper.name}
                     ciudadOrigen={camper.ciudadOrigen}
                     edad={camper.edad}
                     mainImage={camper.mainImage}
                 />
 
-                <section className="about">
+                <section className="about" id="sobre-mi-profile">
                     <div className="about-content">
                         <div className="col-video">
                             <VideoPlayer videoUrl={camper.mainVideo} title="Historia Camper" />
@@ -150,9 +154,20 @@ const CamperProfile = () => {
 
                 </section>
 
-                <section className="process">
+                <section className='dreams'>
                     <h2 className="profile-subtitle">
-                        <span className="highlight">&lt;/</span> Su proceso de Formación
+                        <span className="highlight">&lt;/</span> Mis Sueños
+                    </h2>
+                    <div className='dreams-grid-container'>
+                        
+                        <DreamsGrid />
+                    </div>
+
+                </section>
+
+                <section className="process" id='proceso-formacion-profile'>
+                    <h2 className="profile-subtitle">
+                        <span className="highlight">&lt;/</span> Mi proceso de Formación
                     </h2>
                     <div className="videos">
                         {
@@ -185,12 +200,12 @@ const CamperProfile = () => {
                                     modules={[Pagination]}
                                     className="mySwiper"
                                 >
-                                {camper.processTikToks.map((video, index) => (
+                                    {camper.processTikToks.map((video, index) => (
                                         <SwiperSlide key={index} className="video-item">
                                             <TikTokEmbed videoUrl={video.url} title={video.title} />
                                         </SwiperSlide>
-                                ))}
-                                    
+                                    ))}
+
                                 </Swiper>
                             )}
                     </div>
@@ -198,15 +213,9 @@ const CamperProfile = () => {
 
                 <section className="tec-info">
                     <h2 className="profile-subtitle">
-                        <span className="highlight">&lt;/</span> Educacion
+                        <span className="highlight">&lt;/</span> Mis Proyectos
                     </h2>
-                    <div className="education">
-                        <EducationSection />
-                    </div>
-                    <h2 className="profile-subtitle">
-                        <span className="highlight">&lt;/</span> Proyectos
-                    </h2>
-                    <div className="projects">
+                    <div className="projects" id="projects-profile">
 
                         {camper.projects.map((project, index) => (
                             <ProjectCard
@@ -220,7 +229,7 @@ const CamperProfile = () => {
                         ))}
                     </div>
                 </section>
-                <section className="sponsor-call-to-action">
+                <section className="sponsor-call-to-action" id="patrocinar-profile">
                     <p className="cta-text">
                         "Con tu apoyo, puedo continuar desarrollando habilidades y creando soluciones innovadoras. ¡Gracias por creer en mi potencial!"
                     </p>
