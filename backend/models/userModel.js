@@ -38,43 +38,43 @@ class UserModel {
         }
     }
     
-static async getUserByIdForAdmin(userId) {
-    try {
-        const query = "SELECT id, first_name, last_name, email, role FROM USER WHERE id = ?";
-        const result = await db.query(query, [userId]);
-
-        if (!result.data.length) {
-            throw new Error('Usuario no encontrado');
-        }
-
-        return result.data[0]; // Retorna el primer usuario encontrado
-    } catch (error) {
-        console.error('Error retrieving user for admin:', error);
-        throw new Error('Error al obtener el usuario.');
-    }
-}
-
-    // Obtener un usuario por ID (para campers)
-    static async getUserByIdForCamper(userId, requestingUserId) {
+    static async getUserByIdForAdmin(userId) {
         try {
-            if (requestingUserId !== userId) {
-                throw new Error('Solo puedes buscar tu propia información.');
-            }
-
-            // Ejecutar la consulta para obtener el usuario
             const query = "SELECT id, first_name, last_name, email, role FROM USER WHERE id = ?";
-            const [user] = await db.query(query, [userId]);
+            const result = await db.query(query, [userId]);
 
-            // Verificar si el usuario existe
-            if (!user) {
+            if (!result.data.length) {
                 throw new Error('Usuario no encontrado');
             }
 
-            return user;
+            return result.data[0]; // Retorna el primer usuario encontrado
         } catch (error) {
-            console.error('Error retrieving user for camper:', error);
-            throw new Error('Error al obtener tu información.');
+            console.error('Error retrieving user for admin:', error);
+            throw new Error('Error al obtener el usuario.');
         }
+    }
+
+        // Obtener un usuario por ID (para campers)
+        static async getUserByIdForCamper(userId, requestingUserId) {
+            try {
+                if (requestingUserId !== userId) {
+                    throw new Error('Solo puedes buscar tu propia información.');
+                }
+
+                // Ejecutar la consulta para obtener el usuario
+                const query = "SELECT id, first_name, last_name, email, role FROM USER WHERE id = ?";
+                const [user] = await db.query(query, [userId]);
+
+                // Verificar si el usuario existe
+                if (!user) {
+                    throw new Error('Usuario no encontrado');
+                }
+
+                return user;
+            } catch (error) {
+                console.error('Error retrieving user for camper:', error);
+                throw new Error('Error al obtener tu información.');
+            }
     }
 
     

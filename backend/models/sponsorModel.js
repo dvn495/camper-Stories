@@ -14,16 +14,16 @@ const SponsorModel = {
     },
 
     // Crear un nuevo sponsor
-    createSponsor: async ({ user_id, first_name, last_name, email, phone, message }) => {
-        if (!user_id || !first_name || !last_name || !email) {
+    createSponsor: async ({ camper_id, first_name, last_name, email, phone, message }) => {
+        if (!camper_id || !first_name || !last_name || !email) {
             throw new Error("Datos del formulario incompletos");
         }
         const query = `
-            INSERT INTO SPONSOR (user_id, first_name, last_name, email, phone, message)
+            INSERT INTO SPONSOR (camper_id, first_name, last_name, email, phone, message)
             VALUES (?, ?, ?, ?, ?, ?)
         `;
         return db.query(query, [
-            user_id,
+            camper_id,
             first_name,
             last_name,
             email.toLowerCase(),

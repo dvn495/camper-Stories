@@ -1,10 +1,9 @@
-//const API_BASE_URL = 'http://localhost:5000/';
+// apiConfig.js
 
-//export const endpoints = {
-  // ejemplo de uso del enpoint updateUser: `${API_BASE_URL}users`,
-//};
+const API_BASE_URL = 'http://localhost:5000/';
 
-//export default API_BASE_URL;
+export const endpoints = {
+  sponsors: `${API_BASE_URL}sponsors`
+};
 
-// ejemplo de uso para fecht en los archivos frontend
-// import API_BASE_URL, { endpoints } from './ruta/al/archivo';
+export default API_BASE_URL;

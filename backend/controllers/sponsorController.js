@@ -29,14 +29,14 @@ const SponsorController = {
     // Crear un nuevo sponsor
     create: async (req, res) => {
         try {
-            const { user_id, first_name, last_name, email, phone, message } = req.body;
+            const { camper_id, first_name, last_name, email, phone, message } = req.body;
     
-            if (!user_id) {
-                return res.status(400).json({ message: "El campo user_id es obligatorio." });
+            if (!camper_id) {
+                return res.status(400).json({ message: "El campo camper_id es obligatorio." });
             }
     
             const result = await SponsorModel.createSponsor({
-                user_id,
+                camper_id,
                 first_name,
                 last_name,
                 email,

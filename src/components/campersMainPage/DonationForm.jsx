@@ -1,34 +1,89 @@
-import { useState } from 'react'
-import './styles/DonationForm.css'
+import { useState } from 'react';
+import './styles/DonationForm.css';
+import { endpoints } from '../../services/apiConfig';
 
 export default function DonationForm() {
     const [formData, setFormData] = useState({
-        nombre: '',
-        apellido: '',
+        first_name: '',
+        last_name: '',
         email: '',
-        celular: '',
-        mensaje: ''
-    })
+        phone: '',
+        message: ''
+    });
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
+    const [notification, setNotification] = useState({
+        show: false,
+        type: '',
+        message: ''
+    });
 
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
+    const showNotification = (type, message) => {
+        setNotification({
+            show: true,
+            type,
+            message
+        });
+        // Ocultar la notificación después de 5 segundos
+        setTimeout(() => {
+            setNotification({
+                show: false,
+                type: '',
+                message: ''
+            });
+        }, 5000);
+    };
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
 
+        try {
+            const response = await fetch(endpoints.sponsors, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
 
-        console.log('Form submitted:', formData)
-    }
+            const data = await response.json();
+            
+            if (response.ok) {
+                showNotification('success', '¡Gracias! Tu información ha sido enviada exitosamente.');
+                setFormData({
+                    first_name: '',
+                    last_name: '',
+                    email: '',
+                    phone: '',
+                    message: ''
+                });
+            } else {
+                showNotification('error', 'Hubo un error al enviar tu información. Por favor intenta de nuevo.');
+            }
+        } catch (error) {
+            showNotification('error', 'Error de conexión. Por favor verifica tu conexión a internet e intenta de nuevo.');
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
 
     const handleChange = (e) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
-        })
-    }
+        });
+    };
 
     return (
         <div className="form-card">
+            {notification.show && (
+                <div className={`notification ${notification.type}`}>
+                    {notification.message}
+                </div>
+            )}
+            
             <form onSubmit={handleSubmit} className="form">
                 <div className="form-row">
                     <div className="form-group">
@@ -37,11 +92,12 @@ export default function DonationForm() {
                         </label>
                         <input
                             className="form-input"
-                            name="nombre"
-                            value={formData.nombre}
+                            name="first_name"
+                            value={formData.first_name}
                             onChange={handleChange}
                             placeholder="Tu nombre"
                             required
+                            disabled={isSubmitting}
                         />
                     </div>
                     <div className="form-group">
@@ -50,11 +106,12 @@ export default function DonationForm() {
                         </label>
                         <input
                             className="form-input"
-                            name="apellido"
-                            value={formData.apellido}
+                            name="last_name"
+                            value={formData.last_name}
                             onChange={handleChange}
                             placeholder="Tu apellido"
                             required
+                            disabled={isSubmitting}
                         />
                     </div>
                 </div>
@@ -62,7 +119,7 @@ export default function DonationForm() {
                 <div className="form-row">
                     <div className="form-group">
                         <label className="form-label">
-                            Correo Electronico <span className="required">*</span>
+                            Correo Electrónico <span className="required">*</span>
                         </label>
                         <input
                             className="form-input"
@@ -72,6 +129,7 @@ export default function DonationForm() {
                             onChange={handleChange}
                             placeholder="tu@email.com"
                             required
+                            disabled={isSubmitting}
                         />
                     </div>
                     <div className="form-group">
@@ -81,11 +139,12 @@ export default function DonationForm() {
                         <input
                             className="form-input"
                             type="tel"
-                            name="celular"
-                            value={formData.celular}
+                            name="phone"
+                            value={formData.phone}
                             onChange={handleChange}
                             placeholder="(321) 123-0203"
                             required
+                            disabled={isSubmitting}
                         />
                     </div>
                 </div>
@@ -94,17 +153,22 @@ export default function DonationForm() {
                     <label className="form-label">Tu Mensaje!</label>
                     <textarea
                         className="form-textarea"
-                        name="mensaje"
-                        value={formData.mensaje}
+                        name="message"
+                        value={formData.message}
                         onChange={handleChange}
                         placeholder="Deja un mensaje para los campers!"
+                        disabled={isSubmitting}
                     />
                 </div>
 
-                <button type="submit" className="submit-button">
-                    PATROCINAR
+                <button 
+                    type="submit" 
+                    className="submit-button"
+                    disabled={isSubmitting}
+                >
+                    {isSubmitting ? 'Enviando...' : 'PATROCINAR'}
                 </button>
             </form>
         </div>
-    )
+    );
 }
