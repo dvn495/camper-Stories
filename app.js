@@ -6,6 +6,9 @@ const http = require("http");
 const fs = require("fs");
 const jwt = require('jsonwebtoken');
 const rateLimit = require('express-rate-limit');
+const cors = require('cors');
+
+const corsOptions = require('./backend/config/corsOptions');
 
 // * Importación de la conexión a la base de datos
 const db = require("./backend/helpers/conexion");
@@ -16,6 +19,8 @@ const server = http.createServer(app);
 
 // * Middleware para procesar datos JSON en las peticiones
 app.use(express.json());
+app.use(cors(corsOptions));
+
 
 // ! Middleware para manejar errores de JWT
 app.use((err, req, res, next) => {
