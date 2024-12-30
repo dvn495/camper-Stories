@@ -151,6 +151,12 @@
     width: 90%;
     max-width: 300px;
   }
+
+  .navbar.menu-open {
+    transform: none !important; /* Evita que se oculte cuando el menú está abierto */
+    position: fixed; /* Mantiene el navbar en su lugar cuando el menú está abierto */
+    width: 100%;
+  }
   
   .mobile-links a {
     text-decoration: none;
