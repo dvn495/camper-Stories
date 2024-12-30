@@ -65,12 +65,15 @@ const CamperProfile = () => {
             },
         ],
         skills: [
-            { name: "TypeScript", icon: <FileType2 className="w-5 h-5 text-navy-900" /> },
-            { name: "JavaScript", icon: <FileJson className="w-5 h-5 text-navy-900" /> },
-            { name: "SpringBoot", icon: <Globe className="w-5 h-5 text-navy-900" /> },
-            { name: "MySQL", icon: <Database className="w-5 h-5 text-navy-900" /> },
-            { name: "ReactJS", icon: <Code2 className="w-5 h-5 text-navy-900" /> },
-            { name: "HTML/CSS", icon: <Layout className="w-5 h-5 text-navy-900" /> }
+            { name: "Espiritu Guerrero ⚔️" },
+            { name: "Nuevos horizontes🌅" },
+            { name: "Trota mundos 🌎"},
+            { name: "Primer programador 💻"},
+            { name: "Gran jefe 👑"},
+            { name: "Cabeza de familia 👨‍👩‍👧‍👦"},
+            { name: "Mujer de Impacto 💪"},
+            { name: "Emprendedor 💼"},
+            { name: "Rompe Esquemas 💥"}
         ],
         projects: [
             {
@@ -129,6 +132,7 @@ const CamperProfile = () => {
             <NavbarProfile />
             <div className="profile-main-content">
                 <ProfileHeader
+                    skills={camper.skills}
                     name={camper.name}
                     ciudadOrigen={camper.ciudadOrigen}
                     edad={camper.edad}
