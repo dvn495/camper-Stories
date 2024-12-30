@@ -39,41 +39,6 @@
     font-style: oblique;
 }
 
-/* Navegación */
-
-/* Efecto del perfil */
-.perfil {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-}
-
-
-.perfil::after {
-    content: '';
-    position: absolute;
-    bottom: 0px;
-    left: 0;
-    width: 100%;
-    height: 40px;
-    background: var(--color3);
-    clip-path: polygon(0 100%, 100% 100%, 50% 0);
-    z-index: 1;
-    border-radius: 0 0 10px 10px;
-    transition: background-color 0.3s ease;
-}
-
-/* Efectos hover - los movemos dentro de una media query para pantallas más grandes */
-@media (min-width: 769px) {
-    .card:hover .perfil::after {
-        background: var(--color3);
-    }
-
-    /* Solo aplicamos el efecto amarillo a las tarjetas centrales */
-    .center-card:hover .perfil::after {
-        background: var(--color2);
-    }
-}
 
 /* Overlay de la tarjeta */
 .card-overlay {
