@@ -205,43 +205,81 @@
   gap: 0.5rem; /* Espaciado entre texto e ícono */
 }
 
-
-
-/* Responsive */
-@media (max-width: 1024px) {
+/* responsive */
+@media (max-width: 1200px) {
   .profile-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
+    padding: 0 1rem;
+    gap: 1.5rem;
   }
-
-  .profile-content {
+ 
+  .profile-image {
+    width: 200px;
+    height: 200px;
+  }
+ 
+  .profile-name {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+  }
+ }
+ 
+ @media (max-width: 768px) {
+  .profile-header {
+    padding: 2rem 1rem;
+  }
+ 
+  .profile-container {
     flex-direction: column;
     text-align: center;
   }
-
-  .profile-badges-box {
-    width: 100%;
+ 
+  .profile-content {
+    flex-direction: column;
+    padding: 0;
+    gap: 2rem;
   }
-
-  .profile-buttons {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 640px) {
-  .profile-header {
-    margin: 0 1rem;
-    padding: 2rem 0;
-  }
-
+ 
   .profile-image {
-    height: 150px;
-    width: 150px;
+    width: 180px;
+    height: 180px;
   }
-
+ 
+  .camper-details {
+    align-items: center;
+  }
+ 
+  .profile-badges-box {
+    max-width: none;
+    padding: 1.2rem;
+  }
+ 
   .badges-container {
     justify-content: center;
   }
-}
-
+ }
+ 
+ @media (max-width: 480px) {
+  .profile-header {
+    padding: 1.5rem 0.5rem;
+  }
+ 
+  .profile-image {
+    width: 150px;
+    height: 150px;
+  }
+ 
+  .profile-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.8rem;
+  }
+ 
+  .profile-button {
+    width: 100%;
+    justify-content: center;
+  }
+ 
+  .skill-item {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+ }
