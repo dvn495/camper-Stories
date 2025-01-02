@@ -6,6 +6,10 @@ const ProtectedRoute = ({ children, allowedRoles = [] }) => {
   // const role = localStorage.getItem('role');
   
   // CREDENCIALES SIMULADAS PARA DESARROLLO
+
+  // TRUE = AUTENTICADO
+  // FALSE = SIN AUTENTICAR
+
   const token = true
   const role = "ADMIN"
 

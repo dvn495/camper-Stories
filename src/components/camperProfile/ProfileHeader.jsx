@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Share2, Mail, MapPin, Cake, Trophy } from 'lucide-react';
+import { Share2, Mail, MapPin, Cake, Trophy, ChevronDown } from 'lucide-react';
 import './styles/ProfileHeader.css';
 
 const ProfileHeader = ({ skills, name, ciudadOrigen, edad, mainImage }) => {
@@ -12,11 +12,11 @@ const ProfileHeader = ({ skills, name, ciudadOrigen, edad, mainImage }) => {
   };
 
   return (
-    <motion.div 
+    <motion.div
       className="profile-header"
       initial={false}
       animate={{ height: 'auto' }} // Deja que Framer Motion calcule automáticamente
-      transition={{ duration: 0.3, ease: 'easeInOut' }}
+      transition={{ duration: 0.5, ease: [0.25, 0.8, 0.25, 1] }}
       layout // Framer Motion ajustará automáticamente el diseño
     >
       <div className="profile-container">
@@ -63,7 +63,12 @@ const ProfileHeader = ({ skills, name, ciudadOrigen, edad, mainImage }) => {
           </div>
           {skills && skills.length > maxVisibleBadges && (
             <div className="toggle-badges-button" onClick={handleToggleBadges}>
-              {showAllBadges ? 'Ver menos' : 'Ver más'}
+              <span className="toggle-badges-content">
+                {showAllBadges ? 'Ver menos' : 'Ver más'}
+                <ChevronDown
+                  className={`ml-2 h-4 w-4 transition-transform ${showAllBadges ? 'rotate-180' : ''}`}
+                />
+              </span>
             </div>
           )}
         </motion.div>
