@@ -1,26 +1,45 @@
-import React from "react";
-import { Code2, Database, FileJson, FileType2, Globe, Layout } from 'lucide-react'
+import React, { useState, useEffect, useRef } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper/modules';
 import ProfileHeader from "../../components/camperProfile/ProfileHeader";
 import VideoPlayer from "../../components/camperProfile/VIdeoPlayer";
 import ProjectCard from "../../components/camperProfile/ProjectCard";
 import TikTokEmbed from "../../components/camperProfile/TiktokEmbed";
-import Footer from "../../components/footer/Footer"
-import "./styles/CamperProfile.css";
-import EducationSection from "../../components/camperProfile/EducationSection";
-
-function TechnologyItem({ icon, name }) {
-    return (
-        <div className="skillCard flex items-center gap-3 w-full p-4 hover:bg-amber-500 transition-colors rounded-lg cursor-pointer">
-            {icon}
-            <span className="font-medium text-navy-900">{name}</span>
-        </div>
-    )
-}
+import Footer from "../../components/footer/Footer";
+import styles from './styles/CamperProfile.module.css';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import NavbarProfile from '../../components/navbar/NavbarProfile';
+import DreamsGrid from '../../components/camperProfile/DreamsGrid';
 
 const CamperProfile = () => {
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    const swiperRef = useRef(null);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    useEffect(() => {
+        // Forzar actualización del Swiper cuando cambia isMobile
+        if (swiperRef.current && swiperRef.current.swiper) {
+            swiperRef.current.swiper.update();
+        }
+    }, [isMobile]);
+
+    const handleSlideChange = (swiper) => {
+        setCurrentIndex(swiper.activeIndex);
+    };
+
     const camper = {
         name: "Natalia Diaz Suarez",
-        title: "Fullstack Software Developer",
+        ciudadOrigen: "Bucaramanga, Santander",
+        edad: "19",
         mainImage: "/placeholder.svg?height=280&width=280",
         mainVideo: "https://www.youtube.com/embed/example",
         about:
@@ -44,12 +63,15 @@ const CamperProfile = () => {
             },
         ],
         skills: [
-            { name: "TypeScript", icon: <FileType2 className="w-5 h-5 text-navy-900" /> },
-            { name: "JavaScript", icon: <FileJson className="w-5 h-5 text-navy-900" /> },
-            { name: "SpringBoot", icon: <Globe className="w-5 h-5 text-navy-900" /> },
-            { name: "MySQL", icon: <Database className="w-5 h-5 text-navy-900" /> },
-            { name: "ReactJS", icon: <Code2 className="w-5 h-5 text-navy-900" /> },
-            { name: "HTML/CSS", icon: <Layout className="w-5 h-5 text-navy-900" /> }
+            { name: "Espiritu Guerrero ⚔️" },
+            { name: "Nuevos horizontes🌅" },
+            { name: "Trota mundos 🌎"},
+            { name: "Primer programador 💻"},
+            { name: "Gran jefe 👑"},
+            { name: "Cabeza de familia 👨‍👩‍👧‍👦"},
+            { name: "Mujer de Impacto 💪"},
+            { name: "Emprendedor 💼"},
+            { name: "Rompe Esquemas 💥"}
         ],
         projects: [
             {
@@ -75,84 +97,93 @@ const CamperProfile = () => {
                 image: "src/assets/proyecto.png",
                 technologies: ["React", "D3.js", "Weather API"],
                 codeUrl: "https://github.com/example/weather-dashboard",
-            },
-            {
-                title: "Weather Forecast Dashboard",
-                description:
-                    "Dashboard interactivo que muestra pronósticos del tiempo utilizando datos de API en tiempo real.",
-                image: "src/assets/proyecto.png",
-                technologies: ["React", "D3.js", "Weather API"],
-                codeUrl: "https://github.com/example/weather-dashboard",
-            },
-            {
-                title: "Weather Forecast Dashboard",
-                description:
-                    "Dashboard interactivo que muestra pronósticos del tiempo utilizando datos de API en tiempo real.",
-                image: "src/assets/proyecto.png",
-                technologies: ["React", "D3.js", "Weather API"],
-                codeUrl: "https://github.com/example/weather-dashboard",
-            },
-            {
-                title: "Task Manager App",
-                description:
-                    "Aplicación de gestión de tareas con funcionalidades de colaboración en tiempo real.",
-                image: "src/assets/proyecto.png",
-                technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
-                codeUrl: "https://github.com/example/task-manager",
-            },
+            }
         ],
     };
 
     return (
-        <div className="camper-profile-view">
-            <div className="profile-main-content">
+        <div className={styles.camperProfileView}>
+            <NavbarProfile />
+            <div className={styles.profileMainContent}>
                 <ProfileHeader
+                    skills={camper.skills}
                     name={camper.name}
-                    title={camper.title}
+                    ciudadOrigen={camper.ciudadOrigen}
+                    edad={camper.edad}
                     mainImage={camper.mainImage}
                 />
-
-                <section className="about">
-                    <div className="col-video">
-                        <h2 className="profile-subtitle">
-                            <span className="highlight">&lt;/</span> Su historia
-                        </h2>
-                        <VideoPlayer videoUrl={camper.mainVideo} title="Historia Camper" />
-                    </div>
-                    <div className="col-info">
-                        <h2 className="profile-subtitle">
-                            <span className="highlight">&lt;/</span> Acerca de
-                        </h2>
-                        <p>{camper.about}</p>
-                        <button className="btn-patrocinar">Patrocinar</button>
+ 
+                <section className={styles.about} id="sobre-mi-profile">
+                    <div className={styles.aboutContent}>
+                        <div className={styles.colVideo}>
+                            <VideoPlayer videoUrl={camper.mainVideo} title="Historia Camper" />
+                        </div>
+                        <div className={styles.colInfo}>
+                            <h2 className={styles.aboutSubtitle}>Acerca de</h2>
+                            <p>{camper.about}</p>
+                            <button className={styles.btnPatrocinar}>Patrocinar</button>
+                        </div>
                     </div>
                 </section>
-
-                <section className="process">
-                    <h2 className="profile-subtitle">
-                        <span className="highlight">&lt;/</span> Su proceso de Formación
+ 
+                <section className={styles.dreams} id="sueños-grid">
+                    <h2 className={styles.profileSubtitle}>
+                        <span className={styles.highlight}>&lt;/</span> Mis Sueños
                     </h2>
-                    <div className="videos">
-                        {camper.processTikToks.map((video, index) => (
-                            <div key={index} className="video-item">
-                                <TikTokEmbed videoUrl={video.url} title={video.title} />
-                            </div>
-                        ))}
+                    <div className={styles.dreamsGridContainer}>
+                        <DreamsGrid />
                     </div>
                 </section>
-
-                <section className="tec-info">
-                    <h2 className="profile-subtitle">
-                        <span className="highlight">&lt;/</span> Educacion
+ 
+                <section className={styles.process} id='proceso-formacion-profile'>
+                    <h2 className={styles.profileSubtitle}>
+                        <span className={styles.highlight}>&lt;/</span> Mi proceso de Formación
                     </h2>
-                    <div className="education">
-                        <EducationSection />
+                    <div className={styles.videos}>
+                        {isMobile ? (
+                            <Swiper
+                                ref={swiperRef}
+                                modules={[Pagination]}
+                                spaceBetween={30}
+                                slidesPerView={1}
+                                pagination={{
+                                    clickable: true,
+                                    dynamicBullets: true,
+                                }}
+                                onSlideChange={handleSlideChange}
+                                className={`${styles.profileSwiper} ${styles.mobileSwiper}`}
+                            >
+                                {camper.processTikToks.map((video, index) => (
+                                    <SwiperSlide key={index} className={styles.swiperSlide}>
+                                        <TikTokEmbed videoUrl={video.url} title={video.title} />
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        ) : (
+                            <Swiper
+                                slidesPerView={3}
+                                spaceBetween={30}
+                                pagination={{
+                                    clickable: true,
+                                }}
+                                modules={[Pagination]}
+                                className={styles.profileSwiper}
+                            >
+                                {camper.processTikToks.map((video, index) => (
+                                    <SwiperSlide key={index} className={styles.videoItem}>
+                                        <TikTokEmbed videoUrl={video.url} title={video.title} />
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        )}
                     </div>
-                    <h2 className="profile-subtitle">
-                        <span className="highlight">&lt;/</span> Proyectos
+                </section>
+ 
+                <section className={styles.tecInfo}>
+                    <h2 className={styles.profileSubtitle}>
+                        <span className={styles.highlight}>&lt;/</span> Mis Proyectos
                     </h2>
-                    <div className="projects">
-
+                    <div className={styles.projects} id="projects-profile">
                         {camper.projects.map((project, index) => (
                             <ProjectCard
                                 key={index}
@@ -165,15 +196,14 @@ const CamperProfile = () => {
                         ))}
                     </div>
                 </section>
-                <section className="sponsor-call-to-action">
-                    <p className="cta-text">
+ 
+                <section className={styles.sponsorCallToAction} id="patrocinar-profile">
+                    <p className={styles.ctaText}>
                         "Con tu apoyo, puedo continuar desarrollando habilidades y creando soluciones innovadoras. ¡Gracias por creer en mi potencial!"
                     </p>
-                    <button className="btn-sponsor">Patrocinar Ahora</button>
+                    <button className={styles.btnSponsor}>Patrocinar Ahora</button>
                 </section>
-
             </div>
-
             <Footer />
         </div>
     );
