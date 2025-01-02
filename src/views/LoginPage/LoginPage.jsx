@@ -3,22 +3,39 @@ import { useNavigate } from "react-router-dom";
 import { Lock, Mail } from 'lucide-react';
 import campushm from '/src/assets/Campushm.png';
 import './LoginPage.css';
+import { endpoints } from '../../services/apiConfig';
 
 const LoginPage = () => {
   const navigate = useNavigate();
-  // const token = localStorage.getItem('token');
 
-  // CREDENCIALES SIMULADAS PARA DESARROLLO
-
-  // TRUE = AUTENTICADO
-  // FALSE = SIN AUTENTICAR
-  const token = false
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
     if (token) {
       navigate('/home');
     }
   }, [token]);
+
+  const handleLogin = async (email, password) => {
+    try {
+      const response = await fetch(endpoints.login, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem('token', data.token);
+        navigate('/home');
+      } else {
+        // Manejar el error de autenticación
+      }
+    } catch (error) {
+      // Manejar errores de red u otros errores
+    }
+  };
 
   return (
     <div className="login-container">
