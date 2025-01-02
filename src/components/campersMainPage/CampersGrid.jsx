@@ -56,12 +56,16 @@ const CampersGrid = () => {
     return (
         <section className='campersgrid'>
             <div className='badge-filters'>
+                <h3>Busca a Tu Camper</h3>
                 <div className="skill-filters">
                     <div className="filter-buttons">
                         {predefinedSkills.map(skill => (
                             <Button
                                 key={skill}
-                                variant={selectedSkills.includes(skill) ? "secondary" : "outline"}
+                                className={`skill-button ${
+                                    selectedSkills.includes(skill) ? "selected" : "outline"
+                                }`}
+
                                 onClick={() => handleSkillFilter(skill)}
                             >
                                 {skill}
