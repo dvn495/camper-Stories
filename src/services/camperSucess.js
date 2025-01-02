@@ -18,6 +18,7 @@ const campersData = [
       { name: "Trota mundos 🌎"},
       { name: "Primer programador 💻"},
       { name: "Gran jefe 👑"},
+
       { name: "Cabeza de familia 👨‍👩‍👧‍👦"},
       { name: "Mujer de Impacto 💪"},
       { name: "Emprendedor 💼"},
