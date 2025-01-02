@@ -43,7 +43,7 @@ const CamperProfile = () => {
         mainImage: "/placeholder.svg?height=280&width=280",
         mainVideo: "https://www.youtube.com/embed/example",
         about:
-            "Aprovechando la tecnología para crear soluciones impactantes, cuento con más de 2 años de experiencia en tecnología y administración, especializándome en desarrollo FullStack. Mi enfoque es aplicar tecnología a problemas del día a día, creando soluciones escalables y eficientes que optimizan procesos y resuelven desafíos reales. Me desempeño en entornos dinámicos, siempre motivado a aprender y adaptarme continuamente a nuevas tecnologías. Mi objetivo es aportar valor en cada proyecto en el que participo, mientras sigo creciendo junto a equipos multidisciplinarios.",
+            "Aprovechando la tecnología para crear soluciones impactantes, cuento con más de 2 años de experiencia en tecnología y administración, especializándome en desarrollo FullStack. Mi enfoque es aplicar tecnología a problemas del día a día",
         processTikToks: [
             {
                 title: "TikTok1",

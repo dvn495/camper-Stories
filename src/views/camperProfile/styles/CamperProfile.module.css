@@ -27,8 +27,8 @@
 
 .profileSubtitle {
   font-size: clamp(1.5rem, 3vw, 3rem);
-  margin-bottom: clamp(1.5rem, 4vw, 3rem);
-  margin-top: clamp(2rem, 5vw, 100px);
+  margin-bottom: 1rem;
+  margin-top: 1rem;
   display: block;
   width: 100%;
   position: relative;
@@ -54,7 +54,6 @@
   flex-direction: column;  
   align-items: flex-start;
   min-height: 60vh;
-  margin-bottom: 2rem;
 }
 
 .aboutContent {
@@ -81,13 +80,13 @@
 .colVideo {
   flex: 1 1 300px;
   max-width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .process {
   width: 100%;
   position: relative;
-  padding-top: 2rem;
-  margin-top: 3rem;
 }
 
 .dreams {
@@ -123,8 +122,6 @@
 
 .tecInfo {
   position: relative;
-  padding-top: 2rem;
-  margin-top: 3rem;
 }
 
 .projects {
