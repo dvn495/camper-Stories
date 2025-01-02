@@ -1,6 +1,4 @@
-import React, { useEffect, useRef } from 'react';
-import imagesLoaded from 'imagesloaded';
-import Masonry from 'masonry-layout';
+import React from 'react';
 import { dreamsData } from '../../data/data';
 import styles from './styles/DreamsGrid.module.css'
 
@@ -11,15 +9,23 @@ const DreamsGrid = () => {
   );
   
   return (
-    <div className={styles.container}>
-      {uniqueDreams.map(box => (
-        <div key={box.id} className={styles.box}>
-          <img src={box.image} alt={box.title} />
-          <div className={styles.overlay}>
-            <p>{box.description}</p>
-          </div>
-        </div>
-      ))}
+    <div className={styles.cardArea}>
+     <div className={styles.wrapper}>
+       <div className={styles.boxArea}>
+         {uniqueDreams.map(box => (
+           <div key={box.id} className={styles.box}>
+             <img 
+              src={box.image} 
+              alt={box.title} 
+            />
+             <div className={styles.overlay}>
+               <h3>{box.title}</h3>
+               <p>{box.description}</p>
+             </div>
+           </div>
+         ))}
+       </div>
+     </div>
     </div>
   );
  };
