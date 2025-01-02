@@ -1,5 +1,5 @@
 /* Estilos base */
-.camper-profile-view {
+.camper-profile-view-CamperProfile {
   width: 100%;  
   font-family: 'Courier New', Courier, monospace;
   background-color: #070727;
@@ -7,7 +7,7 @@
   overflow-x: hidden;
 }
 
-.profile-main-content {
+.profile-main-content-CamperProfile {
   display: flex;
   flex-direction: column;
   width: 100%;  
@@ -16,8 +16,8 @@
 }
 
 /* Typography */
-.profile-subtitle,
-.about-subtitle {
+.profile-subtitle-CamperProfile,
+.about-subtitle-CamperProfile {
   font-family: 'Poppins', sans-serif;
   font-weight: bold;
   color: #FFFFFF;
@@ -26,44 +26,47 @@
   gap: 0.5rem;
 }
 
-.profile-subtitle {
+.profile-subtitle-CamperProfile {
   font-size: clamp(1.5rem, 3vw, 3rem);
   margin-bottom: clamp(1.5rem, 4vw, 3rem);
   margin-top: clamp(2rem, 5vw, 100px);
+  display: block;
+  width: 100%;
+  position: relative;
 }
 
-.project-subtitle,
-.about-subtitle {
+.project-subtitle-CamperProfile,
+.about-subtitle-CamperProfile {
   font-size: clamp(1.2rem, 2.5vw, 2rem);
 }
 
-.about-subtitle {
+.about-subtitle-CamperProfile {
   padding-bottom: 1.5rem;
 }
 
-.highlight {
+.highlight-CamperProfile {
   color: #FACC15;
   font-weight: bold;
 }
 
 /* Layout sections */
-.about {
+.about-CamperProfile {
   display: flex;
   flex-direction: column;  
   align-items: flex-start;
-  min-height: 60vh; /* Cambiado a min-height */
-  margin-bottom: 2rem; /* Añadir margen inferior */
+  min-height: 60vh;
+  margin-bottom: 2rem;
 }
 
-.about-content {
+.about-content-CamperProfile {
   display: flex;
   flex-direction: row;
   gap: clamp(20px, 3vw, 40px);
   flex-wrap: wrap;
-  width: 100%; /* Asegurar ancho completo */
+  width: 100%;
 }
 
-.col-info {
+.col-info-CamperProfile {
   display: flex;
   flex-direction: column;
   max-width: 40%;
@@ -71,53 +74,84 @@
   justify-content: center;
 }
 
-.col-info p {
+.col-info-CamperProfile p {
   color: white;
   line-height: 20px;
 }
 
-.col-video {
+.col-video-CamperProfile {
   flex: 1 1 300px;
   max-width: 100%;
 }
 
-.process{
+.process-CamperProfile {
   width: 100%;
+  position: relative;
+  padding-top: 2rem;
+  margin-top: 3rem;
+}
+
+.process-CamperProfile .profile-subtitle-CamperProfile {
+  position: relative;
+  z-index: 2; /* Asegura que el título esté por encima */
+  margin-bottom: 4rem; /* Aumenta el espacio entre el título y los videos */
+  display: block; /* Cambia a block para ocupar su propia línea */
 }
 
 /* Dreams section */
-
-.dreams{
+.dreams-CamperProfile {
   margin-bottom: 4rem;
 }
 
 /* Videos grid */
-.videos {
+.videos-CamperProfile {
   display: flex;  
   justify-content: center;
   max-width: 89vw;
   gap: 20px;
+  position: relative;
+  z-index: 1;
+  margin-top: 2rem; /* Espacio adicional desde el título */
 }
 
-.swiper-slide, .video-item{
+.video-item-CamperProfile {
   width: 325px!important;
 }
 
-.profile-mobile-swiper {
+.profile-mobile-swiper-CamperProfile {
   width: 100%;
   height: fit-content;
 }
 
 /* Projects section */
-.projects {
+
+/* Ajustes para la sección de proyectos */
+.tec-info-CamperProfile {
+  position: relative;
+  padding-top: 2rem;
+  margin-top: 3rem;
+}
+
+.tec-info-CamperProfile .profile-subtitle-CamperProfile {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 4rem; /* Aumenta el espacio entre el título y los proyectos */
+  display: block;
+}
+
+.projects-CamperProfile {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: clamp(20px, 2vw, 20px);
   width: 100%;
+  margin-top: 2rem;
 }
 
+
 /* Call-to-Action and Buttons */
-.sponsor-call-to-action {
+.sponsor-call-to-action-CamperProfile {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -127,14 +161,14 @@
   text-align: center;
 }
 
-.cta-text {
+.cta-text-CamperProfile {
   font-size: clamp(1rem, 1.5vw, 1.2rem);
   max-width: 800px;
   margin: 0 auto;
 }
 
-.btn-patrocinar,
-.btn-sponsor {
+.btn-patrocinar-CamperProfile,
+.btn-sponsor-CamperProfile {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -149,52 +183,52 @@
   padding: clamp(8px, 2vw, 15px) clamp(16px, 3vw, 40px);
 }
 
-.btn-patrocinar {
+.btn-patrocinar-CamperProfile {
   margin-top: 2rem;
   border: none;
 }
 
-.btn-patrocinar:hover {
+.btn-patrocinar-CamperProfile:hover {
   background-color: #f0a500;
   cursor: pointer;
 }
 
-.btn-sponsor:hover {
+.btn-sponsor-CamperProfile:hover {
   background-color: #cc7a00;
 }
 
-.btn-patrocinar:focus {
+.btn-patrocinar-CamperProfile:focus {
   outline: none;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive styles */
 @media (max-width: 768px) {
-  .profile-main-content {
+  .profile-main-content-CamperProfile {
     padding: 0 1.5rem 1rem;
   }
 
-  .about {
+  .about-CamperProfile {
     min-height: auto;
   }
   
-  .projects{
+  .projects-CamperProfile {
     grid-template-columns: repeat(auto-fit);
   }
 
-  .about-content {
+  .about-content-CamperProfile {
     flex-direction: column;
   }
   
-  .col-info,
-  .col-video {
+  .col-info-CamperProfile,
+  .col-video-CamperProfile {
     max-width: 100%;
   }
 }
 
 @media (max-width: 480px) {
-  .videos,
-  .projects {
+  .videos-CamperProfile,
+  .projects-CamperProfile {
     grid-template-columns: 1fr;
   }
 }

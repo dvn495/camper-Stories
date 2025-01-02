@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Code2, Database, FileJson, FileType2, Globe, Layout } from 'lucide-react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import ProfileHeader from "../../components/camperProfile/ProfileHeader";
@@ -103,9 +102,9 @@ const CamperProfile = () => {
     };
 
     return (
-        <div className="camper-profile-view">
+        <div className="camper-profile-view-CamperProfile">
             <NavbarProfile />
-            <div className="profile-main-content">
+            <div className="profile-main-content-CamperProfile">
                 <ProfileHeader
                     skills={camper.skills}
                     name={camper.name}
@@ -114,33 +113,33 @@ const CamperProfile = () => {
                     mainImage={camper.mainImage}
                 />
 
-                <section className="about" id="sobre-mi-profile">
-                    <div className="about-content">
-                        <div className="col-video">
+                <section className="about-CamperProfile" id="sobre-mi-profile">
+                    <div className="about-content-CamperProfile">
+                        <div className="col-video-CamperProfile">
                             <VideoPlayer videoUrl={camper.mainVideo} title="Historia Camper" />
                         </div>
-                        <div className="col-info">
-                            <h2 className="about-subtitle">Acerca de</h2>
+                        <div className="col-info-CamperProfile">
+                            <h2 className="about-subtitle-CamperProfile">Acerca de</h2>
                             <p>{camper.about}</p>
-                            <button className="btn-patrocinar">Patrocinar</button>
+                            <button className="btn-patrocinar-CamperProfile">Patrocinar</button>
                         </div>
                     </div>
                 </section>
 
-                <section className='dreams'>
-                    <h2 className="profile-subtitle">
-                        <span className="highlight">&lt;/</span> Mis Sueños
+                <section className='dreams-CamperProfile' id="sueños-grid-CamperProfile">
+                    <h2 className="profile-subtitle-CamperProfile">
+                        <span className="highlight-CamperProfile">&lt;/</span> Mis Sueños
                     </h2>
-                    <div className='dreams-grid-container'>
+                    <div className='dreams-grid-container-CamperProfile'>
                         <DreamsGrid />
                     </div>
                 </section>
 
-                <section className="process" id='proceso-formacion-profile'>
-                    <h2 className="profile-subtitle">
-                        <span className="highlight">&lt;/</span> Mi proceso de Formación
+                <section className="process-CamperProfile" id='proceso-formacion-profile'>
+                    <h2 className="profile-subtitle-CamperProfile">
+                        <span className="highlight-CamperProfile">&lt;/</span> Mi proceso de Formación
                     </h2>
-                    <div className="videos">
+                    <div className="videos-CamperProfile">
                         {
                             isMobile ? (
                                 <Swiper
@@ -153,7 +152,7 @@ const CamperProfile = () => {
                                         dynamicBullets: true,
                                     }}
                                     onSlideChange={handleSlideChange}
-                                    className="profile-mobile-swiper"
+                                    className="profile-mobile-swiper-CamperProfile"
                                 >
                                     {camper.processTikToks.map((video, index) => (
                                         <SwiperSlide key={index}>
@@ -172,7 +171,7 @@ const CamperProfile = () => {
                                     className="mySwiper"
                                 >
                                     {camper.processTikToks.map((video, index) => (
-                                        <SwiperSlide key={index} className="video-item">
+                                        <SwiperSlide key={index} className="video-item-CamperProfile">
                                             <TikTokEmbed videoUrl={video.url} title={video.title} />
                                         </SwiperSlide>
                                     ))}
@@ -182,12 +181,11 @@ const CamperProfile = () => {
                     </div>
                 </section>
 
-                <section className="tec-info">
-                    <h2 className="profile-subtitle">
-                        <span className="highlight">&lt;/</span> Mis Proyectos
+                <section className="tec-info-CamperProfile">
+                    <h2 className="profile-subtitle-CamperProfile">
+                        <span className="highlight-CamperProfile">&lt;/</span> Mis Proyectos
                     </h2>
-                    <div className="projects" id="projects-profile">
-
+                    <div className="projects-CamperProfile" id="projects-profile">
                         {camper.projects.map((project, index) => (
                             <ProjectCard
                                 key={index}
@@ -200,15 +198,14 @@ const CamperProfile = () => {
                         ))}
                     </div>
                 </section>
-                <section className="sponsor-call-to-action" id="patrocinar-profile">
-                    <p className="cta-text">
+
+                <section className="sponsor-call-to-action-CamperProfile" id="patrocinar-profile">
+                    <p className="cta-text-CamperProfile">
                         "Con tu apoyo, puedo continuar desarrollando habilidades y creando soluciones innovadoras. ¡Gracias por creer en mi potencial!"
                     </p>
-                    <button className="btn-sponsor">Patrocinar Ahora</button>
+                    <button className="btn-sponsor-CamperProfile">Patrocinar Ahora</button>
                 </section>
-
             </div>
-
             <Footer />
         </div>
     );
