@@ -37,10 +37,10 @@ const CamperProfile = () => {
     };
 
     const camper = {
-        name: "Natalia Diaz Suarez",
+        name: "Cristopher Buitrago",
         ciudadOrigen: "Bucaramanga, Santander",
-        edad: "19",
-        mainImage: "/placeholder.svg?height=280&width=280",
+        edad: "17",
+        mainImage: "/src/assets/Christopher.svg",
         mainVideo: "https://www.youtube.com/embed/example",
         about:
             "Aprovechando la tecnología para crear soluciones impactantes, cuento con más de 2 años de experiencia en tecnología y administración, especializándome en desarrollo FullStack. Mi enfoque es aplicar tecnología a problemas del día a día",

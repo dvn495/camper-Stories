@@ -1,10 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@500;600;700&display=swap');
+
 /* Base Layout */
+
 .campersgrid {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  min-height: 80vh;
+  min-height: 100vh;
   padding: 3rem 1rem;
   background-image: linear-gradient(rgba(1, 1, 48, 0.7), rgba(1, 1, 48, 0.7)), 
                     url('src/assets/campuswall.png');
@@ -129,17 +132,18 @@
 /* Skills Display */
 .skills-container {
   display: flex;
+  gap: 7px;
   flex-direction: row !important;
   flex-wrap: wrap;
   justify-content: center;
   width: 300px !important;
-  max-height: 30px;
+  max-height: 40px;
   overflow: hidden;
   transition: max-height 0.3s ease;
 }
 
 .skills-container.expanded {
-  max-height: 300px;
+  max-height: 400px;
 }
 
 .skill-item {
@@ -151,13 +155,46 @@
   white-space: nowrap;
   border-radius: 20px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  transition: transform 0.2s;
 }
 
 .skill-item:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 6px rgba(0,0,0,0.15);
 }
+
+/* Skils Buttons */
+.skill-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  margin: 0.3rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  border: 1px solid transparent;
+}
+
+.skill-button.outline {
+  background-color: white;
+  color: #2d2b54;
+  border: 1px solid #4a4a75;
+}
+
+.skill-button.selected {
+  background-color: #6060d5;
+  color: white;
+  border-color: #f4b422;
+}
+
+.skill-button:hover {
+  background-color: #2d2b54;
+  color: #f4b422;
+}
+
 
 /* Buttons */
 button {
@@ -169,7 +206,7 @@ button {
   border: 1px solid transparent;
   border-radius: 8px;
   cursor: pointer;
-  transition: border-color 0.25s;
+  
 }
 
 .buttons {
@@ -178,13 +215,15 @@ button {
   margin-top: 0.5em;
 }
 
+
+
 .buttons button {
   padding: 8px 24px;
   font-weight: 500;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  
 }
 
 .info-button,
@@ -205,7 +244,6 @@ button {
   width: 100%;
   padding: 25px 0 8px;
   margin-top: -30px;
-  background: linear-gradient(transparent, #2D2B54 50%);
   border: none;
   position: relative;
   bottom: -20px;
@@ -304,37 +342,46 @@ button {
     height: 128px;
   }
 
-  .buttons button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100px;
-    height: 45px;
-    padding: 15px;
-    margin: 5px;
-    font-size: 13px;
-  }
-
-  .skills-wrapper {
-    position: relative;
-    width: 100%;
-  }
+  
 
  
-  .skill-badge {
-    background-color: transparent;
-    border: 1px solid #ffffff;
-    color: #ffffff;
-    transition: all 0.3s ease;
-  }
-  
-  .skill-badge.selected {
-    background-color: #ffffff;
-    color: #2D2B54;
-  }
-  
-  .skill-badge:hover {
-    transform: translateY(-2px);
-  }
 
+
+}
+
+.buttons button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 45px;
+  padding: 15px;
+  margin: 5px;
+  font-size: 13px;
+}
+
+.skills-wrapper {
+  position: relative;
+  width: 100%; 
+}
+
+.badge-filters {
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+  align-items: center;
+  flex-direction: column;
+}
+
+.badge-filters h3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #ffffff;
+  font-size: 50px;
+  font-weight: 700;  
+  letter-spacing: 0.9px;
+  text-transform: uppercase;  /* Mayúsculas para más impacto */
+  font-family: 'Poppins', sans-serif;  /* Cambio a Poppins */
 }
