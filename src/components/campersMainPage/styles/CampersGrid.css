@@ -30,7 +30,6 @@
 .badge-filters {
   display: flex;
   width: 76%;
-  height: 10rem;
   margin-bottom: 1rem;
   background-color: #26235886;
   border-radius: 20px;
@@ -109,6 +108,23 @@
   font-size: clamp(12px, 1.5vw, 15px);
   line-height: 1.5;
 }
+
+/* Skills Filter */
+
+.skill-filters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 10px;
+  justify-content: center;
+}
+
 
 /* Skills Display */
 .skills-container {
@@ -303,4 +319,22 @@ button {
     position: relative;
     width: 100%;
   }
+
+ 
+  .skill-badge {
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    transition: all 0.3s ease;
+  }
+  
+  .skill-badge.selected {
+    background-color: #ffffff;
+    color: #2D2B54;
+  }
+  
+  .skill-badge:hover {
+    transform: translateY(-2px);
+  }
+
 }

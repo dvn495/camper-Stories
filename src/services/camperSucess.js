@@ -13,17 +13,17 @@ const campersData = [
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Justo suscipit pharetra semectus duis, modi himenaeos liquido dopibus fermentum pellentesque vivamus vulputate mollis magnus sed.",
     image: davidImg,
     skills: [
-      { name: "Espiritu Guerrero ⚔️" },
+      { name: "Espiritu Guerrero ⚔" },
       { name: "Nuevos horizontes🌅" },
       { name: "Trota mundos 🌎"},
       { name: "Primer programador 💻"},
       { name: "Gran jefe 👑"},
-
+      { name: "Despegue Digital 🚀"},
       { name: "Cabeza de familia 👨‍👩‍👧‍👦"},
       { name: "Mujer de Impacto 💪"},
       { name: "Emprendedor 💼"},
-      { name: "Rompe Esquemas 💥"}
-     ]
+      { name: "Rompe Esquemas 💥"}
+     ]
   },
   {
     id: 2,
