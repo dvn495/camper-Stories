@@ -5,8 +5,8 @@ import ProfileHeader from "../../components/camperProfile/ProfileHeader";
 import VideoPlayer from "../../components/camperProfile/VIdeoPlayer";
 import ProjectCard from "../../components/camperProfile/ProjectCard";
 import TikTokEmbed from "../../components/camperProfile/TiktokEmbed";
-import Footer from "../../components/footer/Footer"
-import "./styles/CamperProfile.css";
+import Footer from "../../components/footer/Footer";
+import styles from './styles/CamperProfile.module.css';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import NavbarProfile from '../../components/navbar/NavbarProfile';
@@ -102,9 +102,9 @@ const CamperProfile = () => {
     };
 
     return (
-        <div className="camper-profile-view-CamperProfile">
+        <div className={styles.camperProfileView}>
             <NavbarProfile />
-            <div className="profile-main-content-CamperProfile">
+            <div className={styles.profileMainContent}>
                 <ProfileHeader
                     skills={camper.skills}
                     name={camper.name}
@@ -112,80 +112,78 @@ const CamperProfile = () => {
                     edad={camper.edad}
                     mainImage={camper.mainImage}
                 />
-
-                <section className="about-CamperProfile" id="sobre-mi-profile">
-                    <div className="about-content-CamperProfile">
-                        <div className="col-video-CamperProfile">
+ 
+                <section className={styles.about} id="sobre-mi-profile">
+                    <div className={styles.aboutContent}>
+                        <div className={styles.colVideo}>
                             <VideoPlayer videoUrl={camper.mainVideo} title="Historia Camper" />
                         </div>
-                        <div className="col-info-CamperProfile">
-                            <h2 className="about-subtitle-CamperProfile">Acerca de</h2>
+                        <div className={styles.colInfo}>
+                            <h2 className={styles.aboutSubtitle}>Acerca de</h2>
                             <p>{camper.about}</p>
-                            <button className="btn-patrocinar-CamperProfile">Patrocinar</button>
+                            <button className={styles.btnPatrocinar}>Patrocinar</button>
                         </div>
                     </div>
                 </section>
-
-                <section className='dreams-CamperProfile' id="sueños-grid-CamperProfile">
-                    <h2 className="profile-subtitle-CamperProfile">
-                        <span className="highlight-CamperProfile">&lt;/</span> Mis Sueños
+ 
+                <section className={styles.dreams} id="sueños-grid">
+                    <h2 className={styles.profileSubtitle}>
+                        <span className={styles.highlight}>&lt;/</span> Mis Sueños
                     </h2>
-                    <div className='dreams-grid-container-CamperProfile'>
+                    <div className={styles.dreamsGridContainer}>
                         <DreamsGrid />
                     </div>
                 </section>
-
-                <section className="process-CamperProfile" id='proceso-formacion-profile'>
-                    <h2 className="profile-subtitle-CamperProfile">
-                        <span className="highlight-CamperProfile">&lt;/</span> Mi proceso de Formación
+ 
+                <section className={styles.process} id='proceso-formacion-profile'>
+                    <h2 className={styles.profileSubtitle}>
+                        <span className={styles.highlight}>&lt;/</span> Mi proceso de Formación
                     </h2>
-                    <div className="videos-CamperProfile">
-                        {
-                            isMobile ? (
-                                <Swiper
-                                    ref={swiperRef}
-                                    modules={[Pagination]}
-                                    spaceBetween={30}
-                                    slidesPerView={1}
-                                    pagination={{
-                                        clickable: true,
-                                        dynamicBullets: true,
-                                    }}
-                                    onSlideChange={handleSlideChange}
-                                    className="profile-mobile-swiper-CamperProfile"
-                                >
-                                    {camper.processTikToks.map((video, index) => (
-                                        <SwiperSlide key={index}>
-                                            <TikTokEmbed videoUrl={video.url} title={video.title} />
-                                        </SwiperSlide>
-                                    ))}
-                                </Swiper>
-                            ) : (
-                                <Swiper
-                                    slidesPerView={3}
-                                    spaceBetween={30}
-                                    pagination={{
-                                        clickable: true,
-                                    }}
-                                    modules={[Pagination]}
-                                    className="mySwiper"
-                                >
-                                    {camper.processTikToks.map((video, index) => (
-                                        <SwiperSlide key={index} className="video-item-CamperProfile">
-                                            <TikTokEmbed videoUrl={video.url} title={video.title} />
-                                        </SwiperSlide>
-                                    ))}
-
-                                </Swiper>
-                            )}
+                    <div className={styles.videos}>
+                        {isMobile ? (
+                            <Swiper
+                                ref={swiperRef}
+                                modules={[Pagination]}
+                                spaceBetween={30}
+                                slidesPerView={1}
+                                pagination={{
+                                    clickable: true,
+                                    dynamicBullets: true,
+                                }}
+                                onSlideChange={handleSlideChange}
+                                className={`${styles.profileSwiper} ${styles.mobileSwiper}`}
+                            >
+                                {camper.processTikToks.map((video, index) => (
+                                    <SwiperSlide key={index} className={styles.swiperSlide}>
+                                        <TikTokEmbed videoUrl={video.url} title={video.title} />
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        ) : (
+                            <Swiper
+                                slidesPerView={3}
+                                spaceBetween={30}
+                                pagination={{
+                                    clickable: true,
+                                }}
+                                modules={[Pagination]}
+                                className={styles.profileSwiper}
+                            >
+                                {camper.processTikToks.map((video, index) => (
+                                    <SwiperSlide key={index} className={styles.videoItem}>
+                                        <TikTokEmbed videoUrl={video.url} title={video.title} />
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        )}
                     </div>
                 </section>
-
-                <section className="tec-info-CamperProfile">
-                    <h2 className="profile-subtitle-CamperProfile">
-                        <span className="highlight-CamperProfile">&lt;/</span> Mis Proyectos
+ 
+                <section className={styles.tecInfo}>
+                    <h2 className={styles.profileSubtitle}>
+                        <span className={styles.highlight}>&lt;/</span> Mis Proyectos
                     </h2>
-                    <div className="projects-CamperProfile" id="projects-profile">
+                    <div className={styles.projects} id="projects-profile">
                         {camper.projects.map((project, index) => (
                             <ProjectCard
                                 key={index}
@@ -198,12 +196,12 @@ const CamperProfile = () => {
                         ))}
                     </div>
                 </section>
-
-                <section className="sponsor-call-to-action-CamperProfile" id="patrocinar-profile">
-                    <p className="cta-text-CamperProfile">
+ 
+                <section className={styles.sponsorCallToAction} id="patrocinar-profile">
+                    <p className={styles.ctaText}>
                         "Con tu apoyo, puedo continuar desarrollando habilidades y creando soluciones innovadoras. ¡Gracias por creer en mi potencial!"
                     </p>
-                    <button className="btn-sponsor-CamperProfile">Patrocinar Ahora</button>
+                    <button className={styles.btnSponsor}>Patrocinar Ahora</button>
                 </section>
             </div>
             <Footer />
