@@ -1,5 +1,5 @@
-/* Estilos base */
-.camper-profile-view {
+/* CamperProfile.module.css */
+.camperProfileView {
   width: 100%;  
   font-family: 'Courier New', Courier, monospace;
   background-color: #070727;
@@ -7,7 +7,7 @@
   overflow-x: hidden;
 }
 
-.profile-main-content {
+.profileMainContent {
   display: flex;
   flex-direction: column;
   width: 100%;  
@@ -15,9 +15,8 @@
   background: linear-gradient(180deg, #070727 0%, #090955 70%, #0C0C74 100%);
 }
 
-/* Typography */
-.profile-subtitle,
-.about-subtitle {
+.profileSubtitle,
+.aboutSubtitle {
   font-family: 'Poppins', sans-serif;
   font-weight: bold;
   color: #FFFFFF;
@@ -26,18 +25,22 @@
   gap: 0.5rem;
 }
 
-.profile-subtitle {
+.profileSubtitle {
   font-size: clamp(1.5rem, 3vw, 3rem);
   margin-bottom: clamp(1.5rem, 4vw, 3rem);
   margin-top: clamp(2rem, 5vw, 100px);
+  display: block;
+  width: 100%;
+  position: relative;
+  z-index: 2;
 }
 
-.project-subtitle,
-.about-subtitle {
+.projectSubtitle,
+.aboutSubtitle {
   font-size: clamp(1.2rem, 2.5vw, 2rem);
 }
 
-.about-subtitle {
+.aboutSubtitle {
   padding-bottom: 1.5rem;
 }
 
@@ -46,24 +49,23 @@
   font-weight: bold;
 }
 
-/* Layout sections */
 .about {
   display: flex;
   flex-direction: column;  
   align-items: flex-start;
-  min-height: 60vh; /* Cambiado a min-height */
-  margin-bottom: 2rem; /* Añadir margen inferior */
+  min-height: 60vh;
+  margin-bottom: 2rem;
 }
 
-.about-content {
+.aboutContent {
   display: flex;
   flex-direction: row;
   gap: clamp(20px, 3vw, 40px);
   flex-wrap: wrap;
-  width: 100%; /* Asegurar ancho completo */
+  width: 100%;
 }
 
-.col-info {
+.colInfo {
   display: flex;
   flex-direction: column;
   max-width: 40%;
@@ -71,53 +73,71 @@
   justify-content: center;
 }
 
-.col-info p {
+.colInfo p {
   color: white;
   line-height: 20px;
 }
 
-.col-video {
+.colVideo {
   flex: 1 1 300px;
   max-width: 100%;
 }
 
-.process{
+.process {
   width: 100%;
+  position: relative;
+  padding-top: 2rem;
+  margin-top: 3rem;
 }
 
-/* Dreams section */
-
-.dreams{
+.dreams {
   margin-bottom: 4rem;
 }
 
-/* Videos grid */
 .videos {
   display: flex;  
   justify-content: center;
   max-width: 89vw;
   gap: 20px;
+  position: relative;
+  z-index: 1;
+  margin-top: 2rem;
 }
 
-.swiper-slide, .video-item{
-  width: 325px!important;
-}
-
-.profile-mobile-swiper {
+.profileSwiper {
   width: 100%;
   height: fit-content;
 }
 
-/* Projects section */
+.mobileSwiper {
+  width: 100%;
+}
+
+.swiperSlide {
+  width: 325px !important;
+}
+
+.videoItem {
+  width: 325px !important;
+}
+
+.tecInfo {
+  position: relative;
+  padding-top: 2rem;
+  margin-top: 3rem;
+}
+
 .projects {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: clamp(20px, 2vw, 20px);
   width: 100%;
+  margin-top: 2rem;
 }
 
-/* Call-to-Action and Buttons */
-.sponsor-call-to-action {
+.sponsorCallToAction {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -127,14 +147,14 @@
   text-align: center;
 }
 
-.cta-text {
+.ctaText {
   font-size: clamp(1rem, 1.5vw, 1.2rem);
   max-width: 800px;
   margin: 0 auto;
 }
 
-.btn-patrocinar,
-.btn-sponsor {
+.btnPatrocinar,
+.btnSponsor {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -149,28 +169,27 @@
   padding: clamp(8px, 2vw, 15px) clamp(16px, 3vw, 40px);
 }
 
-.btn-patrocinar {
+.btnPatrocinar {
   margin-top: 2rem;
   border: none;
 }
 
-.btn-patrocinar:hover {
+.btnPatrocinar:hover {
   background-color: #f0a500;
   cursor: pointer;
 }
 
-.btn-sponsor:hover {
+.btnSponsor:hover {
   background-color: #cc7a00;
 }
 
-.btn-patrocinar:focus {
+.btnPatrocinar:focus {
   outline: none;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive styles */
 @media (max-width: 768px) {
-  .profile-main-content {
+  .profileMainContent {
     padding: 0 1.5rem 1rem;
   }
 
@@ -178,16 +197,16 @@
     min-height: auto;
   }
   
-  .projects{
+  .projects {
     grid-template-columns: repeat(auto-fit);
   }
 
-  .about-content {
+  .aboutContent {
     flex-direction: column;
   }
   
-  .col-info,
-  .col-video {
+  .colInfo,
+  .colVideo {
     max-width: 100%;
   }
 }

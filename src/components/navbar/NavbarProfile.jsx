@@ -21,7 +21,7 @@ const NavbarProfile = () => {
      <div className="nav-links-profile left-group-profile">
        <a href="#sobre-mi-profile" onClick={handleLinkClick}>Sobre mi</a>
        <a href="#proceso-formacion-profile" onClick={handleLinkClick}>Proceso</a>
-       <a href="#no-esta" onClick={handleLinkClick}>Sueños</a>
+       <a href="#sueños-grid-CamperProfile" onClick={handleLinkClick}>Sueños</a>
      </div>
      <div className="nav-logo-profile">
        <a href="/" onClick={handleLinkClick}>
