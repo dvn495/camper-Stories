@@ -60,7 +60,9 @@ const Navbar = () => {
   );
   
   return (
-    <nav className={`navbar ${isInCampersSection && scrollDirection === 'down' ? 'navbar-hidden' : ''}`}>
+    <nav className={`navbar ${isMenuOpen ? 'menu-open' : ''} ${
+      isInCampersSection && scrollDirection === 'down' && !isMenuOpen ? 'navbar-hidden' : ''
+    }`}>
       <div className="desktop-only"><DesktopNav /></div>
       <div className="mobile-only"><MobileNav /></div>
     </nav>

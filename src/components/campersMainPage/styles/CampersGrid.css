@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  min-height: 100vh;
+  min-height: 80vh;
   padding: 3rem 1rem;
   background-image: linear-gradient(rgba(1, 1, 48, 0.7), rgba(1, 1, 48, 0.7)), 
                     url('src/assets/campuswall.png');

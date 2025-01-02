@@ -1,17 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Code2, Database, FileJson, FileType2, Globe, Layout } from 'lucide-react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import ProfileHeader from "../../components/camperProfile/ProfileHeader";
 import VideoPlayer from "../../components/camperProfile/VIdeoPlayer";
 import ProjectCard from "../../components/camperProfile/ProjectCard";
 import TikTokEmbed from "../../components/camperProfile/TiktokEmbed";
-import Footer from "../../components/footer/Footer"
-import "./styles/CamperProfile.css";
+import Footer from "../../components/footer/Footer";
+import styles from './styles/CamperProfile.module.css';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import NavbarProfile from '../../components/navbar/NavbarProfile';
-
+import DreamsGrid from '../../components/camperProfile/DreamsGrid';
 
 const CamperProfile = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -64,12 +63,15 @@ const CamperProfile = () => {
             },
         ],
         skills: [
-            { name: "TypeScript", icon: <FileType2 className="w-5 h-5 text-navy-900" /> },
-            { name: "JavaScript", icon: <FileJson className="w-5 h-5 text-navy-900" /> },
-            { name: "SpringBoot", icon: <Globe className="w-5 h-5 text-navy-900" /> },
-            { name: "MySQL", icon: <Database className="w-5 h-5 text-navy-900" /> },
-            { name: "ReactJS", icon: <Code2 className="w-5 h-5 text-navy-900" /> },
-            { name: "HTML/CSS", icon: <Layout className="w-5 h-5 text-navy-900" /> }
+            { name: "Espiritu Guerrero ⚔️" },
+            { name: "Nuevos horizontes🌅" },
+            { name: "Trota mundos 🌎"},
+            { name: "Primer programador 💻"},
+            { name: "Gran jefe 👑"},
+            { name: "Cabeza de familia 👨‍👩‍👧‍👦"},
+            { name: "Mujer de Impacto 💪"},
+            { name: "Emprendedor 💼"},
+            { name: "Rompe Esquemas 💥"}
         ],
         projects: [
             {
@@ -95,122 +97,93 @@ const CamperProfile = () => {
                 image: "src/assets/proyecto.png",
                 technologies: ["React", "D3.js", "Weather API"],
                 codeUrl: "https://github.com/example/weather-dashboard",
-            },
-            {
-                title: "Weather Forecast Dashboard",
-                description:
-                    "Dashboard interactivo que muestra pronósticos del tiempo utilizando datos de API en tiempo real.",
-                image: "src/assets/proyecto.png",
-                technologies: ["React", "D3.js", "Weather API"],
-                codeUrl: "https://github.com/example/weather-dashboard",
-            },
-            {
-                title: "Weather Forecast Dashboard",
-                description:
-                    "Dashboard interactivo que muestra pronósticos del tiempo utilizando datos de API en tiempo real.",
-                image: "src/assets/proyecto.png",
-                technologies: ["React", "D3.js", "Weather API"],
-                codeUrl: "https://github.com/example/weather-dashboard",
-            },
-            {
-                title: "Task Manager App",
-                description:
-                    "Aplicación de gestión de tareas con funcionalidades de colaboración en tiempo real.",
-                image: "src/assets/proyecto.png",
-                technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
-                codeUrl: "https://github.com/example/task-manager",
-            },
+            }
         ],
     };
 
     return (
-        <div className="camper-profile-view">
+        <div className={styles.camperProfileView}>
             <NavbarProfile />
-            <div className="profile-main-content">
+            <div className={styles.profileMainContent}>
                 <ProfileHeader
+                    skills={camper.skills}
                     name={camper.name}
                     ciudadOrigen={camper.ciudadOrigen}
                     edad={camper.edad}
                     mainImage={camper.mainImage}
                 />
-
-                <section className="about" id="sobre-mi-profile">
-                    <div className="about-content">
-                        <div className="col-video">
+ 
+                <section className={styles.about} id="sobre-mi-profile">
+                    <div className={styles.aboutContent}>
+                        <div className={styles.colVideo}>
                             <VideoPlayer videoUrl={camper.mainVideo} title="Historia Camper" />
                         </div>
-                        <div className="col-info">
-                            <h2 className="about-subtitle">Acerca de</h2>
+                        <div className={styles.colInfo}>
+                            <h2 className={styles.aboutSubtitle}>Acerca de</h2>
                             <p>{camper.about}</p>
-                            <button className="btn-patrocinar">Patrocinar</button>
+                            <button className={styles.btnPatrocinar}>Patrocinar</button>
                         </div>
-
-                    </div>
-
-                </section>
-
-                <section className='dreams'>
-                    <h2 className="profile-subtitle">
-                        <span className="highlight">&lt;/</span> Mis Sueños
-                    </h2>
-                    <div className='dreams-grid-container'>
-                        <p>seccion grid mis sueños</p>
-                    </div>
-
-                </section>
-
-                <section className="process" id='proceso-formacion-profile'>
-                    <h2 className="profile-subtitle">
-                        <span className="highlight">&lt;/</span> Mi proceso de Formación
-                    </h2>
-                    <div className="videos">
-                        {
-                            isMobile ? (
-                                <Swiper
-                                    ref={swiperRef}
-                                    modules={[Pagination]}
-                                    spaceBetween={30}
-                                    slidesPerView={1}
-                                    pagination={{
-                                        clickable: true,
-                                        dynamicBullets: true,
-                                    }}
-                                    onSlideChange={handleSlideChange}
-                                    className="profile-mobile-swiper"
-                                >
-                                    {camper.processTikToks.map((video, index) => (
-                                        <SwiperSlide key={index}>
-                                            <TikTokEmbed videoUrl={video.url} title={video.title} />
-                                        </SwiperSlide>
-                                    ))}
-                                </Swiper>
-                            ) : (
-                                <Swiper
-                                    slidesPerView={3}
-                                    spaceBetween={30}
-                                    pagination={{
-                                        clickable: true,
-                                    }}
-                                    modules={[Pagination]}
-                                    className="mySwiper"
-                                >
-                                    {camper.processTikToks.map((video, index) => (
-                                        <SwiperSlide key={index} className="video-item">
-                                            <TikTokEmbed videoUrl={video.url} title={video.title} />
-                                        </SwiperSlide>
-                                    ))}
-
-                                </Swiper>
-                            )}
                     </div>
                 </section>
-
-                <section className="tec-info">
-                    <h2 className="profile-subtitle">
-                        <span className="highlight">&lt;/</span> Mis Proyectos
+ 
+                <section className={styles.dreams} id="sueños-grid">
+                    <h2 className={styles.profileSubtitle}>
+                        <span className={styles.highlight}>&lt;/</span> Mis Sueños
                     </h2>
-                    <div className="projects" id="projects-profile">
-
+                    <div className={styles.dreamsGridContainer}>
+                        <DreamsGrid />
+                    </div>
+                </section>
+ 
+                <section className={styles.process} id='proceso-formacion-profile'>
+                    <h2 className={styles.profileSubtitle}>
+                        <span className={styles.highlight}>&lt;/</span> Mi proceso de Formación
+                    </h2>
+                    <div className={styles.videos}>
+                        {isMobile ? (
+                            <Swiper
+                                ref={swiperRef}
+                                modules={[Pagination]}
+                                spaceBetween={30}
+                                slidesPerView={1}
+                                pagination={{
+                                    clickable: true,
+                                    dynamicBullets: true,
+                                }}
+                                onSlideChange={handleSlideChange}
+                                className={`${styles.profileSwiper} ${styles.mobileSwiper}`}
+                            >
+                                {camper.processTikToks.map((video, index) => (
+                                    <SwiperSlide key={index} className={styles.swiperSlide}>
+                                        <TikTokEmbed videoUrl={video.url} title={video.title} />
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        ) : (
+                            <Swiper
+                                slidesPerView={3}
+                                spaceBetween={30}
+                                pagination={{
+                                    clickable: true,
+                                }}
+                                modules={[Pagination]}
+                                className={styles.profileSwiper}
+                            >
+                                {camper.processTikToks.map((video, index) => (
+                                    <SwiperSlide key={index} className={styles.videoItem}>
+                                        <TikTokEmbed videoUrl={video.url} title={video.title} />
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        )}
+                    </div>
+                </section>
+ 
+                <section className={styles.tecInfo}>
+                    <h2 className={styles.profileSubtitle}>
+                        <span className={styles.highlight}>&lt;/</span> Mis Proyectos
+                    </h2>
+                    <div className={styles.projects} id="projects-profile">
                         {camper.projects.map((project, index) => (
                             <ProjectCard
                                 key={index}
@@ -223,15 +196,14 @@ const CamperProfile = () => {
                         ))}
                     </div>
                 </section>
-                <section className="sponsor-call-to-action" id="patrocinar-profile">
-                    <p className="cta-text">
+ 
+                <section className={styles.sponsorCallToAction} id="patrocinar-profile">
+                    <p className={styles.ctaText}>
                         "Con tu apoyo, puedo continuar desarrollando habilidades y creando soluciones innovadoras. ¡Gracias por creer en mi potencial!"
                     </p>
-                    <button className="btn-sponsor">Patrocinar Ahora</button>
+                    <button className={styles.btnSponsor}>Patrocinar Ahora</button>
                 </section>
-
             </div>
-
             <Footer />
         </div>
     );

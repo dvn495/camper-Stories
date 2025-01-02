@@ -1,78 +1,78 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom';
-import { login } from "../../services/Auth/AuthService";
-import cslogo from '../../assets/CampusLogoVertical.png';
-import "./LoginPage.css";
+import React, { useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
+import { Lock, Mail } from 'lucide-react';
+import campushm from '/src/assets/Campushm.png';
+import './LoginPage.css';
 
-export default function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-
+const LoginPage = () => {
   const navigate = useNavigate();
-  const token = localStorage.getItem('token');
+  // const token = localStorage.getItem('token');
+
+  // CREDENCIALES SIMULADAS PARA DESARROLLO
+
+  // TRUE = AUTENTICADO
+  // FALSE = SIN AUTENTICAR
+  const token = false
 
   useEffect(() => {
-    document.title = 'The Campers Story | Login';
     if (token) {
       navigate('/home');
     }
-  }, [token, navigate]);
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    setLoading(true);
-    setError("");
-
-    try {
-      await login(email, password);
-      console.log("Inicio de sesión exitoso");
-      navigate('/home');
-    } catch (err) {
-      setError("Error al iniciar sesión. Por favor, intente de nuevo.");
-    } finally {
-      setLoading(false);
-    }
-  };
+  }, [token]);
 
   return (
-    <div className="auth-container">
-      <div className="auth-card">
-        <div className="auth-image-container">
-          <img src={cslogo} alt="Login Logo" className="auth-image" />
-        </div>
-        <div className="auth-form-container">
-          <h2 className="auth-title">Iniciar sesión</h2>
-          <form className="auth-form" onSubmit={handleSubmit}>
-            <div className="auth-input-group">
-              <label htmlFor="email">Correo electrónico</label>
-              <input 
-                id="email" 
-                placeholder="tu@ejemplo.com" 
-                value={email} 
-                onChange={(e) => setEmail(e.target.value)} 
-                required 
-                type="email" 
+    <div className="login-container">
+
+      {/* Main Container */}
+      <div className="main-container">
+        {/* Form Panel */}
+        <div className="form-panel">
+          <div className='form-logo'>
+            <img src={campushm} alt="Campus" />
+            <h1>Camper Stories</h1>
+          </div>
+
+          <h2>¡Bienvenido de nuevo, Camper!</h2>
+
+          <form>
+            <div className="form-group">
+              <Mail className="input-icon" size={20} />
+              <input
+                type="email"
+                className="form-input"
+                placeholder="Correo electrónico"
+                required
               />
             </div>
-            <div className="auth-input-group">
-              <label htmlFor="password">Contraseña</label>
-              <input 
-                id="password" 
-                value={password} 
-                onChange={(e) => setPassword(e.target.value)} 
-                required 
-                type="password" 
+
+            <div className="form-group">
+              <Lock className="input-icon" size={20} />
+              <input
+                type="password"
+                className="form-input"
+                placeholder="Contraseña"
+                required
               />
             </div>
-            <button className="auth-button" type="submit" disabled={loading}>
-              {loading ? "Cargando..." : "Iniciar sesión"}
+
+            <button type="submit" className="btn btn-primary">Iniciar Sesión</button>
+            <button type="button" className="btn btn-google">
+              Continuar con Google
             </button>
-            {error && <p className="auth-error">{error}</p>}
           </form>
+
+          <div className="toggle-form">
+            <button
+              className="toggle-btn"
+              onClick={() => navigate('/campers/register')}
+            >
+              ¿No tienes cuenta aún? Regístrate
+            </button>
+          </div>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default LoginPage;
