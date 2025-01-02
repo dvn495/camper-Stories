@@ -46,3 +46,18 @@
     font-family: 'titulo--campersexitosos';
     src: url('../assets/fonts/Bank Gothic Medium.ttf');
 }
+
+@font-face {
+    font-family: 'monaSans-bold';
+    src: url('../assets//fonts/MonaSans/Mona-Sans-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'monaSans-semiBold';
+    src: url('../assets//fonts/MonaSans/Mona-Sans-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: 'monaSans-medium';
+    src: url('../assets//fonts/MonaSans/Mona-Sans-Medium.ttf');
+}
