@@ -7,67 +7,22 @@ export default function DonationForm() {
         first_name: '',
         last_name: '',
         email: '',
-        phone: '',
-        message: ''
-    });
+        celular: '',
+        mensaje: '',
+        valor: '' // Campo adicional para el monto de la donación
+    })
 
-    const [notification, setNotification] = useState({
-        show: false,
-        type: '',
-        message: ''
-    });
+    const handleSubmit = (e) => {
+        e.preventDefault()
 
-    const [isSubmitting, setIsSubmitting] = useState(false);
-
-    const showNotification = (type, message) => {
-        setNotification({
-            show: true,
-            type,
-            message
-        });
-        // Ocultar la notificación después de 5 segundos
-        setTimeout(() => {
-            setNotification({
-                show: false,
-                type: '',
-                message: ''
-            });
-        }, 5000);
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-
-        try {
-            const response = await fetch(endpoints.sponsors, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
-
-            const data = await response.json();
-            
-            if (response.ok) {
-                showNotification('success', '¡Gracias! Tu información ha sido enviada exitosamente.');
-                setFormData({
-                    first_name: '',
-                    last_name: '',
-                    email: '',
-                    phone: '',
-                    message: ''
-                });
-            } else {
-                showNotification('error', 'Hubo un error al enviar tu información. Por favor intenta de nuevo.');
-            }
-        } catch (error) {
-            showNotification('error', 'Error de conexión. Por favor verifica tu conexión a internet e intenta de nuevo.');
-        } finally {
-            setIsSubmitting(false);
+        const valor = parseFloat(formData.valor)
+        if (isNaN(valor) || valor <= 0) {
+            alert('Por favor ingresa un valor válido para la donación.')
+            return
         }
-    };
+
+        console.log('Form submitted:', formData)
+    }
 
     const handleChange = (e) => {
         setFormData({
@@ -77,37 +32,31 @@ export default function DonationForm() {
     };
 
     return (
-        <div className="form-card">
-            {notification.show && (
-                <div className={`notification ${notification.type}`}>
-                    {notification.message}
-                </div>
-            )}
-            
-            <form onSubmit={handleSubmit} className="form">
-                <div className="form-row">
-                    <div className="form-group">
-                        <label className="form-label">
-                            Nombre <span className="required">*</span>
+        <div className="donation-form-card">
+            <form onSubmit={handleSubmit} className="donation-form">
+                <div className="donation-form-row">
+                    <div className="donation-form-group">
+                        <label className="donation-form-label">
+                            Nombre <span className="donation-required">*</span>
                         </label>
                         <input
-                            className="form-input"
-                            name="first_name"
-                            value={formData.first_name}
+                            className="donation-form-input"
+                            name="nombre"
+                            value={formData.nombre}
                             onChange={handleChange}
                             placeholder="Tu nombre"
                             required
                             disabled={isSubmitting}
                         />
                     </div>
-                    <div className="form-group">
-                        <label className="form-label">
-                            Apellido <span className="required">*</span>
+                    <div className="donation-form-group">
+                        <label className="donation-form-label">
+                            Apellido <span className="donation-required">*</span>
                         </label>
                         <input
-                            className="form-input"
-                            name="last_name"
-                            value={formData.last_name}
+                            className="donation-form-input"
+                            name="apellido"
+                            value={formData.apellido}
                             onChange={handleChange}
                             placeholder="Tu apellido"
                             required
@@ -116,13 +65,13 @@ export default function DonationForm() {
                     </div>
                 </div>
 
-                <div className="form-row">
-                    <div className="form-group">
-                        <label className="form-label">
-                            Correo Electrónico <span className="required">*</span>
+                <div className="donation-form-row">
+                    <div className="donation-form-group">
+                        <label className="donation-form-label">
+                            Correo Electrónico <span className="donation-required">*</span>
                         </label>
                         <input
-                            className="form-input"
+                            className="donation-form-input"
                             type="email"
                             name="email"
                             value={formData.email}
@@ -132,12 +81,12 @@ export default function DonationForm() {
                             disabled={isSubmitting}
                         />
                     </div>
-                    <div className="form-group">
-                        <label className="form-label">
-                            Celular <span className="required">*</span>
+                    <div className="donation-form-group">
+                        <label className="donation-form-label">
+                            Celular <span className="donation-required">*</span>
                         </label>
                         <input
-                            className="form-input"
+                            className="donation-form-input"
                             type="tel"
                             name="phone"
                             value={formData.phone}
@@ -149,24 +98,35 @@ export default function DonationForm() {
                     </div>
                 </div>
 
-                <div className="form-group">
-                    <label className="form-label">Tu Mensaje!</label>
+                <div className="donation-form-group">
+                    <label className="donation-form-label">
+                        Valor de la Donación <span className="donation-required">*</span>
+                    </label>
+                    <input
+                        className="donation-form-input"
+                        type="number"
+                        name="valor"
+                        value={formData.valor}
+                        onChange={handleChange}
+                        placeholder="Ingresa el monto a donar"
+                        required
+                    />
+                </div>
+
+                <div className="donation-form-group">
+                    <label className="donation-form-label">Tu Mensaje!</label>
                     <textarea
-                        className="form-textarea"
-                        name="message"
-                        value={formData.message}
+                        className="donation-form-textarea"
+                        name="mensaje"
+                        value={formData.mensaje}
                         onChange={handleChange}
                         placeholder="Deja un mensaje para los campers!"
                         disabled={isSubmitting}
                     />
                 </div>
 
-                <button 
-                    type="submit" 
-                    className="submit-button"
-                    disabled={isSubmitting}
-                >
-                    {isSubmitting ? 'Enviando...' : 'PATROCINAR'}
+                <button type="submit" className="donation-submit-button">
+                    PATROCINAR
                 </button>
             </form>
         </div>
