@@ -29,14 +29,18 @@ const SponsorController = {
     // Crear un nuevo sponsor
     create: async (req, res) => {
         try {
-            const { camper_id, first_name, last_name, email, phone, message } = req.body;
+            const { contribution, first_name, last_name, email, phone, message } = req.body;
     
-            if (!camper_id) {
-                return res.status(400).json({ message: "El campo camper_id es obligatorio." });
+            if (!contribution || isNaN(contribution) || contribution <= 0) {
+                return res.status(400).json({ message: 'El valor de la contribución es inválido.' });
+            }
+    
+            if (!first_name || !last_name || !email) {
+                return res.status(400).json({ message: 'Faltan campos obligatorios.' });
             }
     
             const result = await SponsorModel.createSponsor({
-                camper_id,
+                contribution,
                 first_name,
                 last_name,
                 email,
@@ -44,11 +48,11 @@ const SponsorController = {
                 message,
             });
     
-            res.status(201).json({ message: "Sponsor registrado exitosamente", id: result.insertId });
+            res.status(201).json({ message: 'Sponsor registrado exitosamente', id: result.insertId });
         } catch (error) {
-            res.status(500).json({ message: "Error al registrar el sponsor", error: error.message });
+            res.status(500).json({ message: 'Error al registrar el sponsor', error: error.message });
         }
-    },
+    },    
 
     // Actualizar un sponsor existente
     update: async (req, res) => {
