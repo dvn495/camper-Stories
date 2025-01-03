@@ -14,6 +14,8 @@ import NavbarProfile from '../../components/navbar/NavbarProfile';
 import DreamsGrid from '../../components/camperProfile/DreamsGrid';
 import { ProyectsModal } from '@/components/camperProfileEdit/ProyectsModal';
 import { ProyectsEditModal } from '@/components/camperProfileEdit/ProyectsEditModal';
+import { Dialog } from '@/components/ui/dialog';
+import AboutMeModal from '../../components/camperProfileEdit/AboutMeModal';
 
 const CamperProfile = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -62,6 +64,14 @@ const CamperProfile = () => {
     const [selectedProject, setSelectedProject] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
     const swiperRef = useRef(null);
+    const [camperInfo, setCamperInfo] = useState({
+        name: "Cristopher Buitrago",
+        ciudadOrigen: "Bucaramanga, Santander",
+        edad: "17",
+        mainImage: "/src/assets/Christopher.svg",
+        about: "Aprovechando la tecnología para crear soluciones impactantes, cuento con más de 2 años de experiencia en tecnología y administración, especializándome en desarrollo FullStack. Mi enfoque es aplicar tecnología a problemas del día a día",
+        mainVideo: "https://www.youtube.com/embed/example"
+    });
 
     useEffect(() => {
         const handleResize = () => {
@@ -123,26 +133,13 @@ const CamperProfile = () => {
             {
                 title: "TikTok2",
                 url: "https://www.tiktok.com/@campuslands/video/7441695191657975048",
-            },
-            {
-                title: "TikTok3",
-                url: "https://www.tiktok.com/@campuslands/video/7441694512537275656",
-            },
-            {
-                title: "TikTok2",
-                url: "https://www.tiktok.com/@campuslands/video/7390518130801462533",
-            },
+            }
         ],
         skills: [
             { name: "Espiritu Guerrero ⚔️" },
             { name: "Nuevos horizontes🌅" },
             { name: "Trota mundos 🌎"},
-            { name: "Primer programador 💻"},
-            { name: "Gran jefe 👑"},
-            { name: "Cabeza de familia 👨‍👩‍👧‍👦"},
-            { name: "Mujer de Impacto 💪"},
-            { name: "Emprendedor 💼"},
-            { name: "Rompe Esquemas 💥"}
+            { name: "Primer programador 💻"}
         ],
     };
 
@@ -156,16 +153,29 @@ const CamperProfile = () => {
                     ciudadOrigen={camper.ciudadOrigen}
                     edad={camper.edad}
                     mainImage={camper.mainImage}
+                    {...camperInfo}
+                    onUpdateInfo={setCamperInfo}
                 />
- 
                 <section className={styles.about} id="sobre-mi-profile">
                     <div className={styles.aboutContent}>
                         <div className={styles.colVideo}>
-                            <VideoPlayer videoUrl={camper.mainVideo} title="Historia Camper" />
+                            <VideoPlayer videoUrl={camperInfo.mainVideo} title="Historia Camper" />
                         </div>
                         <div className={styles.colInfo}>
-                            <h2 className={styles.aboutSubtitle}>Acerca de</h2>
-                            <p>{camper.about}</p>
+                            <h2 className={styles.aboutSubtitle}>
+                                Acerca de
+                                <AboutMeModal 
+                                    initialData={camperInfo}
+                                    onSave={(newData) => {
+                                        setCamperInfo(prev => ({
+                                        ...prev,
+                                        about: newData.about,
+                                        mainVideo: newData.videoUrl
+                                        }));
+                                    }}
+                                />
+                            </h2>
+                            <p>{camperInfo.about}</p>
                             <button className={styles.btnPatrocinar}>Patrocinar</button>
                         </div>
                     </div>
@@ -270,6 +280,7 @@ const CamperProfile = () => {
                         "Con tu apoyo, puedo continuar desarrollando habilidades y creando soluciones innovadoras. ¡Gracias por creer en mi potencial!"
                     </p>
                     <button className={styles.btnSponsor}>Patrocinar Ahora</button>
+                    <Dialog />
                 </section>
             </div>
             <Footer />

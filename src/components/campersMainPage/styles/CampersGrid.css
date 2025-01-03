@@ -8,7 +8,7 @@
   align-items: center;
   width: 100%;
   min-height: 100vh;
-  padding: 3rem 1rem;
+  padding: 4rem 1rem;
   background-image: linear-gradient(rgba(1, 1, 48, 0.7), rgba(1, 1, 48, 0.7)), 
                     url('src/assets/campuswall.png');
   background-size: cover;
@@ -117,6 +117,7 @@
 .skill-filters {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   margin: 20px;
 }
@@ -126,8 +127,22 @@
   flex-wrap: wrap; 
   gap: 10px;
   justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+
+.expand-filters-button {
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+  color: #ffffff;
+  font-size: 20px;
+  border: none;
+  background-color: #FFA500;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
 /* Skills Display */
 .skills-container {
@@ -139,7 +154,7 @@
   width: 300px !important;
   max-height: 40px;
   overflow: hidden;
-  transition: max-height 0.3s ease;
+  transition: max-height 0.1s ease; /* más rápida */
 }
 
 .skills-container.expanded {
@@ -229,7 +244,7 @@ button {
 .info-button,
 .sponsor-button {
   background-color: #F4B422;
-  color: #2D2B54;
+  color: #0d0d12;
 }
 
 .info-button:hover,
@@ -275,6 +290,11 @@ button {
     padding: 3px 0 5px 0;
   }
 
+
+  .expand-filters-button {
+  display: none;
+}
+
   .campers-pagination {
     display: flex;
     width: 100%;
@@ -294,7 +314,7 @@ button {
 
 @media (max-width: 480px) {
   .campersgrid {
-    padding: 1rem 0.5rem;
+    padding: 2.2rem 0.5rem;
   }
 
   .grid-container {
@@ -342,9 +362,84 @@ button {
     height: 128px;
   }
 
-  
 
- 
+
+
+  .badge-filters {
+    display: flex;
+    justify-content: center;
+    width: 380px;
+    background-color: transparent;
+    align-items: center;
+    flex-direction: column;
+    margin: 0px;
+  }
+
+
+/* Skills Display */
+.filter-buttons {
+  display: flex;
+  gap: 0.5px;
+  flex-direction: row;
+  justify-content: center;
+  width: 380px;
+  color: #ffffff;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+
+.filter-buttons.expanded {
+   max-height: 500px;
+}
+
+
+
+
+
+.expand-filters-button {
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+  color: #ffffff;
+  font-size: 20px;
+  border: none;
+  background-color: #FFA500;
+  cursor: pointer;
+}
+
+
+
+  .grid-container {
+    padding: 0px;
+  }
+
+  .buttons button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 10px;
+    padding: 15px;
+    margin: 5px;
+    font-size: 10px;
+  }
+
+
+  .badge-filters h3 {
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 290px;
+    flex-direction: column;
+    color: #f9f7dd;
+    
+    font-weight: 500px;  
+    text-transform: uppercase;  /* Mayúsculas para más impacto */
+    font-family: 'Poppins', sans-serif;  /* Cambio a Poppins */
+  }
 
 
 }
@@ -357,7 +452,7 @@ button {
   height: 45px;
   padding: 15px;
   margin: 5px;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .skills-wrapper {
@@ -375,11 +470,9 @@ button {
 
 .badge-filters h3 {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  color: #ffffff;
-  font-size: 50px;
+  color: #FFA500;
+  font-size: 45px;
   font-weight: 700;  
   letter-spacing: 0.9px;
   text-transform: uppercase;  /* Mayúsculas para más impacto */
