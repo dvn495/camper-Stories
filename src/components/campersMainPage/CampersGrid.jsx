@@ -1,12 +1,57 @@
 import React, { useState, useEffect } from 'react';
-import { Pagination } from 'antd';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import campersData from "../../services/camperSucess";
 import "./styles/CampersGrid.css";
-import "./styles/GridPagination.css";
 
+// Componente de paginación por puntos
+const DotPagination = ({ current, total, pageSize, onChange }) => {
+  const pageCount = Math.ceil(total / pageSize);
+  
+  const getVisibleDots = () => {
+    let dots = [];
+    if (pageCount <= 7) {
+      for (let i = 1; i <= pageCount; i++) {
+        dots.push(i);
+      }
+      return dots;
+    }
+    
+    if (current <= 4) {
+      dots = [1, 2, 3, 4, 5, '...', pageCount];
+    } else if (current >= pageCount - 3) {
+      dots = [1, '...', pageCount - 4, pageCount - 3, pageCount - 2, pageCount - 1, pageCount];
+    } else {
+      dots = [1, '...', current - 1, current, current + 1, '...', pageCount];
+    }
+    
+    return dots;
+  };
+
+  return (
+    <div className="flex items-center justify-center space-x-2 py-4">
+      {getVisibleDots().map((dot, index) => (
+        <button
+          key={index}
+          onClick={() => dot !== '...' && onChange(dot)}
+          disabled={dot === '...'}
+          className={`
+            w-3 h-3 rounded-full transition-all duration-200 ease-in-out
+            ${dot === '...' ? 'w-6 bg-gray-300 cursor-default' : 
+              dot === current ? 'bg-blue-500 scale-110' : 
+              'bg-gray-300 hover:bg-gray-400'}
+          `}
+          aria-label={dot === '...' ? 'More pages' : `Page ${dot}`}
+        >
+          {dot === '...' && <span className="text-xs text-gray-600">•••</span>}
+        </button>
+      ))}
+    </div>
+  );
+};
+
+// Componente principal CampersGrid
 const CampersGrid = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [campersPerPage, setCampersPerPage] = useState(8);
@@ -65,7 +110,6 @@ const CampersGrid = () => {
                                 className={`skill-button ${
                                     selectedSkills.includes(skill) ? "selected" : "outline"
                                 }`}
-
                                 onClick={() => handleSkillFilter(skill)}
                             >
                                 {skill}
@@ -78,10 +122,6 @@ const CampersGrid = () => {
                 <motion.div
                     key={currentPage}
                     className='grid-container'
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.2 }}
                 >
                     {currentCampers.map((camper) => (
                         <div key={camper.id} className="developer-card">
@@ -124,8 +164,9 @@ const CampersGrid = () => {
                                                 >
                                                     {expandedSkills[camper.id] ? 'Ver menos' : 'Ver más'}
                                                     <ChevronDown
-                                                        className={`ml-2 h-4 w-4 transition-transform ${expandedSkills[camper.id] ? 'rotate-180' : ''
-                                                            }`}
+                                                        className={`ml-2 h-4 w-4 transition-transform ${
+                                                            expandedSkills[camper.id] ? 'rotate-180' : ''
+                                                        }`}
                                                     />
                                                 </button>
                                             )}
@@ -141,8 +182,7 @@ const CampersGrid = () => {
                     ))}
                 </motion.div>
             </AnimatePresence>
-            <Pagination
-                className="campers-pagination"
+            <DotPagination
                 current={currentPage}
                 pageSize={campersPerPage}
                 total={filteredCampers.length}
