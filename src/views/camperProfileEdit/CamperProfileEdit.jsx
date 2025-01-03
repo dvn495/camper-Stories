@@ -6,7 +6,7 @@ import VideoPlayer from "../../components/camperProfile/VIdeoPlayer";
 import ProjectCard from "../../components/camperProfile/ProjectCard";
 import TikTokEmbed from "../../components/camperProfile/TiktokEmbed";
 import Footer from "../../components/footer/Footer";
-import styles from './styles/CamperProfile.module.css';
+import styles from './styles/CamperProfileEdit.module.css';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import NavbarProfile from '../../components/navbar/NavbarProfile';
@@ -15,7 +15,7 @@ import DreamsGrid from '../../components/camperProfile/DreamsGrid';
 const CamperProfile = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
     const swiperRef = useRef(null);
-    
+
     useEffect(() => {
         const handleResize = () => {
             setIsMobile(window.innerWidth <= 768);

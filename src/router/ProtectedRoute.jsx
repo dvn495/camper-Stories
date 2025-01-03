@@ -10,7 +10,7 @@ const ProtectedRoute = ({ children, allowedRoles = [] }) => {
   // TRUE = AUTENTICADO
   // FALSE = SIN AUTENTICAR
 
-  const token = false
+  const token = true
   const role = "ADMIN"
 
   if (!token || !Array.isArray(allowedRoles) || !allowedRoles.includes(role)) {

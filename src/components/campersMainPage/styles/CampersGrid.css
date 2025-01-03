@@ -8,7 +8,7 @@
   align-items: center;
   width: 100%;
   min-height: 100vh;
-  padding: 3rem 1rem;
+  padding: 4rem 1rem;
   background-image: linear-gradient(rgba(1, 1, 48, 0.7), rgba(1, 1, 48, 0.7)), 
                     url('src/assets/campuswall.png');
   background-size: cover;
@@ -229,7 +229,7 @@ button {
 .info-button,
 .sponsor-button {
   background-color: #F4B422;
-  color: #2D2B54;
+  color: #0d0d12;
 }
 
 .info-button:hover,
@@ -294,7 +294,7 @@ button {
 
 @media (max-width: 480px) {
   .campersgrid {
-    padding: 1rem 0.5rem;
+    padding: 2.2rem 0.5rem;
   }
 
   .grid-container {
@@ -390,11 +390,11 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 300px;
+    width: 290px;
     flex-direction: column;
-    color: #ffffff;
-    font-size: 5px;
-    font-weight: 700;  
+    color: #f9f7dd;
+    
+    font-weight: 500px;  
     text-transform: uppercase;  /* Mayúsculas para más impacto */
     font-family: 'Poppins', sans-serif;  /* Cambio a Poppins */
   }
@@ -428,11 +428,9 @@ button {
 
 .badge-filters h3 {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  color: #ffffff;
-  font-size: 55px;
+  color: #FFA500;
+  font-size: 45px;
   font-weight: 700;  
   letter-spacing: 0.9px;
   text-transform: uppercase;  /* Mayúsculas para más impacto */
