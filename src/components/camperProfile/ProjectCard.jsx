@@ -2,8 +2,10 @@ import React from 'react';
 import { Card, Button, Tag } from 'antd';
 import { Code } from 'lucide-react';
 import './styles/ProjectCard.css';
+import { Edit, Pencil } from 'lucide-react';
 
-function ProjectCard({ title, description, image, technologies, codeUrl }) {
+function ProjectCard({ title, description, image, technologies, codeUrl, onEdit }) {
+  
   return (
     <Card className="project-card" hoverable cover={<img src={image} className="project-card-img" />}>
       <Card.Meta title={title} description={description} className="project-card-meta" />
@@ -20,8 +22,11 @@ function ProjectCard({ title, description, image, technologies, codeUrl }) {
         className="project-card-button"
         block
       >
-        Ver Código
+        Ver Código 
       </Button>
+      <button className="edit-button" onClick={onEdit}>
+          Editar
+      </button>
     </Card>
   );
 }
