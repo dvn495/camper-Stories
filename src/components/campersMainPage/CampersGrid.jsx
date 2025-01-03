@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import campersData from "../../services/camperSucess";
 import "./styles/CampersGrid.css";
 
-// Componente de paginación por puntos
 const DotPagination = ({ current, total, pageSize, onChange }) => {
   const pageCount = Math.ceil(total / pageSize);
   
@@ -51,12 +50,14 @@ const DotPagination = ({ current, total, pageSize, onChange }) => {
   );
 };
 
-// Componente principal CampersGrid
 const CampersGrid = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [campersPerPage, setCampersPerPage] = useState(8);
     const [expandedSkills, setExpandedSkills] = useState({});
     const [selectedSkills, setSelectedSkills] = useState([]);
+    const [isFilterExpanded, setIsFilterExpanded] = useState(false);
+    const visibleSkillsCount = 5;
+    
     const predefinedSkills = [
         "Espiritu Guerrero ⚔",
         "Nuevos horizontes🌅",
@@ -69,6 +70,10 @@ const CampersGrid = () => {
         "Emprendedor 💼",
         "Rompe Esquemas 💥"
     ];
+
+    const visibleSkills = isFilterExpanded 
+        ? predefinedSkills 
+        : predefinedSkills.slice(0, visibleSkillsCount);
 
     useEffect(() => {
         const updateCampersPerPage = () => {
@@ -103,19 +108,40 @@ const CampersGrid = () => {
             <div className='badge-filters'>
                 <h3>Busca a Tu Camper</h3>
                 <div className="skill-filters">
-                    <div className="filter-buttons">
-                        {predefinedSkills.map(skill => (
-                            <Button
-                                key={skill}
-                                className={`skill-button ${
-                                    selectedSkills.includes(skill) ? "selected" : "outline"
+                    <motion.div layout className="filter-buttons">
+                        <AnimatePresence>
+                            {visibleSkills.map(skill => (
+                                <motion.div
+                                    key={skill}
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 0.8 }}
+                                >
+                                    <Button
+                                        className={`skill-button ${
+                                            selectedSkills.includes(skill) ? "selected" : "outline"
+                                        }`}
+                                        onClick={() => handleSkillFilter(skill)}
+                                    >
+                                        {skill}
+                                    </Button>
+                                </motion.div>
+                            ))}
+                        </AnimatePresence>
+                    </motion.div>
+                    {predefinedSkills.length > visibleSkillsCount && window.innerWidth <= 768 && (
+                        <button
+                            className="expand-filters-button mt-2 flex items-center text-sm text-gray-600 hover:text-gray-800"
+                            onClick={() => setIsFilterExpanded(!isFilterExpanded)}
+                        >
+                            {isFilterExpanded ? 'Ver menos' : 'Ver más'}
+                            <ChevronDown
+                                className={`ml-2 h-4 w-4 transition-transform ${
+                                    isFilterExpanded ? 'rotate-180' : ''
                                 }`}
-                                onClick={() => handleSkillFilter(skill)}
-                            >
-                                {skill}
-                            </Button>
-                        ))}
-                    </div>
+                            />
+                        </button>
+                    )}
                 </div>
             </div>
             <AnimatePresence mode="wait">
