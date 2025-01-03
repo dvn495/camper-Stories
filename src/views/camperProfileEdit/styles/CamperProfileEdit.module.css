@@ -62,14 +62,16 @@
     gap: clamp(20px, 3vw, 40px);
     flex-wrap: wrap;
     width: 100%;
+    align-items: stretch; 
   }
   
   .colInfo {
+    flex: 1;
+    min-width: 300px; /* Añadir mínimo */
+    max-width: 40%;
     display: flex;
     flex-direction: column;
-    max-width: 40%;
-    align-items: flex-start;
-    justify-content: center;
+    justify-content: flex-start; /* Cambiar a flex-start */
   }
   
   .colInfo p {
@@ -78,10 +80,10 @@
   }
   
   .colVideo {
-    flex: 1 1 300px;
-    max-width: 100%;
-    display: flex;
-    align-items: center;
+    flex: 1;
+    max-width: 55%; /* Añadir un máximo */
+    min-width: 300px; /* Añadir mínimo */
+    height: auto; /* Asegurar altura automática */
   }
   
   .process {

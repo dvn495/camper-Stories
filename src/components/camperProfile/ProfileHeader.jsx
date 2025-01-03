@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Share2, Mail, MapPin, Cake, Trophy, ChevronDown } from 'lucide-react';
 import './styles/ProfileHeader.css';
+import ProfileHeaderModal from '../camperProfileEdit/ProfileHeaderModal';
 
-const ProfileHeader = ({ skills, name, ciudadOrigen, edad, mainImage }) => {
+const ProfileHeader = ({ skills, name, ciudadOrigen, edad, mainImage, onUpdateInfo }) => {
   const [showAllBadges, setShowAllBadges] = useState(false);
   const maxVisibleBadges = 6;
 
@@ -25,7 +26,25 @@ const ProfileHeader = ({ skills, name, ciudadOrigen, edad, mainImage }) => {
             <img src={mainImage} className="profile-image-content" alt="Profile" />
           </div>
           <div className="profile-details">
-            <h1 className="profile-name">{name}</h1>
+            <h1 className="profile-name">
+              {name}
+              <ProfileHeaderModal 
+                initialData={{ 
+                  nombre: name, 
+                  city: ciudadOrigen, 
+                  age: edad, 
+                  mainImage: mainImage
+                }}
+                onSave={(newData) => {
+                  onUpdateInfo({
+                    name: newData.nombre,
+                    ciudadOrigen: newData.city,
+                    edad: newData.age,
+                    mainImage: newData.mainImage
+                  });
+                }}
+              />
+            </h1>
             <div className='camper-details'>
               <div className='profile-city'>
                 <MapPin /><p>{ciudadOrigen}</p>
@@ -53,7 +72,7 @@ const ProfileHeader = ({ skills, name, ciudadOrigen, edad, mainImage }) => {
           animate={{ height: 'auto' }}
           transition={{ duration: 0.3, ease: 'easeInOut' }}
         >
-          <div className="badges-title"><Trophy /> <p>Méritos</p></div>
+          <div className="badges-title"><Trophy /><p>Méritos</p></div>
           <div className="badges-container">
             {skills && skills.slice(0, showAllBadges ? skills.length : maxVisibleBadges).map((skill, index) => (
               <div key={index} className="skill-item">
