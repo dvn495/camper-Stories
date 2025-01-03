@@ -7,7 +7,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    min-height: 95vh;
+    height: 90vh;
     background: linear-gradient(180deg, #0C0C74 0%, #03033D 70%, #030337 100%);
     position: relative;
     overflow: hidden;
@@ -26,9 +26,7 @@
     justify-content: center;
     width: 100%;
     max-width: 1400px;
-    padding: 2rem;
     position: relative;
-    padding-bottom: 60px;
     margin: 0 auto;
 }
 
@@ -38,7 +36,8 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    gap: 2rem;
+    height: 70vh;
+    gap: 3rem;
     padding: 0 2rem;
 }
 
@@ -46,8 +45,8 @@
     display: grid;
     place-items: center;
     position: relative;
-    width: 600px;
-    height: 600px;
+    width: 900px;
+    height: 900px;
 }
 
 .camper {
@@ -71,8 +70,33 @@
     flex-direction: column;
     justify-content: center;
     z-index: 3;
+    margin-bottom: 15px;
     overflow: visible;
 }
+
+.merits-container{
+    padding: 15px 0 10px 0;
+    display: flex;
+    width: 100%;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.merit-item {
+    padding: 5px 10px;
+    background-color: #59599c;
+    font-size: 12px;
+    width: fit-content;
+    height: fit-content;
+    white-space: nowrap;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .merit-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+  }
 
 /* Tipografía */
 .profile-card-content h2 {
@@ -259,12 +283,12 @@
 /* Portátil grande (1440px y superior) */
 @media (min-width: 1441px) {
     .profile-card {
-        max-width: 1600px;
+        max-width: 1700px;
     }
 
     .camper-img-frame {
-        width: 700px;
-        height: 700px;
+        width: 900px;
+        height: 900px;
     }
 
     .profile-card-content h2 {

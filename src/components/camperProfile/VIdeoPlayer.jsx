@@ -8,7 +8,7 @@ const VideoPlayer = ({ videoUrl, title }) => {
     <div
       className="video-container"
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseLeave={() => setIsHovered(true)}
     >
       <iframe
         src={`${videoUrl}${isHovered ? '?autoplay=1&mute=1' : ''}`}
