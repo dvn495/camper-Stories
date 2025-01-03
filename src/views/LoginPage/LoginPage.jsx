@@ -7,17 +7,20 @@ import { endpoints } from '../../services/apiConfig';
 
 const LoginPage = () => {
   const navigate = useNavigate();
-
   const token = localStorage.getItem('token');
 
+  // Verificar si ya hay un token para redirigir al usuario
   useEffect(() => {
     if (token) {
-      navigate('/home');
+      console.log("Usuario ya autenticado. Redirigiendo a /");
+      navigate('/');
     }
   }, [token]);
 
+  // Función para manejar el inicio de sesión
   const handleLogin = async (email, password) => {
     try {
+      console.log("Iniciando sesión con:", email);
       const response = await fetch(endpoints.login, {
         method: 'POST',
         headers: {
@@ -25,21 +28,22 @@ const LoginPage = () => {
         },
         body: JSON.stringify({ email, password }),
       });
+
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem('token', data.token);
-        navigate('/home');
+        console.log("Inicio de sesión exitoso. Token recibido:", data.token);
+        navigate('/');
       } else {
-        // Manejar el error de autenticación
+        console.error("Error de autenticación. Credenciales incorrectas.");
       }
     } catch (error) {
-      // Manejar errores de red u otros errores
+      console.error("Error al intentar iniciar sesión:", error);
     }
   };
 
   return (
     <div className="login-container">
-
       {/* Main Container */}
       <div className="main-container">
         {/* Form Panel */}
@@ -51,11 +55,19 @@ const LoginPage = () => {
 
           <h2>¡Bienvenido de nuevo, Camper!</h2>
 
-          <form>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              const email = e.target.email.value;
+              const password = e.target.password.value;
+              handleLogin(email, password);
+            }}
+          >
             <div className="form-group">
               <Mail className="input-icon" size={20} />
               <input
                 type="email"
+                name="email"
                 className="form-input"
                 placeholder="Correo electrónico"
                 required
@@ -66,13 +78,16 @@ const LoginPage = () => {
               <Lock className="input-icon" size={20} />
               <input
                 type="password"
+                name="password"
                 className="form-input"
                 placeholder="Contraseña"
                 required
               />
             </div>
 
-            <button type="submit" className="btn btn-primary">Iniciar Sesión</button>
+            <button type="submit" className="btn btn-primary">
+              Iniciar Sesión
+            </button>
             <button type="button" className="btn btn-google">
               Continuar con Google
             </button>

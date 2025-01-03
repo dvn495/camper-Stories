@@ -27,18 +27,34 @@ const UserController = {
     },
 
     create: async (req, res) => {
+        const { first_name, last_name, email, password, role, document_number } = req.body;
+    
+        // Validación de datos
+        if (!first_name || !last_name || !email || !password || !role) {
+            return res.status(400).json({
+                message: "Todos los campos son obligatorios (first_name, last_name, email, password, role)."
+            });
+        }
+    
         try {
-            const result = await UserModel.createUser(req.body);
-            res.status(201).json({ message: "Usuario creado", id: result.data.insertId });
+            // Crear el usuario
+            const result = await UserModel.createUser({ first_name, last_name, email, password, role });
+            const userId = result.data.insertId; // Obtener el ID del usuario recién creado
+    
+            // Si el rol es 'camper', actualizar el CAMPER con datos adicionales
+            if (role === 'camper') {
+                await CamperModel.updateCamperByUserId(userId, { document_number });
+            }
+    
+            res.status(201).json({ message: "Usuario creado con éxito", id: userId });
         } catch (error) {
-            if (error.message === 'Email y password son requeridos' || 
-                error.message === 'El email ya está registrado') {
+            if (error.message === 'Email y password son requeridos' || error.message === 'El email ya está registrado') {
                 return res.status(400).json({ message: error.message });
             }
             res.status(500).json({ message: "Error al crear el usuario", error: error.message });
         }
     },
-
+    
     update: async (req, res) => {
         try {
             const result = await UserModel.updateUser(

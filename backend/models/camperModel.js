@@ -39,7 +39,27 @@ const CamperModel = {
         }
     
         return result;
-    },    
+    },   
+    
+    updateCamperByUserId: async (userId, data) => {
+        const { document_number } = data;
+    
+        const query = `
+            UPDATE CAMPER
+            SET document_number = ?
+            WHERE user_id = ?
+        `;
+        const values = [document_number, userId];
+    
+        const result = await db.query(query, values);
+    
+        if (result.affectedRows === 0) {
+            throw new Error('No se encontró un CAMPER para el usuario especificado');
+        }
+    
+        return result;
+    },
+    
 
     // Eliminar un camper (solo admin o dueño del perfil)
     deleteCamper: async (id, requestingUserId, userRole) => {
