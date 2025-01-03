@@ -13,6 +13,7 @@ const VideoPlayer = ({ videoUrl, title }) => {
       <iframe
         src={`${videoUrl}${isHovered ? '?autoplay=1&mute=1' : ''}`}
         title={title}
+        allowFullScreen
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         className="video-iframe"
       />

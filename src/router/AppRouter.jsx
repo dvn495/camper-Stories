@@ -8,6 +8,7 @@ import LoginPage from '@/views/LoginPage/LoginPage';
 import Unauthorized from '@/views/Unauthorized/Unauthorized';
 import DynamicTitle from './DynamicTitle'; // Importa el componente
 import RegisterPage from '@/views/RegisterPage/RegisterPage';
+import ProfileHeaderModal from '@/components/camperProfileEdit/ProfileHeaderModal';
 
 const AppRouter = () => {
   return (
