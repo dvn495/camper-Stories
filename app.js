@@ -34,11 +34,13 @@ app.use((err, req, res, next) => {
 const userRoutes = require("./backend/routes/userRoutes");
 const camperRoutes = require("./backend/routes/camperRoutes");
 const sponsorRoutes = require("./backend/routes/sponsorRoutes");
+const dreamsRoutes = require("./backend/routes/dreamRoutes");
 
 // * Configuración de los endpoints principales
 app.use("/users", userRoutes);
 app.use("/campers", camperRoutes);
 app.use("/sponsors", sponsorRoutes);
+app.use("/dreams", dreamsRoutes);
 
 // ? Configuración del rate limiting global
 // @param windowMs: Ventana de tiempo en milisegundos
