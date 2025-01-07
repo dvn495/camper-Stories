@@ -2,7 +2,7 @@
 .camperProfileView {
     width: 100%;  
     font-family: 'Courier New', Courier, monospace;
-    background-color: #070727;
+    background-color: #1515be;
     max-width: 100vw;
     overflow-x: hidden;
   }
@@ -184,6 +184,19 @@
     outline: none;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
+
+  /*ADD CARD*/
+
+  .add-card--container{
+    background: transparent;
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    justify-content: center;
+    border: 1px solid #FFFFFF;
+  }
+  
+
   
   @media (max-width: 768px) {
     .profileMainContent {
