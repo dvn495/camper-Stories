@@ -1,17 +1,63 @@
 import React, { useState, useEffect } from 'react';
-import { Pagination } from 'antd';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import campersData from "../../services/camperSucess";
 import "./styles/CampersGrid.css";
-import "./styles/GridPagination.css";
+
+const DotPagination = ({ current, total, pageSize, onChange }) => {
+  const pageCount = Math.ceil(total / pageSize);
+  
+  const getVisibleDots = () => {
+    let dots = [];
+    if (pageCount <= 7) {
+      for (let i = 1; i <= pageCount; i++) {
+        dots.push(i);
+      }
+      return dots;
+    }
+    
+    if (current <= 4) {
+      dots = [1, 2, 3, 4, 5, '...', pageCount];
+    } else if (current >= pageCount - 3) {
+      dots = [1, '...', pageCount - 4, pageCount - 3, pageCount - 2, pageCount - 1, pageCount];
+    } else {
+      dots = [1, '...', current - 1, current, current + 1, '...', pageCount];
+    }
+    
+    return dots;
+  };
+
+  return (
+    <div className="flex items-center justify-center space-x-2 py-4">
+      {getVisibleDots().map((dot, index) => (
+        <button
+          key={index}
+          onClick={() => dot !== '...' && onChange(dot)}
+          disabled={dot === '...'}
+          className={`
+            w-3 h-3 rounded-full transition-all duration-200 ease-in-out
+            ${dot === '...' ? 'w-6 bg-gray-300 cursor-default' : 
+              dot === current ? 'bg-blue-500 scale-110' : 
+              'bg-gray-300 hover:bg-gray-400'}
+          `}
+          aria-label={dot === '...' ? 'More pages' : `Page ${dot}`}
+        >
+          {dot === '...' && <span className="text-xs text-gray-600">•••</span>}
+        </button>
+      ))}
+    </div>
+  );
+};
 
 const CampersGrid = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [campersPerPage, setCampersPerPage] = useState(8);
     const [expandedSkills, setExpandedSkills] = useState({});
     const [selectedSkills, setSelectedSkills] = useState([]);
+    const [isFilterExpanded, setIsFilterExpanded] = useState(false);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    
     const predefinedSkills = [
         "Espiritu Guerrero ⚔",
         "Nuevos horizontes🌅",
@@ -25,14 +71,24 @@ const CampersGrid = () => {
         "Rompe Esquemas 💥"
     ];
 
+    const mobileVisibleSkillsCount = 4;
+    const desktopVisibleSkillsCount = predefinedSkills.length;
+
     useEffect(() => {
-        const updateCampersPerPage = () => {
-            setCampersPerPage(window.innerWidth <= 768 ? 4 : 8);
+        const updateDimensions = () => {
+            const mobile = window.innerWidth <= 768;
+            setIsMobile(mobile);
+            setCampersPerPage(mobile ? 4 : 8);
         };
-        updateCampersPerPage();
-        window.addEventListener("resize", updateCampersPerPage);
-        return () => window.removeEventListener("resize", updateCampersPerPage);
+        
+        updateDimensions();
+        window.addEventListener("resize", updateDimensions);
+        return () => window.removeEventListener("resize", updateDimensions);
     }, []);
+
+    const visibleSkills = isMobile
+        ? (isFilterExpanded ? predefinedSkills : predefinedSkills.slice(0, mobileVisibleSkillsCount))
+        : predefinedSkills.slice(0, desktopVisibleSkillsCount);
 
     const filteredCampers = selectedSkills.length === 0 
         ? campersData 
@@ -58,30 +114,46 @@ const CampersGrid = () => {
             <div className='badge-filters'>
                 <h3>Busca a Tu Camper</h3>
                 <div className="skill-filters">
-                    <div className="filter-buttons">
-                        {predefinedSkills.map(skill => (
-                            <Button
-                                key={skill}
-                                className={`skill-button ${
-                                    selectedSkills.includes(skill) ? "selected" : "outline"
+                    <motion.div layout className="filter-buttons">
+                        <AnimatePresence>
+                            {visibleSkills.map(skill => (
+                                <motion.div
+                                    key={skill}
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 0.8 }}
+                                >
+                                    <Button
+                                        className={`skill-button ${
+                                            selectedSkills.includes(skill) ? "selected" : "outline"
+                                        }`}
+                                        onClick={() => handleSkillFilter(skill)}
+                                    >
+                                        {skill}
+                                    </Button>
+                                </motion.div>
+                            ))}
+                        </AnimatePresence>
+                    </motion.div>
+                    {isMobile && predefinedSkills.length > mobileVisibleSkillsCount && (
+                        <button
+                            className="expand-filters-button mt-2 flex items-center text-sm text-gray-600 hover:text-gray-800"
+                            onClick={() => setIsFilterExpanded(!isFilterExpanded)}
+                        >
+                            {isFilterExpanded ? 'Ver menos' : 'Ver más'}
+                            <ChevronDown
+                                className={`ml-2 h-4 w-4 transition-transform ${
+                                    isFilterExpanded ? 'rotate-180' : ''
                                 }`}
-
-                                onClick={() => handleSkillFilter(skill)}
-                            >
-                                {skill}
-                            </Button>
-                        ))}
-                    </div>
+                            />
+                        </button>
+                    )}
                 </div>
             </div>
             <AnimatePresence mode="wait">
                 <motion.div
                     key={currentPage}
                     className='grid-container'
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.2 }}
                 >
                     {currentCampers.map((camper) => (
                         <div key={camper.id} className="developer-card">
@@ -124,8 +196,9 @@ const CampersGrid = () => {
                                                 >
                                                     {expandedSkills[camper.id] ? 'Ver menos' : 'Ver más'}
                                                     <ChevronDown
-                                                        className={`ml-2 h-4 w-4 transition-transform ${expandedSkills[camper.id] ? 'rotate-180' : ''
-                                                            }`}
+                                                        className={`ml-2 h-4 w-4 transition-transform ${
+                                                            expandedSkills[camper.id] ? 'rotate-180' : ''
+                                                        }`}
                                                     />
                                                 </button>
                                             )}
@@ -141,8 +214,7 @@ const CampersGrid = () => {
                     ))}
                 </motion.div>
             </AnimatePresence>
-            <Pagination
-                className="campers-pagination"
+            <DotPagination
                 current={currentPage}
                 pageSize={campersPerPage}
                 total={filteredCampers.length}

@@ -7,6 +7,8 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import './styles/MainCampers.css';
 import profiles from '../../services/camperProfile';
+import VideoPlayer from "../../components/camperProfile/VIdeoPlayer";
+
 
 const MainCampers = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -14,7 +16,7 @@ const MainCampers = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % profiles.length);
-    }, 7000);
+    }, 600000);
     return () => clearInterval(interval);
   }, []);
 
@@ -27,8 +29,7 @@ const MainCampers = () => {
         exit={{ rotate: -10, opacity: 0 }}
         transition={{ duration: 1.2, ease: 'easeInOut' }}
       >
-        <img className="camper" src={profile.image} alt={profile.name} />
-        <img className="camper-frame" src="/src/assets/mainFrame.png" alt="" />
+        <VideoPlayer videoUrl={"https://www.youtube.com/embed/OKMsheDmK8Q"} title="Historia Camper" />
       </motion.div>
       <motion.div
         className="profile-card-content"
@@ -38,15 +39,22 @@ const MainCampers = () => {
         transition={{ duration: 1.2, ease: 'easeInOut' }}
       >
         <h2>{profile.name}</h2>
-        <h4>{profile.title}</h4>
+        <div className='merits-container'>
+          {profile.merits.slice(0, 4).map((skill, index) => (
+            <div className="merit-item" key={index}>
+              {skill.name}
+            </div>
+          ))}
+        </div>
         <p>{profile.description}</p>
         <div className="profile-card-signature">
           <p>{profile.name}</p>
         </div>
-        <button className="profile-card-button">{profile.buttonText}</button>
+        <button className="profile-card-button">Mas Informacion</button>
       </motion.div>
     </div>
   );
+  
 
   const renderPagination = () => (
     <div className="custom-pagination">
