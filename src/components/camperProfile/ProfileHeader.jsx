@@ -4,7 +4,7 @@ import { Share2, Mail, MapPin, Cake, Trophy, ChevronDown } from 'lucide-react';
 import './styles/ProfileHeader.css';
 import ProfileHeaderModal from '../camperProfileEdit/ProfileHeaderModal';
 
-const ProfileHeader = ({ skills, name, ciudadOrigen, edad, mainImage, onUpdateInfo }) => {
+const ProfileHeader = ({ skills, name, ciudadOrigen, edad, mainImage }) => {
   const [showAllBadges, setShowAllBadges] = useState(false);
   const maxVisibleBadges = 6;
 
