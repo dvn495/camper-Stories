@@ -128,10 +128,10 @@ const CamperProfileEdit = () => {
             }
         ],
         skills: [
-            { name: "Espiritu Guerrero ⚔️" },
-            { name: "Nuevos horizontes🌅" },
-            { name: "Trota mundos 🌎"},
-            { name: "Primer programador 💻"}
+            { name: "Espiritu Guerrero ⚔️", description: "Valiente y determinado en todos los retos." },
+            { name: "Nuevos horizontes🌅", description: "Explorando nuevas ideas y oportunidades." },
+            { name: "Trota mundos 🌎", description: "Adaptable a cualquier entorno y situación." },
+            { name: "Primer programador 💻", description: "Innovador y pionero en soluciones tecnológicas." }
         ],
     };
 
